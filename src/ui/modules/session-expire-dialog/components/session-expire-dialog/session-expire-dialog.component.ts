@@ -1,9 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription, timer } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
-//import { setTranslations } from '@c/ngx-translate';
+// import { setTranslations } from '@c/ngx-translate';
 import { TRANSLATIONS } from './i18n/session-expire-dialog.component.translations'
-import { MatDialogRef } from '@angular/material';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
     selector: 'session-expire-dialog',
@@ -19,7 +19,7 @@ export class SessionExpireDialogComponent implements OnInit, OnDestroy {
 
     constructor(private translate: TranslateService,
         public dialogRef: MatDialogRef<SessionExpireDialogComponent>) {
-        //setTranslations(this.translate, TRANSLATIONS);
+        // setTranslations(this.translate, TRANSLATIONS);
     }
 
     ngOnInit() {

@@ -1,8 +1,8 @@
 import { Component, Inject, Input } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-//import { setTranslations } from '@c/ngx-translate';
+// import { setTranslations } from '@c/ngx-translate';
 import { TRANSLATIONS } from './i18n/confirm-dialog.component.translations';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ConfirmDialogData } from '../../models/confirm-dialog-data';
 
 @Component({
@@ -25,7 +25,7 @@ export class ConfirmDialogComponent {
 
   constructor(private translate: TranslateService, public dialogRef: MatDialogRef<ConfirmDialogComponent>,
               @Inject(MAT_DIALOG_DATA) public data: ConfirmDialogData) {
-    //setTranslations(this.translate, TRANSLATIONS);
+    // setTranslations(this.translate, TRANSLATIONS);
   }
 
   accept(): void {

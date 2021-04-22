@@ -4,7 +4,7 @@ import { FormControl } from '@angular/forms';
 
 //import { setTranslations } from '@c/ngx-translate';
 import { TRANSLATIONS } from './i18n/confirm-dialog.component.translations';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ConfirmDialogData } from '../../models/confirm-dialog-data';
 
 @Component({

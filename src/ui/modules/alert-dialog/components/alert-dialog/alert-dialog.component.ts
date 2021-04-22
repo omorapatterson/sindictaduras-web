@@ -1,8 +1,8 @@
 import { Component, Inject } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-//import { setTranslations } from '@c/ngx-translate';
+// import { setTranslations } from '@c/ngx-translate';
 import { TRANSLATIONS } from './i18n/alert-dialog.component.translations';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { AlertDialogData } from '../../models/alert-dialog-data';
 
 @Component({
@@ -23,7 +23,7 @@ export class AlertDialogComponent {
 
   constructor(private translate: TranslateService, public dialogRef: MatDialogRef<AlertDialogComponent>,
               @Inject(MAT_DIALOG_DATA) public data: AlertDialogData) {
-    //setTranslations(this.translate, TRANSLATIONS);
+    // setTranslations(this.translate, TRANSLATIONS);
   }
 
   accept(): void {

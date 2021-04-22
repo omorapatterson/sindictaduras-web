@@ -2,10 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 //
-import {
-  MatAutocompleteModule, MatCheckboxModule, MatDatepickerModule,
-  MatNativeDateModule, MatRadioModule, MatSliderModule, MatSlideToggleModule
-} from '@angular/material';
+import { MatRadioModule } from '@angular/material/radio';
 
 import 'hammerjs';
 import 'hammer-timejs';
