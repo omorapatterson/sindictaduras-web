@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ICONS } from '../models/svg-icons/icons';
-import { MatIconRegistry } from '@angular/material';
+import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 
 @Injectable({
