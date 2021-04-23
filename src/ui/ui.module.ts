@@ -32,7 +32,7 @@ import { SpinnerIndicator200Module } from './modules/spinner-indicator-200/spinn
     CapitalizeWordModule,
     CapsLockModule,
     ConfirmDialogModule,
-    ErrorMessagesModule,    
+    ErrorMessagesModule,
     LogoModule,
     SessionExpireDialogModule,
     SpinnerIndicator200Module,

@@ -17,10 +17,12 @@ import { ModalModule } from "ngx-bootstrap/modal";
 import { JwBootstrapSwitchNg2Module } from "jw-bootstrap-switch-ng2";
 import { PopoverModule } from "ngx-bootstrap/popover";
 
-import { IndexComponent } from "./index/index.component";
-import { ProfilepageComponent } from "./examples/profilepage/profilepage.component";
-import { RegisterpageComponent } from "./examples/registerpage/registerpage.component";
-import { LandingpageComponent } from "./examples/landingpage/landingpage.component";
+import { IndexComponent } from './index/index.component';
+import { ProfilepageComponent } from './examples/profilepage/profilepage.component';
+import { RegisterpageComponent } from './examples/registerpage/registerpage.component';
+import { LandingpageComponent } from './examples/landingpage/landingpage.component';
+import {UiModule} from '../../ui/ui.module';
+import {DictadurasWebModule} from '../dictaduras-web/dictaduras-web.module';
 
 @NgModule({
   imports: [
@@ -39,7 +41,9 @@ import { LandingpageComponent } from "./examples/landingpage/landingpage.compone
     AlertModule.forRoot(),
     BsDatepickerModule.forRoot(),
     CarouselModule.forRoot(),
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    UiModule,
+    DictadurasWebModule
   ],
   declarations: [
     IndexComponent,

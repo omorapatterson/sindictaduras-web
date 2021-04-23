@@ -19,7 +19,7 @@ export class DialogService {
 		okBtnKey?: string,
 		messageParam?: { param: any }
 	}) {
-		let confirmDialogConfig: MatDialogConfig = {
+		const confirmDialogConfig: MatDialogConfig = {
 			width: '250px',
 			disableClose: true,
 			data
@@ -40,8 +40,19 @@ export class DialogService {
 	}
 
 	private openDialog(component, config: MatDialogConfig) {
-		let dialogRef = this.dialog.open(component, { ...this.defaultDialogConfig, ...config });
+		const dialogRef = this.dialog.open(component, { ...this.defaultDialogConfig, ...config });
 
 		return dialogRef;
+	}
+
+	openFromComponent(component, width, heigth,  dialogData?: any, panelClass: string = '',disableClose = true) {
+		return this.dialog.open(component, {
+			width: width,
+			height: heigth,
+			data: dialogData,
+			autoFocus: false,
+			disableClose: disableClose,
+			panelClass: panelClass,
+		});
 	}
 }

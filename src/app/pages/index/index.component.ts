@@ -1,5 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import noUiSlider from 'nouislider';
+import { DialogService } from '../../../ui/services/dialog.service';
+import { MostrarPresidenteDialogComponent } from '../../dictaduras-web/modules/mostrar-presidente-dialog/components/confirm-dialog/mostrar-presidente-dialog.component';
 
 @Component({
   selector: 'app-index',
@@ -13,7 +15,9 @@ export class IndexComponent implements OnInit, OnDestroy {
   date = new Date();
   pagination = 3;
   pagination1 = 1;
-  constructor() {}
+
+  constructor(private dialogService: DialogService) {}
+
   scrollToDownload(element: any) {
     element.scrollIntoView({ behavior: 'smooth' });
   }
@@ -48,7 +52,7 @@ export class IndexComponent implements OnInit, OnDestroy {
     body.classList.remove('index-page');
   }
 
-  mostrarPresidente(){
-    console.log('presidente');
+  mostrarPresidente(fotoUrl: string){
+    this.dialogService.openFromComponent(MostrarPresidenteDialogComponent, '50%', '80%', { foto: fotoUrl }, 'mostrar-votacion');
   }
 }
