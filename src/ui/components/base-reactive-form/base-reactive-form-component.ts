@@ -150,7 +150,7 @@ export abstract class BaseReactiveFormComponent<T> implements OnDestroy, AfterVi
     }
 
     translateValidationErrorMessages(this: BaseReactiveFormComponent<T>): void {
-        let newTranslations: TranslatedValidationError[] = [];
+        const newTranslations: TranslatedValidationError[] = [];
         this.validationErrorMessages.forEach((value: TranslatedValidationError) => {
             newTranslations.push({
                 type: value.type,

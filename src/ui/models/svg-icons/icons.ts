@@ -11,6 +11,7 @@ import { SYSTEM_ADMINISTRATION } from './system-administration';
 import { TRASH } from './trash';
 import { USER } from './user';
 import { STYLE } from './style';
+import { FIST_UP } from './fist-up';
 
 export const ICONS = [
   {iconName: 'moresneakers-event-detectors', literal: EVENT_DETECTORS},
@@ -25,5 +26,7 @@ export const ICONS = [
   {iconName: 'moresneakers-system-administration', literal: SYSTEM_ADMINISTRATION},
   {iconName: 'moresneakers-trash', literal: TRASH},
   {iconName: 'moresneakers-user', literal: USER},
-  {iconName: 'moresneakers-style', literal: STYLE}
+  {iconName: 'moresneakers-style', literal: STYLE},
+  //
+  {iconName: 'fist-up', literal: FIST_UP}
 ];

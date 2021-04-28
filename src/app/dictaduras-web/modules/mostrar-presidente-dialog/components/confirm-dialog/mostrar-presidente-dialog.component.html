@@ -3,16 +3,34 @@
     <mat-icon>close</mat-icon>
 </button>
 
-<div class="height-100pct">
+<div class="height-100pct position-relative">
     <div class="card d-flex height-100pct">
         <img class="card-img-top" [src]="data.foto">
-        <div class="card-body">
+        <!--<div class="card-body">
             <h5 class="card-title">Card title</h5>
             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
             <a href="#" class="btn btn-primary">Go somewhere</a>
 
-            <mat-icon class="cursor-pointer">thumb_up</mat-icon>
-            <mat-icon class="cursor-pointer">thumb_down</mat-icon>
+
+        </div>-->
+        <div class="background-color-black d-flex position-absolute width-100pct bottom-0px padding-10px align-items-center">
+
+            <div class="d-flex justify-content-center">
+                <h2 class="margin-0px color-withe">Crees que fue un buen presidente? </h2>
+            </div>
+
+            <div class="padding-left-10px" (click)="showLoginDialog()">
+                <mat-icon class="cursor-pointer color-withe" tooltip="Buen Presidente">thumb_up</mat-icon>
+            </div>
+
+            <div class="padding-left-10px">
+                <mat-icon class="cursor-pointer color-withe" tooltip="Mal Presidente">thumb_down</mat-icon>
+            </div>
+
+            <div class="padding-left-10px">
+                <mat-icon class="cursor-pointer color-withe" svgIcon="fist-up" tooltip="Dictador"></mat-icon>
+            </div>
+
         </div>
     </div>
 

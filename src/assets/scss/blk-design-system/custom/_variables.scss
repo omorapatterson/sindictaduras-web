@@ -61,8 +61,8 @@ $opacity-gray-5: rgba(222, 222, 222, 0.5) !default;
 $opacity-gray-8: rgba(222, 222, 222, 0.8) !default;
 
 $opacity-5: rgba(255, 255, 255, 0.5) !default;
-$opacity-6: rgba(255, 255, 255, 0.6) !default;
-$opacity-8: rgba(255, 255, 255, 0.8) !default;
+$opacity-6: rgba(0, 0, 0, 0.6) !default;
+$opacity-8: rgba(0, 0, 0, 0.8) !default;
 
 $opacity-1: rgba(255, 255, 255, 0.1) !default;
 $opacity-2: rgba(255, 255, 255, 0.2) !default;
@@ -101,7 +101,7 @@ $success: #00f2c3 !default;
 $info: #1d8cf8 !default;
 $warning: #ff8d72 !default;
 $danger: #fd5d93 !default;
-$black: #222a42 !default;
+$black: #000000 !default;
 
 // gradient
 $default-states: #263148 !default;

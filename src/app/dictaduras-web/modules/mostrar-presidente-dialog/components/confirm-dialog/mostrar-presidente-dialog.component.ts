@@ -4,6 +4,12 @@ import { TranslateService } from '@ngx-translate/core';
 import { TRANSLATIONS } from './i18n/mostrar-presidente-dialog.translations';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import {MostrarPresidenteDialogData} from '../../models/mostrar-presidente-dialog-data';
+import {SvgIconsService} from '../../../../../../ui/services/svg-icons.service';
+
+import { SocialAuthService } from 'angularx-social-login';
+import { FacebookLoginProvider, GoogleLoginProvider } from 'angularx-social-login';
+import {DialogService} from '../../../../../../ui/services/dialog.service';
+import {LoginDialogComponent} from '../../../../../../common/authentication/components/login-dialog/login-dialog.component';
 
 @Component({
   selector: 'app-mostrar-presidente-dialog',
@@ -23,8 +29,15 @@ export class MostrarPresidenteDialogComponent {
 
   public cancelBtnKey = 'Cancel';
 
-  constructor(private translate: TranslateService, public dialogRef: MatDialogRef<MostrarPresidenteDialogComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: MostrarPresidenteDialogData) {
+  constructor(
+      private translate: TranslateService,
+      private dialogService: DialogService,
+      public dialogRef: MatDialogRef<MostrarPresidenteDialogComponent>,
+      @Inject(MAT_DIALOG_DATA) public data: MostrarPresidenteDialogData,
+      private svgIconsService: SvgIconsService,
+      private authService: SocialAuthService
+  ) {
+    this.svgIconsService.registerIcons();
     // setTranslations(this.translate, TRANSLATIONS);
   }
 
@@ -34,5 +47,22 @@ export class MostrarPresidenteDialogComponent {
 
   close(): void {
     this.dialogRef.close(false);
+  }
+
+  showLoginDialog(){
+    this.dialogRef.close(false);
+    this.dialogService.openFromComponent(LoginDialogComponent, '40%', '60%', {}, 'close-button');
+  }
+
+  signInWithGoogle(): void {
+    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
+  }
+
+  signInWithFB(): void {
+    this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
+  }
+
+  signOut(): void {
+    this.authService.signOut();
   }
 }

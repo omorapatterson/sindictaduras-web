@@ -13,6 +13,22 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   display: flex !important;
 }
 
+.justify-content-center{
+  justify-content: center !important;
+}
+
+.align-items-center{
+  align-items: center !important;
+}
+
+.margin-0px{
+  margin: 0px !important;
+}
+
+.height-25pct{
+  height: 25% !important;
+}
+
 .height-80pct{
   height: 80% !important;
 }
@@ -23,4 +39,60 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .z-index-1050 {
   z-index: 1050 !important;
+}
+
+.position-relative {
+  position: relative !important;
+}
+
+.position-absolute {
+  position: absolute !important;
+}
+
+.width-100pct{
+  width: 100% !important;
+}
+
+.width-45pct{
+  width: 45% !important;
+}
+
+.flex-direction-column {
+  flex-direction: column !important;
+}
+
+.bottom-0px{
+  bottom: 0px;
+}
+
+.padding-10px{
+  padding: 10px !important;
+}
+
+.padding-left-10px{
+  padding-left: 10px !important;
+}
+
+.padding-right-10px{
+  padding-right: 10px !important;
+}
+
+.padding-bottom-10px{
+  padding-bottom: 10px !important;
+}
+
+.color-withe {
+  color: white !important;
+}
+
+.color-red {
+  color: red !important;
+}
+
+background-color-black{
+  background-color: black !important;
+}
+
+.justify-content-space-between {
+  justify-content: space-between !important;
 }

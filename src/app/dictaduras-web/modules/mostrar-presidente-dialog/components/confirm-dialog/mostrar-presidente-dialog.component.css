@@ -2,12 +2,16 @@
     word-wrap: break-word;
 }
 
-::ng-deep .mostrar-votacion {
-    position: relative !important;
-}
-
 ::ng-deep .mat-dialog-container{
     padding: 0px !important;
+}
+
+.background-color-black{
+    background-color: #000000b5;
+}
+
+::ng-deep .close-button {
+    position: relative !important;
 }
 
 .close.mat-button {
