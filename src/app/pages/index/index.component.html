@@ -130,7 +130,21 @@
 </nav>
 <div class="wrapper">
   <div class="page-header header-filter">
-    <div class="squares square1 cursor-pointer" style="background-image: url('https://s3.us-east-2.amazonaws.com/dictaduras.recursos/presidentes/fidel-castro.jpg'); background-size: cover;" (click)="mostrarPresidente('https://s3.us-east-2.amazonaws.com/dictaduras.recursos/presidentes/fidel-castro.jpg')"></div>
+    <div class="squares square1 cursor-pointer icon-box d-flex" style="background-image: url('https://s3.us-east-2.amazonaws.com/dictaduras.recursos/presidentes/fidel-castro.jpg'); background-size: cover;" (click)="mostrarPresidente('https://s3.us-east-2.amazonaws.com/dictaduras.recursos/presidentes/fidel-castro.jpg')">
+      <div class="position-absolute bottom-40px">
+        <div class="padding-left-10px">
+          <mat-icon class="color-withe" tooltip="Buen Presidente">thumb_up</mat-icon>
+        </div>
+
+        <div class="padding-left-10px">
+          <mat-icon class="color-withe" tooltip="Mal Presidente">thumb_down</mat-icon>
+        </div>
+
+        <div class="padding-left-10px">
+          <mat-icon class="color-withe" svgIcon="fist-up" tooltip="Dictador"></mat-icon>
+        </div>
+      </div>
+    </div>
     <div class="squares square2 cursor-pointer" style="background-image: url('https://s3.us-east-2.amazonaws.com/dictaduras.recursos/presidentes/hugo-chavez.jpg'); background-size: cover;" (click)="mostrarPresidente('https://s3.us-east-2.amazonaws.com/dictaduras.recursos/presidentes/hugo-chavez.jpg')"></div>
     <div class="squares square3 cursor-pointer" style="background-image: url('https://s3.us-east-2.amazonaws.com/dictaduras.recursos/presidentes/daniel-ortega.jpg'); background-size: cover;" (click)="mostrarPresidente('https://s3.us-east-2.amazonaws.com/dictaduras.recursos/presidentes/daniel-ortega.jpg')"></div>
     <div class="squares square4 cursor-pointer" style="background-image: url('https://s3.us-east-2.amazonaws.com/dictaduras.recursos/presidentes/dias-canel.jpg'); background-size: cover;" (click)="mostrarPresidente('https://s3.us-east-2.amazonaws.com/dictaduras.recursos/presidentes/dias-canel.jpg')"></div>

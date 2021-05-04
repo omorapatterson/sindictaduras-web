@@ -96,3 +96,31 @@ background-color-black{
 .justify-content-space-between {
   justify-content: space-between !important;
 }
+
+.left-0px{
+  left: 0px !important;
+}
+
+.bottom-40px{
+  bottom: 40px !important;
+}
+
+.icon-box:hover::before {
+  background: #ff000038;
+  top: 0;
+  border-radius: 0px;
+}
+.icon-box::before {
+  content: '';
+  position: absolute;
+  background: white;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  top: 100%;
+  transition: all 0.3s;
+  z-index: -1;
+}
+*, ::after, ::before {
+  box-sizing: border-box;
+}

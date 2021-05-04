@@ -52,8 +52,9 @@
 }
 
 
-::ng-deep .close-button {
+::ng-deep .close-button-login {
     position: relative !important;
+    width: 350px !important;
 }
 
 .close.mat-button {

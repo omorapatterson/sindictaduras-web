@@ -6,6 +6,8 @@ import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
+//
+import { MatIconModule } from '@angular/material/icon';
 
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
@@ -54,6 +56,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     HttpClientModule,
     RouterModule,
     AppRoutingModule,
+    //
+    MatIconModule,
     // BsDropdownModule.forRoot(),
     // ProgressbarModule.forRoot(),
     // TooltipModule.forRoot(),

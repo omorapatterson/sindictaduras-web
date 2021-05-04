@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import noUiSlider from 'nouislider';
 import { DialogService } from '../../../ui/services/dialog.service';
 import { MostrarPresidenteDialogComponent } from '../../dictaduras-web/modules/mostrar-presidente-dialog/components/confirm-dialog/mostrar-presidente-dialog.component';
+import {SvgIconsService} from '../../../ui/services/svg-icons.service';
 
 @Component({
   selector: 'app-index',
@@ -16,7 +17,11 @@ export class IndexComponent implements OnInit, OnDestroy {
   pagination = 3;
   pagination1 = 1;
 
-  constructor(private dialogService: DialogService) {}
+  constructor(private dialogService: DialogService,
+              private svgIconsService: SvgIconsService
+  ) {
+    this.svgIconsService.registerIcons();
+  }
 
   scrollToDownload(element: any) {
     element.scrollIntoView({ behavior: 'smooth' });

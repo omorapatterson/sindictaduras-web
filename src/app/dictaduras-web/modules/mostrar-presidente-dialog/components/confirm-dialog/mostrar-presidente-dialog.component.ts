@@ -6,10 +6,8 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import {MostrarPresidenteDialogData} from '../../models/mostrar-presidente-dialog-data';
 import {SvgIconsService} from '../../../../../../ui/services/svg-icons.service';
 
-import { SocialAuthService } from 'angularx-social-login';
-import { FacebookLoginProvider, GoogleLoginProvider } from 'angularx-social-login';
-import {DialogService} from '../../../../../../ui/services/dialog.service';
-import {LoginDialogComponent} from '../../../../../../common/authentication/components/login-dialog/login-dialog.component';
+import { DialogService } from '../../../../../../ui/services/dialog.service';
+import { LoginDialogComponent } from '../../../../../../common/authentication/components/login-dialog/login-dialog.component';
 
 @Component({
   selector: 'app-mostrar-presidente-dialog',
@@ -34,8 +32,7 @@ export class MostrarPresidenteDialogComponent {
       private dialogService: DialogService,
       public dialogRef: MatDialogRef<MostrarPresidenteDialogComponent>,
       @Inject(MAT_DIALOG_DATA) public data: MostrarPresidenteDialogData,
-      private svgIconsService: SvgIconsService,
-      private authService: SocialAuthService
+      private svgIconsService: SvgIconsService
   ) {
     this.svgIconsService.registerIcons();
     // setTranslations(this.translate, TRANSLATIONS);
@@ -51,18 +48,6 @@ export class MostrarPresidenteDialogComponent {
 
   showLoginDialog(){
     this.dialogRef.close(false);
-    this.dialogService.openFromComponent(LoginDialogComponent, '40%', '60%', {}, 'close-button');
-  }
-
-  signInWithGoogle(): void {
-    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
-  }
-
-  signInWithFB(): void {
-    this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
-  }
-
-  signOut(): void {
-    this.authService.signOut();
+    this.dialogService.openFromComponent(LoginDialogComponent, '40%', 'auto', {}, 'close-button-login');
   }
 }

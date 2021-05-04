@@ -1,10 +1,13 @@
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import {Component, Inject, OnInit} from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslateService } from '@ngx-translate/core';
 // import { setTranslations } from 'ngx-translate';
 import { TRANSLATIONS } from './i18n/login-dialog.component.translations';
+//
+import { SocialAuthService } from 'angularx-social-login';
+import { FacebookLoginProvider, GoogleLoginProvider } from 'angularx-social-login';
 //
 import { ConfigService } from '../../../config/services/config.service';
 import { BaseReactiveFormComponent } from '../../../../ui/components/base-reactive-form/base-reactive-form-component';
@@ -13,11 +16,11 @@ import { ToastrService } from '../../../error-handling/services/toastr.service';
 import { RootActionsService } from '../../../ngrx/services/root-actions.service';
 import { ErrorHandlingService } from '../../../error-handling/services/error-handling.service';
 import { Login } from '../../models/login';
-import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
-import {MostrarPresidenteDialogData} from '../../../../app/dictaduras-web/modules/mostrar-presidente-dialog/models/mostrar-presidente-dialog-data';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MostrarPresidenteDialogData } from '../../../../app/dictaduras-web/modules/mostrar-presidente-dialog/models/mostrar-presidente-dialog-data';
 
 const errorKey = 'LoginComponent/Error';
-const requiredUserandPasswordKey = 'Required Username and Password';
+const requiredUserandPasswordKey = 'El email o contraseña no pueden estar vacios.';
 
 @Component({
     selector: 'app-login-dialog',
@@ -30,11 +33,14 @@ export class LoginDialogComponent extends BaseReactiveFormComponent<Login> imple
 
     public capsLockOn: boolean;
 
+    isLogin: boolean = true;
+
     constructor(
         private route: ActivatedRoute,
         private router: Router,
         public configService: ConfigService,
         private authService: AuthService,
+        private socialAuthService: SocialAuthService,
         public translateService: TranslateService,
         private toastr: ToastrService,
         private errorHandlingService: ErrorHandlingService,
@@ -102,7 +108,23 @@ export class LoginDialogComponent extends BaseReactiveFormComponent<Login> imple
         }
     }
 
+    signInWithGoogle(): void {
+        this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID);
+    }
+
+    signInWithFB(): void {
+        this.socialAuthService.signIn(FacebookLoginProvider.PROVIDER_ID);
+    }
+
+    signOut(): void {
+        this.socialAuthService.signOut();
+    }
+
     close(): void {
         this.dialogRef.close(false);
+    }
+
+    registro(isLogin){
+        this.isLogin = isLogin;
     }
 }

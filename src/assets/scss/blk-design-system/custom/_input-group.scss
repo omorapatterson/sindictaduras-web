@@ -131,9 +131,9 @@
 
 .input-group,
 .form-group {
-  margin-bottom: 10px;
+  padding-bottom: 12px;
   position: relative;
-
+  align-items: flex-end !important;
   .form-control-static {
     margin-top: 9px;
   }
