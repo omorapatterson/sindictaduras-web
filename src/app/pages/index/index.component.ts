@@ -3,6 +3,8 @@ import noUiSlider from 'nouislider';
 import { DialogService } from '../../../ui/services/dialog.service';
 import { MostrarPresidenteDialogComponent } from '../../dictaduras-web/modules/mostrar-presidente-dialog/components/confirm-dialog/mostrar-presidente-dialog.component';
 import {SvgIconsService} from '../../../ui/services/svg-icons.service';
+import {PresidentesService} from '../../dictaduras-web/modules/presidentes/services/presidentes.service';
+import { Presidente } from '../../dictaduras-web/modules/presidentes/models/presidente';
 
 @Component({
   selector: 'app-index',
@@ -16,9 +18,11 @@ export class IndexComponent implements OnInit, OnDestroy {
   date = new Date();
   pagination = 3;
   pagination1 = 1;
+  presidentes: Presidente[] = [];
 
   constructor(private dialogService: DialogService,
-              private svgIconsService: SvgIconsService
+              private svgIconsService: SvgIconsService,
+              private presidentesService: PresidentesService
   ) {
     this.svgIconsService.registerIcons();
   }
@@ -50,6 +54,13 @@ export class IndexComponent implements OnInit, OnDestroy {
         min: 0,
         max: 100
       }
+    });
+    this.cargarPresidentes();
+  }
+
+  cargarPresidentes(){
+    this.presidentesService.getPresidentes().subscribe(response => {
+      this.presidentes = response.data;
     });
   }
   ngOnDestroy() {

@@ -24,6 +24,7 @@ import { LandingpageComponent } from './examples/landingpage/landingpage.compone
 import {UiModule} from '../../ui/ui.module';
 import {DictadurasWebModule} from '../dictaduras-web/dictaduras-web.module';
 import {MatIconModule} from '@angular/material/icon';
+import {PresidentesModule} from '../dictaduras-web/modules/presidentes/presidentes.module';
 
 @NgModule({
     imports: [
@@ -45,7 +46,8 @@ import {MatIconModule} from '@angular/material/icon';
         ModalModule.forRoot(),
         UiModule,
         DictadurasWebModule,
-        MatIconModule
+        MatIconModule,
+        PresidentesModule
     ],
   declarations: [
     IndexComponent,
