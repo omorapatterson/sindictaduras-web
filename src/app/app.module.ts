@@ -37,6 +37,7 @@ import {
   GoogleLoginProvider,
   FacebookLoginProvider
 } from 'angularx-social-login';
+import {ErrorHandlingModule} from '../common/error-handling/error-handling.module';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -80,6 +81,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     // BsDatepickerModule.forRoot(),
     // CarouselModule.forRoot(),
     // ModalModule.forRoot(),
+    ErrorHandlingModule,
     SocialLoginModule
   ],
   providers: [

@@ -11,9 +11,10 @@ import { ConfigService } from '../../config/services/config.service';
 import { ErrorHandlingService } from '../../error-handling/services/error-handling.service';
 import { ErrorHandlingHttpService } from '../../error-handling/services/error-handling-http.service';
 import { LoginUser } from '../models/login-user';
-//import { LocaleService, setTranslations } from '@c/ngx-translate';
-//import { RootActionsService } from '../../ngrx/services/root-actions.service';
+// import { LocaleService, setTranslations } from '@c/ngx-translate';
+// import { RootActionsService } from '../../ngrx/services/root-actions.service';
 import { TRANSLATIONS } from './i18n/auth-service.translations';
+import {LoginResponse} from '../models/loginResponse';
 
 @Injectable({
     providedIn: 'root'
@@ -40,10 +41,10 @@ export class AuthService {
         private configService: ConfigService,
         private translate: TranslateService,
         private activatedRoute: ActivatedRoute,
-        //private localService: LocaleService,
-        //private rootActions: RootActionsService
+        // private localService: LocaleService,
+        // private rootActions: RootActionsService
     ) {
-        //setTranslations(this.translate, TRANSLATIONS);
+        // setTranslations(this.translate, TRANSLATIONS);
         /*this.localService.getCurrentValue().subscribe(lang => {
             this.currentLang = lang;
         });*/
@@ -106,7 +107,6 @@ export class AuthService {
         return null;
     }
 
-
     get isAuthenticated(): boolean {
         return this.userToken && this.userToken !== 'null' ? true : false;
     }
@@ -130,38 +130,30 @@ export class AuthService {
         return userFullname;
     }
 
-    loginUser(email: string, password: string, code?: string): Observable<any> {
-        // TEMPORARY HACK. SEE https://github.com/angular/angular/issues/18261
-        password = password.replace("+", "%2B");
-        //
-
-        let headers = this.getHeaders(false, false, false);
-        let credentials = {
-            "email": email,
-            "password": password
+    loginUser(email: string, contrasena: string, code?: string): Observable<any> {
+        contrasena = contrasena.replace('+', '%2B');
+        const headers = this.getHeaders(false, false, false);
+        const credentials = {
+            email,
+            contrasena
         };
-        return this.http.post<LoginUser>(this.configService.apiUrl + this.configService.config.apiConfigs.authentication.loginUser.apiEndpoint,
-            credentials, { headers: headers }).pipe(map((response: LoginUser) => {
-                let token = response.data.access_token;
-                if (!token || token.length === 0) {
-                    throw new Error();
-                }
-                this.userToken = token;
-                //const { user } = response; TODO
-                if (response) {
-                    //this.currentUser = user;
-                    this.userToken = token;
-                    this.userPreferences = response.preferences && response.preferences.length ?
-                        JSON.parse(response.preferences) : {};
-                } else {
-                    this.currentUser = null;
-                    throw new Error();
-                }
-                return empty();
-            }))
+
+        return this.http.post<LoginResponse>(this.configService.apiUrl + this.configService.config.apiConfigs.authentication.loginUser.apiEndpoint,
+            credentials, { headers }).pipe(map((response: LoginResponse) => {
+            const data = response.data;
+            localStorage.setItem('sindictaduras-token', data.token);
+            localStorage.setItem('sindictaduras-user', JSON.stringify(data.usuario));
+        }))
+    }
+
+    isLoggedIn() {
+        // this.tokenIsFresh.next(true);
+        return localStorage.getItem('sindictaduras-token') != null;
     }
 
     logout(): void {
+        localStorage.setItem('token', null);
+        localStorage.setItem('user', null);
         /*let headers = this.getHeaders(false, true, false);
         let credentials = 'grant_type=password'
             + '&token=' + this.userToken;
@@ -172,18 +164,18 @@ export class AuthService {
     }
 
     postUserPreferences(preferences: string): Observable<any> {
-        let headers = this.getHeaders(true);
+        const headers = this.getHeaders(true);
         return this.http.post(this.configService.config.apiConfigs.authentication.userPreferences.apiEndpoint,
             preferences);
     }
 
     getUserPreferences(): Observable<any> {
-        let headers = this.getHeaders(true);
+        const headers = this.getHeaders(true);
         return this.http.get<any>(this.configService.config.apiConfigs.authentication.userPreferences.apiEndpoint,
-            { headers: headers })
+            { headers })
             .pipe(map((response) => {
                 this.userPreferences = JSON.parse(response.preferences);
-                //this.rootActions.setState(this.userPreferences);TODO
+                // this.rootActions.setState(this.userPreferences);TODO
                 return this.userPreferences;
             }));
     }

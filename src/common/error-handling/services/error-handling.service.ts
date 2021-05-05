@@ -9,6 +9,7 @@ import { TranslateService } from '@ngx-translate/core';
 //
 import { HandledError } from '../models/handled-error';
 import { CustomSnackbarComponent } from '../modules/custom-snackbar/components/custom-snackbar/custom-snackbar.component';
+import {AlertService} from './alert.service';
 
 const errorClientKey = 'Bad request';
 
@@ -37,8 +38,12 @@ export class ErrorHandlingService {
 	private timeBeforeEmmitTheSameError = 1000;
 	private lastEmittedNotification: any;
 
-	constructor(public snackBar: MatSnackBar, private translate: TranslateService, private router: Router) {
-		//setTranslations(translate, TRANSLATIONS);
+	constructor(
+		public snackBar: MatSnackBar,
+		private translate: TranslateService,
+		private router: Router,
+	) {
+		// setTranslations(translate, TRANSLATIONS);
 		this.onServerUp();
 		this.subscriptionToNotification();
 	}
@@ -110,7 +115,7 @@ export class ErrorHandlingService {
 	}
 
 	public handleServiceError(err: HttpErrorResponse): HandledError {
-		let handledError = new HandledError();
+		const handledError = new HandledError();
 		if (err instanceof HttpErrorResponse) {
 			// If the request have status code equal to 0 is that the spa can't reach the api
 			if (err.status === 0) {
@@ -118,13 +123,13 @@ export class ErrorHandlingService {
 				if (this.serverOnline.getValue() === true) {
 					// Returning error code 410 corresponding to "Gone" response that means the the resource you want not exist right now
 					handledError.errorCode = 410;
-					//this.translate.get([errorServerDownKey, errorTitle]).subscribe(text => {TODO
+					// this.translate.get([errorServerDownKey, errorTitle]).subscribe(text => {TODO
 					this.toastOfServerDown = this.snackBar.openFromComponent(CustomSnackbarComponent, {
 						data: { messageData: errorServerDownKey, messageTitle: errorTitle, messageType: 'Error' },
 						horizontalPosition: 'right',
-						panelClass: ['background-color-accent']
+						panelClass: ['error-snackbar'],
 					});
-					//});
+					// });
 					this.serverOnline.next(false);
 				}
 				return handledError;
@@ -136,8 +141,14 @@ export class ErrorHandlingService {
 				const errObj = err.error;
 				// Managing error from client request
 				if (err.status >= 400 && err.status < 500) {
-					if (err.status === 401 && err.url.indexOf('/auth/login') == -1) {
-						this.showExpireLogin.next(true);
+					if (err.status === 401) {
+						// redirecting the user to login page if the error is caused by token expiration
+						if (errObj.includes('Token expirado')) {
+							this.showExpireLogin.next(true);
+						}
+					}
+					if (err.status === 403 && err.url.indexOf('/auth/login') === -1) {
+						// this.alertService.info('Usted no tiene permisos para esta funcionalidad', 'OK');
 					}
 					return this.handlingClientErrors(err, errObj, handledError);
 				} else {
@@ -148,11 +159,11 @@ export class ErrorHandlingService {
 				/* If this code is executed is because the response from the api doesn't have a valid json format that means
                  is returning some kind of html or something else*/
 				if (err.status >= 400 && err.status < 500) {
-					this.translate.get(errorClientKey).subscribe(text => {
+					this.translate.get(errorClientKey).subscribe((text) => {
 						handledError.message = text;
 					});
 				} else {
-					this.translate.get(errorServerKey).subscribe(text => {
+					this.translate.get(errorServerKey).subscribe((text) => {
 						handledError.message = text;
 					});
 				}
@@ -167,8 +178,7 @@ export class ErrorHandlingService {
 	private handlingClientErrors(err: HttpErrorResponse, errObj: any, handledError: HandledError): HandledError {
 		if (err.status === 401) {
 			// Checking if the authentication error is caused by token expiration
-			if (errObj == 'Unauthorized') {
-				// redirecting the user to login page if the error is caused by token expiration
+			if (errObj.includes('Token expirado')) {
 				handledError.errorCode = err.status;
 				handledError.logoutCommands = this.logoutCommands;
 				handledError.logoutNavigationExtras = this.logoutNavigationExtras;
@@ -185,14 +195,14 @@ export class ErrorHandlingService {
 		} else {
 			// If the error comes without a error code then is possible that is a kind of form validation error
 			if (err.status) {
-				handledError.errorCode = err.error.code;
+				handledError.errorCode = err.error.status;
 				handledError.message = err.error.message;
 				handledError.error = err.error;
 				return handledError;
 			} else {
 				handledError.errorCode = -1;
 				if (errObj.error) {
-					this.translate.get(/*errorClientKey*/ errObj.error).subscribe(text => {
+					this.translate.get(/*errorClientKey*/ errObj.error).subscribe((text) => {
 						handledError.message = text;
 					});
 					return handledError;
@@ -203,12 +213,13 @@ export class ErrorHandlingService {
 	}
 
 	private handlingServerErrors(err: HttpErrorResponse, errObj, handledError: HandledError): HandledError {
-		if (errObj.detail) {
-			handledError.message = errObj.detail[0];
+		if (errObj) {
+			handledError.message = errObj.message;
+			handledError.error.message = errObj.message;
 			return handledError;
 		} else {
 			// Managing all the remaining errors as a server side errors
-			this.translate.get(errorServerKey).subscribe(text => {
+			this.translate.get(errorServerKey).subscribe((text) => {
 				handledError.message = text;
 			});
 			return handledError;
@@ -224,50 +235,6 @@ export class ErrorHandlingService {
 			if (error.message) {
 				if (error.message === 'Invalid unique constraints') {
 					switch (url) {
-						case 'style': {
-							error.message = 'This style already exists';
-							break;
-						}
-						case 'blog': {
-							error.message = 'This blog already exists';
-							break;
-						}
-						case 'collection': {
-							error.message = 'This collection already exists';
-							break;
-						}
-						case 'brand': {
-							error.message = 'This brand already exists';
-							break;
-						}
-						case 'deal': {
-							error.message = 'This deal already exists';
-							break;
-						}
-						case 'offer': {
-							error.message = 'This offer already exists';
-							break;
-						}
-						case 'task': {
-							error.message = 'This task already exists';
-							break;
-						}
-						case 'release': {
-							error.message = 'This release already exists';
-							break;
-						}
-						case 'shop': {
-							error.message = 'This shop already exists';
-							break;
-						}
-						case 'release': {
-							error.message = 'This release already exists';
-							break;
-						}
-						case 'url': {
-							error.message = 'This url already exists';
-							break;
-						}
 						case 'user': {
 							error.message = 'This user already exists';
 							break;
@@ -282,7 +249,7 @@ export class ErrorHandlingService {
 					key: key,
 					errorMessage: error.message,
 					errorCode: error.errorCode,
-					date: new Date()
+					date: new Date(),
 				});
 			}
 			if (error.logoutCommands) {
@@ -293,7 +260,7 @@ export class ErrorHandlingService {
 
 	private errorDaemon(path: string[], error: any, handledError: HandledError): void {
 		if (error.constructor === Object) {
-			Object.keys(error).forEach(key => {
+			Object.keys(error).forEach((key) => {
 				path.push(key);
 				this.errorDaemon(path, error[key], handledError);
 				path.pop();

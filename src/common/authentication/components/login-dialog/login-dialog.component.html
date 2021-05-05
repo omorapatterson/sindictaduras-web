@@ -78,7 +78,7 @@
                 src="assets/img/square1-red.png"
         />
 
-        <h6 class="card-title">dictaduras</h6>
+        <h6 class="card-title">sindictaduras</h6>
       </div>
       <div class="card-body">
         <form class="form" [formGroup]="formGroup" (ngSubmit)="login()" capsLock (capsLock)="capsLockOn=$event" inputFocus>
@@ -157,7 +157,7 @@
       <div class="d-flex padding-left-10px padding-right-10px padding-bottom-10px justify-content-space-between">
         <a
                 class="btn btn-danger btn-round btn-lg width-45pct"
-
+                (click)="signInWithGoogle()"
         >
           Google
         </a>

@@ -132,12 +132,10 @@
 
 
 <div class="wrapper">
-
-  <div *ngFor="let presidente of presidentes">
-    <app-presidentes-card [presidente]="presidente"></app-presidentes-card>
-  </div>
-
-  <div class="page-header header-filter">
+ <div class="page-header header-filter">
+    <div *ngFor="let presidente of presidentes; index as indexOfelement">
+      <app-presidentes-card [presidente]="presidente" [posicion]="indexOfelement + 1"></app-presidentes-card>
+    </div>
     <div class="container z-index--1000">
       <div class="content-center brand">
         <h1 class="h1-seo">SINDICTADURAS</h1>
@@ -152,38 +150,6 @@
 
 
 <div class="wrapper">
-  <div class="page-header header-filter">
-    <div class="squares square1 cursor-pointer icon-box d-flex" style="background-image: url('https://s3.us-east-2.amazonaws.com/dictaduras.recursos/presidentes/fidel-castro.jpg'); background-size: cover;" (click)="mostrarPresidente('https://s3.us-east-2.amazonaws.com/dictaduras.recursos/presidentes/fidel-castro.jpg')">
-      <div class="position-absolute bottom-40px">
-        <div class="padding-left-10px">
-          <mat-icon class="color-withe" tooltip="Buen Presidente">thumb_up</mat-icon>
-        </div>
-
-        <div class="padding-left-10px">
-          <mat-icon class="color-withe" tooltip="Mal Presidente">thumb_down</mat-icon>
-        </div>
-
-        <div class="padding-left-10px">
-          <mat-icon class="color-withe" svgIcon="fist-up" tooltip="Dictador"></mat-icon>
-        </div>
-      </div>
-    </div>
-
-    <div class="squares square2 cursor-pointer" style="background-image: url('https://s3.us-east-2.amazonaws.com/dictaduras.recursos/presidentes/hugo-chavez.jpg'); background-size: cover;" (click)="mostrarPresidente('https://s3.us-east-2.amazonaws.com/dictaduras.recursos/presidentes/hugo-chavez.jpg')"></div>
-    <div class="squares square3 cursor-pointer" style="background-image: url('https://s3.us-east-2.amazonaws.com/dictaduras.recursos/presidentes/daniel-ortega.jpg'); background-size: cover;" (click)="mostrarPresidente('https://s3.us-east-2.amazonaws.com/dictaduras.recursos/presidentes/daniel-ortega.jpg')"></div>
-    <div class="squares square4 cursor-pointer" style="background-image: url('https://s3.us-east-2.amazonaws.com/dictaduras.recursos/presidentes/dias-canel.jpg'); background-size: cover;" (click)="mostrarPresidente('https://s3.us-east-2.amazonaws.com/dictaduras.recursos/presidentes/dias-canel.jpg')"></div>
-    <div class="squares square5 cursor-pointer" style="background-image: url('https://s3.us-east-2.amazonaws.com/dictaduras.recursos/presidentes/nicolas-maduro.jpg'); background-size: cover;" (click)="mostrarPresidente('https://s3.us-east-2.amazonaws.com/dictaduras.recursos/presidentes/nicolas-maduro.jpg')"></div>
-    <div class="squares square6 cursor-pointer" style="background-image: url('https://s3.us-east-2.amazonaws.com/dictaduras.recursos/presidentes/raul-castro.jpg'); background-size: cover;" (click)="mostrarPresidente('https://s3.us-east-2.amazonaws.com/dictaduras.recursos/presidentes/raul-castro.jpg')"></div>
-    <div class="squares square7 cursor-pointer" style="background-image: url('https://s3.us-east-2.amazonaws.com/dictaduras.recursos/presidentes/rafael-correa.jpg'); background-size: cover;" (click)="mostrarPresidente('https://s3.us-east-2.amazonaws.com/dictaduras.recursos/presidentes/rafael-correa.jpg')"></div>
-    <div class="container z-index--1000">
-      <div class="content-center brand">
-        <h1 class="h1-seo">DICTADURAS</h1>
-        <h3>
-          Por un mundo mejor.
-        </h3>
-      </div>
-    </div>
-  </div>
   <div class="main">
     <div class="section section-basic" id="basic-elements">
       <img class="path" src="assets/img/path1.png" />

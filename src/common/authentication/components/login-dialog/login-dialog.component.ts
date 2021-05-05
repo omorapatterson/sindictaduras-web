@@ -18,6 +18,9 @@ import { ErrorHandlingService } from '../../../error-handling/services/error-han
 import { Login } from '../../models/login';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MostrarPresidenteDialogData } from '../../../../app/dictaduras-web/modules/mostrar-presidente-dialog/models/mostrar-presidente-dialog-data';
+import { Usuario } from '../../../../app/dictaduras-web/modules/usuarios/models/usuario';
+import { UsuariosService } from '../../../../app/dictaduras-web/modules/usuarios/services/usuarios.service';
+import { AlertService } from '../../../error-handling/services/alert.service';
 
 const errorKey = 'LoginComponent/Error';
 const requiredUserandPasswordKey = 'El email o contraseña no pueden estar vacios.';
@@ -35,8 +38,11 @@ export class LoginDialogComponent extends BaseReactiveFormComponent<Login> imple
 
     isLogin: boolean = true;
 
+    usuario: Usuario;
+
     constructor(
         private route: ActivatedRoute,
+        private alertService: AlertService,
         private router: Router,
         public configService: ConfigService,
         private authService: AuthService,
@@ -47,6 +53,7 @@ export class LoginDialogComponent extends BaseReactiveFormComponent<Login> imple
         public snackBar: MatSnackBar,
         public dialogRef: MatDialogRef<LoginDialogComponent>,
         @Inject(MAT_DIALOG_DATA) public dialogData: MostrarPresidenteDialogData,
+        private usuariosService: UsuariosService
         // private rootActions: RootActionsService
     ) {
         super(translateService);
@@ -73,6 +80,20 @@ export class LoginDialogComponent extends BaseReactiveFormComponent<Login> imple
             this.authService.loginNavigationExtras = undefined;
         }
         this.createFormGroup();
+
+        this.socialAuthService.authState.subscribe((user) => {
+            this.usuario = new Usuario(user);
+            this.formGroup.get('userName').setValue(user.email);
+            this.formGroup.get('password').setValue(user.id);
+            // this.dialogRef.close();
+            if (!this.isLogin){
+                this.register(true);
+            } else {
+                this.login();
+            }
+        }, error => {
+            console.log('error');
+        });
     }
 
     createFormGroup() {
@@ -97,6 +118,7 @@ export class LoginDialogComponent extends BaseReactiveFormComponent<Login> imple
                         // tslint:disable-next-line:max-line-length
                         this.router.navigate(this.authService.afterLoginCommands, this.authService.afterLoginNavigationExtras);
                     }
+                    this.close();
                 },
                     error => this.errorHandlingService.handleUiError(errorKey, error)
                 );
@@ -106,6 +128,20 @@ export class LoginDialogComponent extends BaseReactiveFormComponent<Login> imple
                 });
             }
         }
+    }
+
+    register(signInWithSocialNetwork: boolean = false) {
+        if(!signInWithSocialNetwork){
+            const userName = this.formGroup.get('userName').value;
+            const password = this.formGroup.get('password').value;
+            this.usuario.usuario = userName;
+            this.usuario.contrasena = password;
+        }
+        this.usuariosService.registrarUsuario(this.usuario).subscribe(response => {
+            console.log(response);
+        },error => {
+            this.alertService.error(error.message, 'OK');
+        })
     }
 
     signInWithGoogle(): void {

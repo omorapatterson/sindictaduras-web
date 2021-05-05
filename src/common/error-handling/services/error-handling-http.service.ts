@@ -39,7 +39,7 @@ export class ErrorHandlingHttpService {
 	constructor(public httpClient: HttpClient, private errorHandlingService: ErrorHandlingService) {}
 
 	get userToken(): string {
-		return localStorage.getItem('userToken');
+		return localStorage.getItem('sindictaduras-token');
 	}
 
 	set userToken(value: string) {
@@ -55,7 +55,7 @@ export class ErrorHandlingHttpService {
 	}
 
 	getHeaders(): HttpHeaders {
-		let requestOptions = new HttpHeaders({
+		const requestOptions = new HttpHeaders({
 			'Accept-Language': this.currentLanguage ? this.currentLanguage : '',
 			'Content-Type': 'application/json',
 			Authorization: this.userToken ? 'Bearer ' + this.userToken : ''

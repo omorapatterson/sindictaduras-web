@@ -5,7 +5,7 @@
   "apiConfigs": {
     "authentication": {
       "loginUser": {
-        "apiEndpoint": "token/"
+        "apiEndpoint": "auth/login/"
       },
       "revokeUser": {
         "apiEndpoint": "revoke-token/"
@@ -17,8 +17,14 @@
         "apiEndpoint": "token/expirationtime/"
       }
     },
+    "usuarios": {
+      "apiEndpoint": "usuarios/"
+    },
     "presidentes": {
       "apiEndpoint": "presidentes/"
+    },
+    "votacion": {
+      "apiEndpoint": "votacion/"
     }
   }
 }

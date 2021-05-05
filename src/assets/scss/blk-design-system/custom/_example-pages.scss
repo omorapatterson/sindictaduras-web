@@ -41,7 +41,7 @@
       height: 300px;
       width: 300px;
       opacity: 0.5;
-      left: 3%;
+      left: 1%;
       top: 1%;
     }
 
@@ -77,13 +77,13 @@
       height: 300px;
       width: 300px;
       opacity: 0.5;
-      left: 55%;
+      left: 59%;
       bottom: 30%;
     }
 
     &.square6 {
       animation: move-left-right 9s infinite;
-      left: 22%;
+      left: 20%;
       top: 30%;
       height: 300px;
       width: 300px;
@@ -97,6 +97,15 @@
       right: 3%;
       bottom: 1%;
       opacity: 0.5;
+    }
+
+    &.square8 {
+      animation: move-left-right 5s infinite;
+      height: 300px;
+      width: 300px;
+      opacity: 0.5;
+      left: 37%;
+      top: 1%;
     }
   }
 }

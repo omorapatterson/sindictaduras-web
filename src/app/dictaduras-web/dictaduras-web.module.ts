@@ -5,6 +5,8 @@ import { MostrarPresidenteDialogModule } from './modules/mostrar-presidente-dial
 import { UiModule } from '../../ui/ui.module';
 import { AuthenticationModule } from '../../common/authentication/authentication.module';
 import { PresidentesModule } from './modules/presidentes/presidentes.module';
+import { VotacionModule } from './modules/votacion/votacion.module';
+import { UsuariosModule } from './modules/usuarios/usuarios.module';
 
 @NgModule({
   imports: [
@@ -15,7 +17,9 @@ import { PresidentesModule } from './modules/presidentes/presidentes.module';
     //
     MostrarPresidenteDialogModule,
     PresidentesModule,
-    AuthenticationModule
+    VotacionModule,
+    AuthenticationModule,
+    UsuariosModule
   ],
   declarations: []
 })

@@ -5,7 +5,7 @@
 
 <div class="height-100pct position-relative">
     <div class="card d-flex height-100pct">
-        <img class="card-img-top" [src]="data.foto">
+        <img class="card-img-top" [src]="this.presidente.foto">
         <!--<div class="card-body">
             <h5 class="card-title">Card title</h5>
             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -19,15 +19,15 @@
                 <h2 class="margin-0px color-withe">Crees que fue un buen presidente? </h2>
             </div>
 
-            <div class="padding-left-10px" (click)="showLoginDialog()">
+            <div class="padding-left-10px" (click)="votar('like')">
                 <mat-icon class="cursor-pointer color-withe" tooltip="Buen Presidente">thumb_up</mat-icon>
             </div>
 
-            <div class="padding-left-10px">
+            <div class="padding-left-10px" (click)="votar('disLike')">
                 <mat-icon class="cursor-pointer color-withe" tooltip="Mal Presidente">thumb_down</mat-icon>
             </div>
 
-            <div class="padding-left-10px">
+            <div class="padding-left-10px" (click)="votar('dictador')">
                 <mat-icon class="cursor-pointer color-withe" svgIcon="fist-up" tooltip="Dictador"></mat-icon>
             </div>
 

@@ -1,16 +1,16 @@
-<div *ngIf="presidente" class="squares square1 cursor-pointer icon-box d-flex" style="background-image: url('https://s3.us-east-2.amazonaws.com/dictaduras.recursos/presidentes/fidel-castro.jpg'); background-size: cover;" (click)="mostrarPresidente('https://s3.us-east-2.amazonaws.com/dictaduras.recursos/presidentes/fidel-castro.jpg')">
-  {{presidente.nombre}}
+<div *ngIf="presidente" class="squares square{{ posicion }} cursor-pointer icon-box d-flex" [ngStyle]="{
+  'background-image': 'url(' + presidente.foto + ')'}" style="background-size: cover;" (click)="mostrarPresidente()">
   <div class="position-absolute bottom-40px">
     <div class="padding-left-10px">
-      <mat-icon class="color-withe" tooltip="Buen Presidente">thumb_up</mat-icon>
+      <mat-icon class="color-withe cursor-pointer" tooltip="Buen Presidente">thumb_up</mat-icon>
     </div>
 
     <div class="padding-left-10px">
-      <mat-icon class="color-withe" tooltip="Mal Presidente">thumb_down</mat-icon>
+      <mat-icon class="color-withe cursor-pointer" tooltip="Mal Presidente">thumb_down</mat-icon>
     </div>
 
     <div class="padding-left-10px">
-      <mat-icon class="color-withe" svgIcon="fist-up" tooltip="Dictador"></mat-icon>
+      <mat-icon class="color-withe cursor-pointer" svgIcon="fist-up" tooltip="Dictador"></mat-icon>
     </div>
   </div>
 </div>

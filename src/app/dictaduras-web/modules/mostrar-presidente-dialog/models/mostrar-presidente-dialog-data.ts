@@ -1,4 +1,7 @@
+import {Presidente} from '../../presidentes/models/presidente';
+
 export interface MostrarPresidenteDialogData {
+
   titleKey?: string;
 
   messageKey?: string;
@@ -13,5 +16,5 @@ export interface MostrarPresidenteDialogData {
 
   contentStyle: any;
 
-  foto?: string;
+  presidente?: Presidente;
 }

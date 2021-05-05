@@ -1,33 +1,61 @@
-<div class="display-flex" *ngIf="data.messageType == 'Error'">
-	<div class="display-flex">
-		<div class="text-align-justify">
-			<div *ngIf="data.messageTitle; else elseTitle">
-				<p>
-					<b>{{ data.messageTitle | translate }}</b>
-				</p>
-			</div>
-			<ng-template #elseTitle>
-				<p>
-					<b>{{ 'Error' | translate }}</b>
-				</p>
-			</ng-template>
+<div fxLayoutAlign="space-between center" *ngIf="data.messageType === 'Error'" (click)="dismiss()">
+	<div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+		<mat-icon>error_outline</mat-icon>
+
+		<div fxLayoutAlign="start center">
 			{{ data.messageData | translate }}
 		</div>
+	</div>
+
+	<div class="mat-simple-snackbar-action">
+		<button mat-button="" class="mat-focus-indicator mat-button mat-button-base" (click)="dismiss()">
+			<span class="mat-button-wrapper">
+				<mat-icon class="margin-right-10px cursor-pointer">close</mat-icon>
+			</span>
+
+			<span matripple="" class="mat-ripple mat-button-ripple"></span>
+
+			<span class="mat-button-focus-overlay"></span>
+		</button>
 	</div>
 </div>
 
-<div class="display-flex" *ngIf="data.messageType == 'Success'">
-	<div class="margin-auto-5px-auto-5px">
-		<mat-icon class="margin-right-10px">check</mat-icon>
+<div class="display-flex align-items-center" *ngIf="data.messageType === 'Success'">
+	<div class="padding-right-10px">
+		<mat-icon class="margin-right-10px cursor-pointer" (click)="dismiss()">check</mat-icon>
 	</div>
-	<div class="display-flex">
-		<div class="text-align-justify">
-			<div *ngIf="data.messageTitle">
-				<p>
-					<b>{{ data.messageTitle | translate }}</b>
-				</p>
-			</div>
+	<div class="display-flex flex-grow-1">
+		<div class="">
 			{{ data.messageData | translate }}
 		</div>
+	</div>
+	<div class="mat-simple-snackbar-action">
+		<button mat-button="" class="mat-focus-indicator mat-button mat-button-base" (click)="dismiss()">
+			<span class="mat-button-wrapper">
+				<mat-icon class="margin-right-10px cursor-pointer">close</mat-icon>
+			</span>
+			<span matripple="" class="mat-ripple mat-button-ripple"></span>
+			<span class="mat-button-focus-overlay"></span>
+		</button>
+	</div>
+</div>
+
+<div class="display-flex align-items-center" *ngIf="data.messageType === 'Info'">
+	<div class="padding-right-10px">
+		<mat-icon class="margin-right-10px cursor-pointer" (click)="dismiss()">info</mat-icon>
+	</div>
+	<div class="display-flex">
+		<div class="">
+			{{ data.messageData | translate }}
+		</div>
+	</div>
+	<div class="mat-simple-snackbar-action">
+		<button mat-button="" class="mat-focus-indicator mat-button mat-button-base" (click)="dismiss()">
+			<span class="mat-button-wrapper">
+				<mat-icon class="margin-right-10px cursor-pointer">close</mat-icon>
+			</span>
+			<span matripple="" class="mat-ripple mat-button-ripple"></span>
+			<span class="mat-button-focus-overlay"></span>
+		</button>
 	</div>
 </div>
