@@ -7,13 +7,13 @@ export class Votacion {
 
   disLike: boolean;
 
-  isADictador: boolean;
+  dictator: boolean;
 
 
   constructor(spresidente: string, voto: string) {
     this.spresidente = spresidente;
     this.like = (voto === 'like');
     this.disLike = (voto === 'disLike');
-    this.isADictador = (voto === 'isADictador');
+    this.dictator = (voto === 'dictator');
   }
 }
