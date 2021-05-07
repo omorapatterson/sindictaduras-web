@@ -57,6 +57,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   width: 45% !important;
 }
 
+.height-30px{
+  height: 30px !important;
+}
+
 .flex-direction-column {
   flex-direction: column !important;
 }
@@ -69,9 +73,18 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   padding: 10px !important;
 }
 
+.padding-left-5px{
+  padding-left: 5px !important;
+}
+
 .padding-left-10px{
   padding-left: 10px !important;
 }
+
+.padding-left-15px{
+  padding-left: 15px !important;
+}
+
 
 .padding-right-10px{
   padding-right: 10px !important;
@@ -195,4 +208,25 @@ background-color-black{
   .mat-button-base:hover {
     background-color: #d02219 !important;
   }
+}
+
+.color-green {
+  color: #37f239;
+}
+
+.color-yellow {
+  color: #f5d62f;
+}
+
+.color-red {
+  color: #f2292a;
+}
+
+.mostrar-votacion{
+  background: rgb(255 255 255 / 24%);
+  display: flex;
+}
+
+.align-items-flex-end{
+  align-items: flex-end !important;
 }

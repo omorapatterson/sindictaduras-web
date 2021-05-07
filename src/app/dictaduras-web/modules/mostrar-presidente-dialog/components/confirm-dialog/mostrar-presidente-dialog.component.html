@@ -3,7 +3,7 @@
     <mat-icon>close</mat-icon>
 </button>
 
-<div class="height-100pct position-relative">
+<div class="height-100pct position-relative" *ngIf="presidente !== undefined">
     <div class="card d-flex height-100pct">
         <img class="card-img-top" [src]="this.presidente.foto">
         <!--<div class="card-body">
@@ -19,16 +19,21 @@
                 <h2 class="margin-0px color-withe">Crees que fue un buen presidente? </h2>
             </div>
 
-            <div class="padding-left-10px" (click)="votar('like')">
-                <mat-icon class="cursor-pointer color-withe" tooltip="Buen Presidente">thumb_up</mat-icon>
+
+            <div class="d-flex padding-left-15px align-items-center" (click)="votar('like')">
+                <mat-icon class="cursor-pointer" [ngClass]="{'color-withe': true, 'color-gree': true}" tooltip="Buen Presidente">thumb_up</mat-icon>
+                <span class="color-withe padding-left-5px"> {{ presidente.likeCount }}</span>
             </div>
 
-            <div class="padding-left-10px" (click)="votar('disLike')">
+
+            <div class="d-flex padding-left-15px align-items-center" (click)="votar('disLike')">
                 <mat-icon class="cursor-pointer color-withe" tooltip="Mal Presidente">thumb_down</mat-icon>
+                <span class="color-withe padding-left-5px"> {{ presidente.disLikeCount }}</span>
             </div>
 
-            <div class="padding-left-10px" (click)="votar('dictator')">
+            <div class="d-flex padding-left-15px align-items-center" (click)="votar('dictator')">
                 <mat-icon class="cursor-pointer color-withe" svgIcon="fist-up" tooltip="Dictador"></mat-icon>
+                <span class="color-withe padding-left-5px"> {{ presidente.dictatorCount }}</span>
             </div>
 
         </div>

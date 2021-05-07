@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
-import { ErrorHandlingHttpService } from '../../../../../common/error-handling/services/error-handling-http.service';
+import {ErrorHandlingHttpService, RequestOptions} from '../../../../../common/error-handling/services/error-handling-http.service';
 //
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 //
 import { ConfigService } from '../../../../../common/config/services/config.service';
-import { Presidente, PresidentesResponse } from '../models/presidente';
+import {Presidente, PresidenteResponse, PresidentesResponse} from '../models/presidente';
+import {HttpHeadersInterceptorService} from '../../../../../common/error-handling/interceptors/http-headers-interceptor.service';
 
 export const ASCENDING = 'asc';
 
@@ -30,12 +31,19 @@ export class PresidentesService {
 
     constructor(
         private configService: ConfigService,
+        protected httpHeaders: HttpHeadersInterceptorService,
         private http: ErrorHandlingHttpService) {
             this.apiEndpoint = this.configService.apiUrl + this.configService.config.apiConfigs.presidentes.apiEndpoint;
     }
 
     getPresidentes(): Observable<PresidentesResponse> {
-        return this.http.get<PresidentesResponse>(this.apiEndpoint);
+        const requestOptions: RequestOptions = { headers: this.httpHeaders.getHeaders() };
+        requestOptions.headers = requestOptions.headers.delete('Content-Type');
+        return this.http.get<PresidentesResponse>(this.apiEndpoint, requestOptions);
+    }
+
+    getPresidente(presidenteId: string): Observable<PresidenteResponse> {
+        return this.http.get<PresidenteResponse>(this.apiEndpoint + presidenteId);
     }
 }
 

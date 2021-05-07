@@ -149,6 +149,7 @@ export class ErrorHandlingService {
 					}
 					if (err.status === 403 && err.url.indexOf('/auth/login') === -1) {
 						// this.alertService.info('Usted no tiene permisos para esta funcionalidad', 'OK');
+						this.showExpireLogin.next(true);
 					}
 					return this.handlingClientErrors(err, errObj, handledError);
 				} else {
@@ -186,7 +187,7 @@ export class ErrorHandlingService {
 			} else {
 				// Checking if the error is caused by trying to authenticate with a wrong password
 				if (errObj.detail && errObj.detail[0] && errObj.detail[0].error_description) {
-					//	handledError.message = errObj.detail[0].error_description;
+					// handledError.message = errObj.detail[0].error_description;
 				} else {
 					this.buildingErrorMessage(errObj, handledError);
 				}

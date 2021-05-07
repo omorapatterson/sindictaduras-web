@@ -12,6 +12,7 @@ import { Presidente } from '../../../presidentes/models/presidente';
 import { AuthService } from '../../../../../../common/authentication/services/auth.service';
 import { Votacion } from '../../../votacion/models/votacion';
 import { VotacionService } from '../../../votacion/services/votacion.service';
+import {PresidentesService} from '../../../presidentes/services/presidentes.service';
 
 @Component({
   selector: 'app-mostrar-presidente-dialog',
@@ -41,6 +42,7 @@ export class MostrarPresidenteDialogComponent implements OnInit{
       private dialogService: DialogService,
       public dialogRef: MatDialogRef<MostrarPresidenteDialogComponent>,
       @Inject(MAT_DIALOG_DATA) public data: MostrarPresidenteDialogData,
+      private presidentesService: PresidentesService,
       private svgIconsService: SvgIconsService,
       private votacionService: VotacionService
   ) {
@@ -63,16 +65,14 @@ export class MostrarPresidenteDialogComponent implements OnInit{
   votar(voto: string){
     this.voto = voto;
     const votacion = new Votacion(this.presidente.id, voto);
-    if(this.authService.isLoggedIn()){
-      this.votacionService.realizarVotacion(votacion).subscribe(response => {
-          console.log(response);
-      })
-    } else {
-      this.showLoginDialog();
-    }
+    this.votacionService.realizarVotacion(votacion).subscribe(response => {
+      this.cargarPresidente(this.presidente.id);
+    });
   }
 
-  showLoginDialog(){
-    this.dialogService.openFromComponent(LoginDialogComponent, '40%', 'auto', {}, 'close-button-login');
+  cargarPresidente(presidenteId){
+    this.presidentesService.getPresidente(presidenteId).subscribe(respose => {
+      this.presidente = respose.data;
+    });
   }
 }

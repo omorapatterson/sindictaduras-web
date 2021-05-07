@@ -3,21 +3,31 @@ import {
   OnInit,
   Renderer2,
   HostListener,
-  Inject
+  Inject, OnDestroy
 } from '@angular/core';
 import { Location } from '@angular/common';
 import { DOCUMENT } from '@angular/common';
+import {ErrorHandlingService} from '../common/error-handling/services/error-handling.service';
+import {takeUntil} from 'rxjs/operators';
+import {Subject} from 'rxjs';
+import {LoginDialogComponent} from '../common/authentication/components/login-dialog/login-dialog.component';
+import {AuthService} from '../common/authentication/services/auth.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnDestroy {
+
+  private onDestroy$: Subject<void> = new Subject<void>();
+
   constructor(
+    private authService: AuthService,
     private renderer: Renderer2,
     public location: Location,
-    @Inject(DOCUMENT) document
+    @Inject(DOCUMENT) document,
+    private errorHandlingService: ErrorHandlingService,
   ) {}
   @HostListener('window:scroll', ['$event'])
   onWindowScroll(e) {
@@ -37,5 +47,16 @@ export class AppComponent implements OnInit {
   }
   ngOnInit() {
     this.onWindowScroll(event);
+    this.errorHandlingService.showExpireLogin.pipe(takeUntil(this.onDestroy$)).subscribe((userDetails) => {
+      localStorage.removeItem('sindictaduras-token');
+      this.authService.showLoginDialog();
+      // this.authenticationService.tokenIsFresh.next(false);
+      // this.authenticationService.openLoginDialog();
+    });
+  }
+
+  public ngOnDestroy(): void {
+    this.onDestroy$.next();
+    this.onDestroy$.complete();
   }
 }

@@ -5,7 +5,9 @@ export class Presidente {
   apellido?: string;
   foto?: string;
   description?: string;
-  imgUrl?: string;
+  likeCount: number;
+  disLikeCount: number;
+  dictatorCount: number;
   updatedAt?: string;
   createdAt?: string;
 }
