@@ -12,6 +12,7 @@ import { TRASH } from './trash';
 import { USER } from './user';
 import { STYLE } from './style';
 import { FIST_UP } from './fist-up';
+import { FIST_UP_RED } from './fist-up-red';
 
 export const ICONS = [
   {iconName: 'moresneakers-event-detectors', literal: EVENT_DETECTORS},

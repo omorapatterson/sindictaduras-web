@@ -36,6 +36,8 @@ export class MostrarPresidenteDialogComponent implements OnInit{
 
   public voto = '';
 
+  public votacion: Votacion;
+
   constructor(
       private translate: TranslateService,
       private authService: AuthService,
@@ -52,6 +54,7 @@ export class MostrarPresidenteDialogComponent implements OnInit{
 
   ngOnInit() {
     this.presidente = this.data.presidente;
+    // this.cargarVotacion(this.presidente.id);
   }
 
   accept(): void {

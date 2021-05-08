@@ -14,9 +14,7 @@ import { LoginUser } from '../models/login-user';
 // import { LocaleService, setTranslations } from '@c/ngx-translate';
 // import { RootActionsService } from '../../ngrx/services/root-actions.service';
 import { TRANSLATIONS } from './i18n/auth-service.translations';
-import {LoginResponse} from '../models/loginResponse';
-import {LoginDialogComponent} from '../components/login-dialog/login-dialog.component';
-import {DialogService} from '../../../ui/services/dialog.service';
+import { LoginResponse } from '../models/loginResponse';
 
 @Injectable({
     providedIn: 'root'
@@ -38,7 +36,6 @@ export class AuthService {
     public twoFactorAuthModalNavigation$ = new BehaviorSubject<string>(null);
 
     constructor(
-        private dialogService: DialogService,
         private http: ErrorHandlingHttpService,
         private errorHandlingService: ErrorHandlingService,
         private router: Router,
@@ -208,9 +205,4 @@ export class AuthService {
     passUserData(user: any) {
         this.userSource.next(user);
     }
-
-    showLoginDialog(){
-        this.dialogService.openFromComponent(LoginDialogComponent, '40%', 'auto', {}, 'close-button-login');
-    }
-
 }

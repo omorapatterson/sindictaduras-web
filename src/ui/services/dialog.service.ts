@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 
 import { ConfirmDialogComponent } from '../modules/confirm-dialog/components/confirm-dialog/confirm-dialog.component';
+import {LoginDialogComponent} from '../../common/authentication/components/login-dialog/login-dialog.component';
 
 @Injectable({
 	providedIn: 'root'
@@ -54,5 +55,9 @@ export class DialogService {
 			disableClose: disableClose,
 			panelClass: panelClass,
 		});
+	}
+
+	showLoginDialog(){
+		this.openFromComponent(LoginDialogComponent, '40%', 'auto', {}, 'close-button-login');
 	}
 }

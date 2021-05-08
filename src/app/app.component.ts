@@ -12,6 +12,7 @@ import {takeUntil} from 'rxjs/operators';
 import {Subject} from 'rxjs';
 import {LoginDialogComponent} from '../common/authentication/components/login-dialog/login-dialog.component';
 import {AuthService} from '../common/authentication/services/auth.service';
+import {DialogService} from '../ui/services/dialog.service';
 
 @Component({
   selector: 'app-root',
@@ -23,7 +24,7 @@ export class AppComponent implements OnInit, OnDestroy {
   private onDestroy$: Subject<void> = new Subject<void>();
 
   constructor(
-    private authService: AuthService,
+    private dialogService: DialogService,
     private renderer: Renderer2,
     public location: Location,
     @Inject(DOCUMENT) document,
@@ -49,7 +50,7 @@ export class AppComponent implements OnInit, OnDestroy {
     this.onWindowScroll(event);
     this.errorHandlingService.showExpireLogin.pipe(takeUntil(this.onDestroy$)).subscribe((userDetails) => {
       localStorage.removeItem('sindictaduras-token');
-      this.authService.showLoginDialog();
+      this.dialogService.showLoginDialog();
       // this.authenticationService.tokenIsFresh.next(false);
       // this.authenticationService.openLoginDialog();
     });

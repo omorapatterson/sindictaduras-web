@@ -5,6 +5,7 @@ import { MostrarPresidenteDialogComponent } from '../../dictaduras-web/modules/m
 import {SvgIconsService} from '../../../ui/services/svg-icons.service';
 import {PresidentesService} from '../../dictaduras-web/modules/presidentes/services/presidentes.service';
 import { Presidente } from '../../dictaduras-web/modules/presidentes/models/presidente';
+import { WebsocketVotacionService } from '../services/websocket-votacion.service';
 
 @Component({
   selector: 'app-index',
@@ -22,7 +23,8 @@ export class IndexComponent implements OnInit, OnDestroy {
 
   constructor(private dialogService: DialogService,
               private svgIconsService: SvgIconsService,
-              private presidentesService: PresidentesService
+              private presidentesService: PresidentesService,
+              private websocketVotacionService: WebsocketVotacionService
   ) {
     this.svgIconsService.registerIcons();
   }
@@ -56,6 +58,18 @@ export class IndexComponent implements OnInit, OnDestroy {
       }
     });
     this.cargarPresidentes();
+    this.conectarAlWebSocketVotacion();
+  }
+
+  conectarAlWebSocketVotacion() {
+    this.websocketVotacionService.conectarAlWebSocket();
+    this.subscribirseALosMensajesDelWebSocketListaDeVenta();
+  }
+
+  subscribirseALosMensajesDelWebSocketListaDeVenta() {
+    this.websocketVotacionService.enviarMensaje.subscribe((response) => {
+      console.log(response);
+    });
   }
 
   cargarPresidentes(){
