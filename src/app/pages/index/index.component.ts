@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import {Component, OnInit, OnDestroy, ViewChildren, QueryList} from '@angular/core';
 import noUiSlider from 'nouislider';
 import { DialogService } from '../../../ui/services/dialog.service';
 import { MostrarPresidenteDialogComponent } from '../../dictaduras-web/modules/mostrar-presidente-dialog/components/confirm-dialog/mostrar-presidente-dialog.component';
@@ -6,6 +6,7 @@ import {SvgIconsService} from '../../../ui/services/svg-icons.service';
 import {PresidentesService} from '../../dictaduras-web/modules/presidentes/services/presidentes.service';
 import { Presidente } from '../../dictaduras-web/modules/presidentes/models/presidente';
 import { WebsocketVotacionService } from '../services/websocket-votacion.service';
+import {PresidentesCardComponent} from '../../dictaduras-web/modules/presidentes/components/presidentes-card/presidentes-card.component';
 
 @Component({
   selector: 'app-index',
@@ -20,6 +21,8 @@ export class IndexComponent implements OnInit, OnDestroy {
   pagination = 3;
   pagination1 = 1;
   presidentes: Presidente[] = [];
+
+  @ViewChildren(PresidentesCardComponent) presidentesCardComponents: QueryList<PresidentesCardComponent>;
 
   constructor(private dialogService: DialogService,
               private svgIconsService: SvgIconsService,
@@ -58,7 +61,6 @@ export class IndexComponent implements OnInit, OnDestroy {
       }
     });
     this.cargarPresidentes();
-    this.conectarAlWebSocketVotacion();
   }
 
   conectarAlWebSocketVotacion() {
@@ -67,14 +69,31 @@ export class IndexComponent implements OnInit, OnDestroy {
   }
 
   subscribirseALosMensajesDelWebSocketListaDeVenta() {
-    this.websocketVotacionService.enviarMensaje.subscribe((response) => {
-      console.log(response);
+    this.websocketVotacionService.enviarMensaje.subscribe((presidente) => {
+      this.actualizarVotacion(JSON.parse(presidente));
     });
+  }
+
+  actualizarVotacion(presidente: Presidente){
+    console.log(presidente);
+    this.presidentesCardComponents.forEach(presidentesCardComponent => {
+      presidentesCardComponent.actualizarPresidente(presidente);
+    });
+    /*console.log(typeof presidente);
+    const index = this.presidentes.findIndex(item => {
+      return item.id === presidente.id;
+    });
+    console.log(index);
+    if(index > -1){
+      this.presidentes[index].likeCount = 6;
+      console.log('this.presidentes[index]');
+    }*/
   }
 
   cargarPresidentes(){
     this.presidentesService.getPresidentes().subscribe(response => {
       this.presidentes = response.data;
+      this.conectarAlWebSocketVotacion();
     });
   }
   ngOnDestroy() {

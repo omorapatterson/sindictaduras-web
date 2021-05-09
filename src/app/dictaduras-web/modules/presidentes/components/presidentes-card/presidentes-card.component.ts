@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Inject, Input, OnInit, } from '@angular/core';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, Inject, Input, OnInit,} from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 //
@@ -9,6 +9,7 @@ import {MostrarPresidenteDialogComponent} from '../../../mostrar-presidente-dial
 import {DialogService} from '../../../../../../ui/services/dialog.service';
 import {SvgIconsService} from '../../../../../../ui/services/svg-icons.service';
 import {PresidentesService} from '../../services/presidentes.service';
+import {WebsocketVotacionService} from '../../../../../pages/services/websocket-votacion.service';
 //
 const errorKey = 'Error';
 
@@ -19,7 +20,7 @@ const errorKey = 'Error';
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 
-export class PresidentesCardComponent {
+export class PresidentesCardComponent implements OnInit{
 
     @Input() presidente: Presidente;
 
@@ -27,9 +28,39 @@ export class PresidentesCardComponent {
 
     constructor(private dialogService: DialogService,
                 private svgIconsService: SvgIconsService,
-                private presidentesService: PresidentesService
+                private websocketVotacionService: WebsocketVotacionService,
+                private cdRef: ChangeDetectorRef
     ) {
         this.svgIconsService.registerIcons();
+    }
+
+    ngOnInit() {
+        // this.conectarAlWebSocketVotacion();
+    }
+
+    conectarAlWebSocketVotacion() {
+        this.websocketVotacionService.conectarAlWebSocket();
+        this.subscribirseALosMensajesDelWebSocketListaDeVenta();
+    }
+
+    subscribirseALosMensajesDelWebSocketListaDeVenta() {
+        this.websocketVotacionService.enviarMensaje.subscribe((presidente: Presidente) => {
+            this.actualizarVotacion(presidente);
+        });
+    }
+
+    actualizarPresidente(presidente: Presidente){
+        if(this.presidente.id === presidente.id){
+            this.presidente = presidente;
+            this.cdRef.detectChanges();
+        }
+    }
+
+    actualizarVotacion(presidente: Presidente){
+        console.log('Actualizar Votacion');
+        /*if(this.presidente.id === presidente.id){
+            this.presidente = presidente;
+        }*/
     }
 
     mostrarPresidente(){

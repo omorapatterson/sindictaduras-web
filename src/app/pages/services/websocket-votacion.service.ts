@@ -26,10 +26,12 @@ export class WebsocketVotacionService {
 			const miContexto = this;
 			miContexto.stompClient.connect(
 				{},
-				function (frame) {
-					miContexto.stompClient.subscribe(miContexto.topic, function (mensaje) {
-						miContexto.data = mensaje;
-						miContexto.enviarMensaje.next(mensaje.body);
+				(frame) => {
+					miContexto.stompClient.subscribe(miContexto.topic, (mensaje) => {
+						if(mensaje !== undefined && mensaje !== null){
+							miContexto.data = mensaje;
+							miContexto.enviarMensaje.next(mensaje.body);
+						}
 					});
 				},
 				this.errorAlConectar,
