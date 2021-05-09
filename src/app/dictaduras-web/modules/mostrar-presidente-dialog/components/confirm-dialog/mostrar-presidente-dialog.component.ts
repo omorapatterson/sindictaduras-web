@@ -1,4 +1,4 @@
-import {Component, Inject, Input, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, Inject, Input, OnInit} from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 // import { setTranslations } from '@c/ngx-translate';
 import { TRANSLATIONS } from './i18n/mostrar-presidente-dialog.translations';
@@ -13,6 +13,7 @@ import { AuthService } from '../../../../../../common/authentication/services/au
 import { Votacion } from '../../../votacion/models/votacion';
 import { VotacionService } from '../../../votacion/services/votacion.service';
 import {PresidentesService} from '../../../presidentes/services/presidentes.service';
+import {WebsocketVotacionService} from '../../../../../pages/services/websocket-votacion.service';
 
 @Component({
   selector: 'app-mostrar-presidente-dialog',
@@ -41,12 +42,14 @@ export class MostrarPresidenteDialogComponent implements OnInit{
   constructor(
       private translate: TranslateService,
       private authService: AuthService,
+      private cdRef: ChangeDetectorRef,
       private dialogService: DialogService,
       public dialogRef: MatDialogRef<MostrarPresidenteDialogComponent>,
       @Inject(MAT_DIALOG_DATA) public data: MostrarPresidenteDialogData,
       private presidentesService: PresidentesService,
       private svgIconsService: SvgIconsService,
-      private votacionService: VotacionService
+      private votacionService: VotacionService,
+      private websocketVotacionService: WebsocketVotacionService
   ) {
     this.svgIconsService.registerIcons();
     // setTranslations(this.translate, TRANSLATIONS);
@@ -54,7 +57,27 @@ export class MostrarPresidenteDialogComponent implements OnInit{
 
   ngOnInit() {
     this.presidente = this.data.presidente;
-    // this.cargarVotacion(this.presidente.id);
+    this.conectarAlWebSocketVotacion();
+  }
+
+  conectarAlWebSocketVotacion() {
+    this.websocketVotacionService.conectarAlWebSocket();
+    this.subscribirseALosMensajesDelWebSocketListaDeVenta();
+  }
+
+  subscribirseALosMensajesDelWebSocketListaDeVenta() {
+    this.websocketVotacionService.enviarMensaje.subscribe((presidente) => {
+      this.actualizarVotacion(JSON.parse(presidente));
+    });
+  }
+
+  actualizarVotacion(presidente: Presidente){
+    if(presidente !== null && presidente !== undefined){
+      if(this.presidente.id === presidente.id){
+        this.presidente = presidente;
+        this.cdRef.detectChanges();
+      }
+    }
   }
 
   accept(): void {

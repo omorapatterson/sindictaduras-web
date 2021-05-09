@@ -28,39 +28,19 @@ export class PresidentesCardComponent implements OnInit{
 
     constructor(private dialogService: DialogService,
                 private svgIconsService: SvgIconsService,
-                private websocketVotacionService: WebsocketVotacionService,
                 private cdRef: ChangeDetectorRef
     ) {
         this.svgIconsService.registerIcons();
     }
 
     ngOnInit() {
-        // this.conectarAlWebSocketVotacion();
     }
 
-    conectarAlWebSocketVotacion() {
-        this.websocketVotacionService.conectarAlWebSocket();
-        this.subscribirseALosMensajesDelWebSocketListaDeVenta();
-    }
-
-    subscribirseALosMensajesDelWebSocketListaDeVenta() {
-        this.websocketVotacionService.enviarMensaje.subscribe((presidente: Presidente) => {
-            this.actualizarVotacion(presidente);
-        });
-    }
-
-    actualizarPresidente(presidente: Presidente){
+    actualizarVotacion(presidente: Presidente){
         if(this.presidente.id === presidente.id){
             this.presidente = presidente;
             this.cdRef.detectChanges();
         }
-    }
-
-    actualizarVotacion(presidente: Presidente){
-        console.log('Actualizar Votacion');
-        /*if(this.presidente.id === presidente.id){
-            this.presidente = presidente;
-        }*/
     }
 
     mostrarPresidente(){

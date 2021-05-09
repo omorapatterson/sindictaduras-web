@@ -75,19 +75,9 @@ export class IndexComponent implements OnInit, OnDestroy {
   }
 
   actualizarVotacion(presidente: Presidente){
-    console.log(presidente);
     this.presidentesCardComponents.forEach(presidentesCardComponent => {
-      presidentesCardComponent.actualizarPresidente(presidente);
+      presidentesCardComponent.actualizarVotacion(presidente);
     });
-    /*console.log(typeof presidente);
-    const index = this.presidentes.findIndex(item => {
-      return item.id === presidente.id;
-    });
-    console.log(index);
-    if(index > -1){
-      this.presidentes[index].likeCount = 6;
-      console.log('this.presidentes[index]');
-    }*/
   }
 
   cargarPresidentes(){
