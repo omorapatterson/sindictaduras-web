@@ -1,8 +1,10 @@
 <div *ngIf="presidente" class="squares square{{ posicion }}  align-items-center cursor-pointer icon-box d-flex" [ngStyle]="{
-  'background-image': 'url(' + presidente.foto + ')'}" style="background-size: cover;" (click)="mostrarPresidente()">
+  'background-image': 'url(' + presidente.foto + ')'}" style="background-size: cover;" (click)="mostrarPresidente()"
+  (mouseenter)="mostrarTexto(true)" (mouseleave)="mostrarTexto(false)"
+>
   <div class="d-flex width-100pct height-100pct justify-content-center align-items-flex-end">
 
-    <div class="mostrar-votacion height-30px width-100pct justify-content-center align-items-center realizar-votacion">
+    <div [ngClass]="{'hidden': !mostrarVoto}" class="mostrar-votacion height-30px width-100pct justify-content-center align-items-center realizar-votacion">
       Votar
     </div>
 

@@ -61,6 +61,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   height: 30px !important;
 }
 
+.hidden{
+  display: none !important;
+}
+
 .flex-direction-column {
   flex-direction: column !important;
 }

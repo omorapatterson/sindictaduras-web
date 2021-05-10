@@ -35,8 +35,8 @@ export class VotacionService {
         return this.http.post<any>(this.apiEndpoint, votacion);
     }
 
-    comprobarVotacion(presidenteId: string): Observable<any> {
-        return this.http.get<any>(this.apiEndpoint + 'comprobarVotacion/' + presidenteId);
+    cargarVotacion(presidenteId: string): Observable<any> {
+        return this.http.get<any>(this.apiEndpoint + 'cargarVotacion/' + presidenteId);
     }
 }
 

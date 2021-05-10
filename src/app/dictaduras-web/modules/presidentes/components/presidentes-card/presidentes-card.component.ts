@@ -10,6 +10,8 @@ import {DialogService} from '../../../../../../ui/services/dialog.service';
 import {SvgIconsService} from '../../../../../../ui/services/svg-icons.service';
 import {PresidentesService} from '../../services/presidentes.service';
 import {WebsocketVotacionService} from '../../../../../pages/services/websocket-votacion.service';
+import {VotacionService} from '../../../votacion/services/votacion.service';
+import {Votacion} from '../../../votacion/models/votacion';
 //
 const errorKey = 'Error';
 
@@ -26,14 +28,20 @@ export class PresidentesCardComponent implements OnInit{
 
     @Input() posicion: number = 1;
 
+    public votacion: Votacion;
+
+    public mostrarVoto: false;
+
     constructor(private dialogService: DialogService,
                 private svgIconsService: SvgIconsService,
-                private cdRef: ChangeDetectorRef
+                private cdRef: ChangeDetectorRef,
+                private votacionService: VotacionService,
     ) {
         this.svgIconsService.registerIcons();
     }
 
     ngOnInit() {
+        this.cargarVotacion(this.presidente.id);
     }
 
     actualizarVotacion(presidente: Presidente){
@@ -45,10 +53,21 @@ export class PresidentesCardComponent implements OnInit{
 
     mostrarPresidente(){
         const dialogData = {
-            presidente: this.presidente
+            presidente: this.presidente,
+            votacion: this.votacion
         }
         this.dialogService.openFromComponent(MostrarPresidenteDialogComponent, '50%', '80%', dialogData, 'close-button');
     }
 
+    cargarVotacion(presidenteId){
+        this.votacionService.cargarVotacion(presidenteId).subscribe(respose => {
+            this.votacion = respose.data;
+        });
+    }
+
+    mostrarTexto(mostrarVoto){
+        console.log(mostrarVoto);
+        this.mostrarVoto = mostrarVoto;
+    }
 }
 

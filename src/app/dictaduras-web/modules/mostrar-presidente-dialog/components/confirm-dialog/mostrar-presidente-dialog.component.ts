@@ -57,7 +57,9 @@ export class MostrarPresidenteDialogComponent implements OnInit{
 
   ngOnInit() {
     this.presidente = this.data.presidente;
+    this.votacion = this.data.votacion;
     this.conectarAlWebSocketVotacion();
+    this.actualizarUltimaVotacion();
   }
 
   conectarAlWebSocketVotacion() {
@@ -89,8 +91,12 @@ export class MostrarPresidenteDialogComponent implements OnInit{
   }
 
   votar(voto: string){
-    this.voto = voto;
-    const votacion = new Votacion(this.presidente.id, voto);
+    if(this.voto === voto){
+      this.voto = '';
+    }else{
+      this.voto = voto;
+    }
+    const votacion = new Votacion(this.presidente.id, this.voto);
     this.votacionService.realizarVotacion(votacion).subscribe(response => {
       this.cargarPresidente(this.presidente.id);
     });
@@ -101,4 +107,17 @@ export class MostrarPresidenteDialogComponent implements OnInit{
       this.presidente = respose.data;
     });
   }
+
+  actualizarUltimaVotacion(){
+    if(this.votacion !== null && this.votacion !== undefined){
+      if(this.votacion.like){
+        this.voto = 'like';
+      }else if(this.votacion.disLike){
+        this.voto = 'disLike';
+      }else if(this.votacion.dictator){
+        this.voto = 'dictator';
+      }
+    }
+  }
+
 }

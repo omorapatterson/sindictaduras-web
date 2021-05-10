@@ -1,4 +1,5 @@
 import {Presidente} from '../../presidentes/models/presidente';
+import {Votacion} from '../../votacion/models/votacion';
 
 export interface MostrarPresidenteDialogData {
 
@@ -17,4 +18,6 @@ export interface MostrarPresidenteDialogData {
   contentStyle: any;
 
   presidente?: Presidente;
+
+  votacion?: Votacion;
 }
