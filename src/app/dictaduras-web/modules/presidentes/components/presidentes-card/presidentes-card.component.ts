@@ -56,7 +56,10 @@ export class PresidentesCardComponent implements OnInit{
             presidente: this.presidente,
             votacion: this.votacion
         }
-        this.dialogService.openFromComponent(MostrarPresidenteDialogComponent, '50%', '80%', dialogData, 'close-button');
+        const dialogRef =this.dialogService.openFromComponent(MostrarPresidenteDialogComponent, '50%', '80%', dialogData, 'close-button');
+        dialogRef.afterClosed().subscribe(response => {
+           this.votacion = response;
+        })
     }
 
     cargarVotacion(presidenteId){
@@ -66,7 +69,6 @@ export class PresidentesCardComponent implements OnInit{
     }
 
     mostrarTexto(mostrarVoto){
-        console.log(mostrarVoto);
         this.mostrarVoto = mostrarVoto;
     }
 }

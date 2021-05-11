@@ -32,7 +32,7 @@
   .squares {
     animation: move-left-right 1s infinite;
     @include linear-gradient($primary-states, $primary);
-    position: absolute;
+    /* position: absolute; */
     transition: 0.5s ease-out;
     overflow: hidden;
     border-radius: 20%;
@@ -64,33 +64,6 @@
     }
 
     &.square4 {
-      animation: move-left-right 10s infinite;
-      height: 300px;
-      width: 300px;
-      opacity: 0.9;
-      left: 40%;
-      top: 55%;
-    }
-
-    &.square5 {
-      animation: move-left-right 6s infinite;
-      height: 300px;
-      width: 300px;
-      opacity: 0.5;
-      left: 59%;
-      bottom: 30%;
-    }
-
-    &.square6 {
-      animation: move-left-right 9s infinite;
-      left: 20%;
-      top: 30%;
-      height: 300px;
-      width: 300px;
-      opacity: 0.8;
-    }
-
-    &.square7 {
       animation: move-left-right 3s infinite;
       width: 300px;
       height: 300px;
@@ -99,13 +72,40 @@
       opacity: 0.5;
     }
 
-    &.square8 {
+    &.square5 {
+      animation: move-left-right 10s infinite;
+      height: 300px;
+      width: 300px;
+      opacity: 0.9;
+      left: 35%;
+      top: 55%;
+    }
+
+    &.square6 {
       animation: move-left-right 5s infinite;
       height: 300px;
       width: 300px;
       opacity: 0.5;
       left: 37%;
       top: 1%;
+    }
+
+    &.square7 {
+      animation: move-left-right 9s infinite;
+      left: 20%;
+      top: 30%;
+      height: 300px;
+      width: 300px;
+      opacity: 0.8;
+    }
+
+    &.square8 {
+      animation: move-left-right 6s infinite;
+      height: 300px;
+      width: 300px;
+      opacity: 0.5;
+      left: 59%;
+      bottom: 30%;
     }
   }
 }

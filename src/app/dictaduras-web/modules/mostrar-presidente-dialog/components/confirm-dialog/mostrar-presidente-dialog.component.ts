@@ -87,7 +87,7 @@ export class MostrarPresidenteDialogComponent implements OnInit{
   }
 
   close(): void {
-    this.dialogRef.close(false);
+    this.dialogRef.close(this.votacion);
   }
 
   votar(voto: string){
@@ -98,6 +98,7 @@ export class MostrarPresidenteDialogComponent implements OnInit{
     }
     const votacion = new Votacion(this.presidente.id, this.voto);
     this.votacionService.realizarVotacion(votacion).subscribe(response => {
+      this.votacion = response.data;
       this.cargarPresidente(this.presidente.id);
     });
   }

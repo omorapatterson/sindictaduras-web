@@ -234,3 +234,22 @@ background-color-black{
 .align-items-flex-end{
   align-items: flex-end !important;
 }
+ .flex-wrap-wrap {
+   flex-wrap: wrap !important;
+ }
+
+ .text-h3{
+   color: #ffffff;
+   font-weight: 300 !important;
+   text-transform: capitalize;
+ }
+
+.text-h1{
+  color: #ffffff;
+  font-weight: 600 !important;
+  text-transform: capitalize;
+}
+
+.justify-content-space-around {
+  justify-content: space-around !important;
+}
