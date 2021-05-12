@@ -94,7 +94,7 @@
             <input  formControlName="userName"
                     class="form-control"
                     placeholder="Email"
-                    type="text"
+                    type="email"
                     (focus)="focus1 = true"
                     (blur)="focus1 = false"
             />
@@ -136,18 +136,11 @@
 
           <span *ngIf="isLogin">Si usted no tiene cuenta puede <a class="cursor-pointer" (click)="registro(false)">registrase</a>.</span>
           <span *ngIf="!isLogin">Ir al <a class="cursor-pointer" (click)="registro(true)">login</a>.</span>
-          <!--<div class="form-check text-left">
-            <label class="form-check-label">
-              <input class="form-check-input" type="checkbox" />
 
-              <span class="form-check-sign"> </span> I agree to the
-              <a href="javascript:void(0)"> terms and conditions </a> .
-            </label>
-          </div>-->
         </form>
       </div>
       <div class="padding-left-10px padding-right-10px">
-        <a (click)="login()"
+        <a (click)="isLogin ? login() : register(false)"
                 class="btn btn-danger btn-round btn-lg width-100pct"
                 href="javascript:void(0)"
         >
@@ -156,16 +149,10 @@
       </div>
       <div class="d-flex padding-left-10px padding-right-10px padding-bottom-10px justify-content-space-between">
         <a
-                class="btn btn-danger btn-round btn-lg width-45pct"
+                class="btn btn-danger btn-round btn-lg width-100pct color-withe"
                 (click)="signInWithGoogle()"
         >
-          Google
-        </a>
-        <a
-                class="btn btn-danger btn-round btn-lg width-45pct"
-                (click)="signInWithGoogle()"
-        >
-          Faceebook
+          {{isLogin ? 'Entrar ' : 'Registrarse '}} con Google
         </a>
       </div>
     </div>

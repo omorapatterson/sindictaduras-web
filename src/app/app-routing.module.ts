@@ -8,6 +8,7 @@ import { ProfilepageComponent } from './pages/examples/profilepage/profilepage.c
 import { RegisterpageComponent } from './pages/examples/registerpage/registerpage.component';
 import { LandingpageComponent } from './pages/examples/landingpage/landingpage.component';
 import { ConfigResolveService } from '../common/config/services/config-resolve.service';
+import { ConfirmarUsuarioComponent } from './dictaduras-web/modules/usuarios/components/confirmar-usuario/confirmar-usuario.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -20,6 +21,13 @@ const routes: Routes = [
   },
   { path: 'profile', component: ProfilepageComponent },
   { path: 'register', component: RegisterpageComponent },
+  {
+    path: 'confirmar/:id',
+    component: ConfirmarUsuarioComponent,
+    resolve: {
+      config: ConfigResolveService
+    }
+  },
   { path: 'landing', component: LandingpageComponent }
 ];
 

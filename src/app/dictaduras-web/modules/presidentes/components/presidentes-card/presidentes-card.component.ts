@@ -58,13 +58,19 @@ export class PresidentesCardComponent implements OnInit{
         }
         const dialogRef =this.dialogService.openFromComponent(MostrarPresidenteDialogComponent, '50%', '80%', dialogData, 'close-button');
         dialogRef.afterClosed().subscribe(response => {
+           console.log('me cerre');
            this.votacion = response;
+           this.cdRef.detectChanges();
         })
     }
 
     cargarVotacion(presidenteId){
         this.votacionService.cargarVotacion(presidenteId).subscribe(respose => {
             this.votacion = respose.data;
+            if(this.votacion === null || this.votacion === undefined){
+                this.votacion = new Votacion('', '');
+            }
+            this.cdRef.detectChanges();
         });
     }
 

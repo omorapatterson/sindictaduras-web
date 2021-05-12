@@ -29,5 +29,6 @@ export const ICONS = [
   {iconName: 'moresneakers-user', literal: USER},
   {iconName: 'moresneakers-style', literal: STYLE},
   //
-  {iconName: 'fist-up', literal: FIST_UP}
+  {iconName: 'fist-up', literal: FIST_UP},
+  {iconName: 'fist-up-red', literal: FIST_UP_RED}
 ];

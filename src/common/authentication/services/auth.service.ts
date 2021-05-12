@@ -15,6 +15,7 @@ import { LoginUser } from '../models/login-user';
 // import { RootActionsService } from '../../ngrx/services/root-actions.service';
 import { TRANSLATIONS } from './i18n/auth-service.translations';
 import { LoginResponse } from '../models/loginResponse';
+import {SocialAuthService} from 'angularx-social-login';
 
 @Injectable({
     providedIn: 'root'
@@ -42,6 +43,7 @@ export class AuthService {
         private configService: ConfigService,
         private translate: TranslateService,
         private activatedRoute: ActivatedRoute,
+        private socialAuthService: SocialAuthService,
         // private localService: LocaleService,
         // private rootActions: RootActionsService
     ) {
@@ -204,5 +206,9 @@ export class AuthService {
 
     passUserData(user: any) {
         this.userSource.next(user);
+    }
+
+    signOutSocial(): void {
+        this.socialAuthService.signOut();
     }
 }

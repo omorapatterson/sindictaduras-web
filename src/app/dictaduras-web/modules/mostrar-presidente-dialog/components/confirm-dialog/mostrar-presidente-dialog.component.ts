@@ -100,6 +100,8 @@ export class MostrarPresidenteDialogComponent implements OnInit{
     this.votacionService.realizarVotacion(votacion).subscribe(response => {
       this.votacion = response.data;
       this.cargarPresidente(this.presidente.id);
+    }, error => {
+      console.log('Error');
     });
   }
 

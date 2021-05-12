@@ -5,6 +5,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 //
 import { ConfigService } from '../../../../../common/config/services/config.service';
 import { Usuario, UsuarioResponse } from '../models/usuario';
+import {LoginResponse} from '../../../../../common/authentication/models/loginResponse';
 
 export const ASCENDING = 'asc';
 
@@ -31,8 +32,13 @@ export class UsuariosService {
             this.apiEndpoint = this.configService.apiUrl + this.configService.config.apiConfigs.usuarios.apiEndpoint;
     }
 
-    registrarUsuario(usuario: Usuario): Observable<Usuario> {
-        return this.http.post<Usuario>(this.apiEndpoint + 'registro/', usuario);
+    registrarUsuario(usuario: Usuario): Observable<LoginResponse> {
+        return this.http.post<LoginResponse>(this.apiEndpoint + 'registro/', usuario);
+    }
+
+    confirmarUsuario(codigo): Observable<LoginResponse> {
+        return this.http
+            .post<LoginResponse>(this.apiEndpoint + 'confirmar/', codigo);
     }
 }
 

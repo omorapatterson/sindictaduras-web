@@ -110,14 +110,15 @@ export class LoginDialogComponent extends BaseReactiveFormComponent<Login> imple
             this.router.navigate(this.authService.afterLoginCommands, this.authService.afterLoginNavigationExtras);
         } else {
             if (userName && password) {
-                this.authService.loginUser(userName, password).subscribe((resp) => {
+                this.authService.loginUser(userName, password).subscribe((response) => {
                     // this.rootActions.setState(this.authService.userPreferences);
-                    if (this.returnUrl && this.returnUrl.length > 0) {
+                    console.log(response);
+                    /*if (this.returnUrl && this.returnUrl.length > 0) {
                         this.router.navigateByUrl(this.returnUrl);
                     } else {
                         // tslint:disable-next-line:max-line-length
                         this.router.navigate(this.authService.afterLoginCommands, this.authService.afterLoginNavigationExtras);
-                    }
+                    }*/
                     this.close();
                 },
                     error => this.errorHandlingService.handleUiError(errorKey, error)
@@ -134,11 +135,20 @@ export class LoginDialogComponent extends BaseReactiveFormComponent<Login> imple
         if(!signInWithSocialNetwork){
             const userName = this.formGroup.get('userName').value;
             const password = this.formGroup.get('password').value;
-            this.usuario.usuario = userName;
-            this.usuario.contrasena = password;
+            this.usuario = {
+                usuario: userName,
+                contrasena: password
+            };
         }
         this.usuariosService.registrarUsuario(this.usuario).subscribe(response => {
-            console.log(response);
+            if(response.data.usuario.signInWithSocialNetwork){
+                localStorage.setItem('sindictaduras-token', response.data.token);
+                localStorage.setItem('sindictaduras-user', JSON.stringify(response.data.usuario));
+                this.alertService.success('Se ha registrado con exito. Gracias', 'OK');
+            } else {
+                this.alertService.success('Se ha registrado con exito. Le hemos enviado un mail para confirmar su usuario', 'OK');
+            }
+            this.close();
         },error => {
             this.alertService.error(error.message, 'OK');
         })
@@ -146,10 +156,6 @@ export class LoginDialogComponent extends BaseReactiveFormComponent<Login> imple
 
     signInWithGoogle(): void {
         this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID);
-    }
-
-    signInWithFB(): void {
-        this.socialAuthService.signIn(FacebookLoginProvider.PROVIDER_ID);
     }
 
     signOut(): void {

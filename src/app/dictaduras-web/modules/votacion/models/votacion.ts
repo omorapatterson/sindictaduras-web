@@ -9,7 +9,6 @@ export class Votacion {
 
   dictator: boolean;
 
-
   constructor(spresidente: string, voto: string) {
     this.spresidente = spresidente;
     this.like = (voto === 'like');
