@@ -5,7 +5,9 @@
   <div class="d-flex width-100pct height-100pct justify-content-center align-items-flex-end">
 
     <div [ngClass]="{'hidden': !mostrarVoto}" class="mostrar-votacion height-30px width-100pct justify-content-center align-items-center realizar-votacion">
-      Votar
+      <div class="d-flex align-items-center justify-content-center">
+        <mat-icon>how_to_vote</mat-icon> <span class="padding-left-10px">Votar</span>
+      </div>
     </div>
 
     <div *ngIf="votacion" class="mostrar-votacion height-30px width-100pct justify-content-center align-items-center">

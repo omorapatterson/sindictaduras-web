@@ -60,6 +60,17 @@ export class MostrarPresidenteDialogComponent implements OnInit{
     this.votacion = this.data.votacion;
     this.conectarAlWebSocketVotacion();
     this.actualizarUltimaVotacion();
+    this.authService.reAuthenticacion.subscribe(response => {
+      this.reAuthenticacion();
+    })
+  }
+
+  reAuthenticacion(){
+    if(this.voto !== ''){
+      const voto = this.voto;
+      this.voto = '';
+      this.votar(voto);
+    }
   }
 
   conectarAlWebSocketVotacion() {

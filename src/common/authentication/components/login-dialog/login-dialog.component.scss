@@ -65,3 +65,7 @@
     line-height: 14px;
     min-width: auto;
 }
+
+::ng-deep .mat-dialog-container{
+    padding: 0px !important;
+}

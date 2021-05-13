@@ -1,12 +1,11 @@
 import {Component, OnInit, OnDestroy, ViewChildren, QueryList} from '@angular/core';
-import noUiSlider from 'nouislider';
 import { DialogService } from '../../../ui/services/dialog.service';
 import { MostrarPresidenteDialogComponent } from '../../dictaduras-web/modules/mostrar-presidente-dialog/components/confirm-dialog/mostrar-presidente-dialog.component';
-import {SvgIconsService} from '../../../ui/services/svg-icons.service';
-import {PresidentesService} from '../../dictaduras-web/modules/presidentes/services/presidentes.service';
+import { SvgIconsService } from '../../../ui/services/svg-icons.service';
+import { PresidentesService } from '../../dictaduras-web/modules/presidentes/services/presidentes.service';
 import { Presidente } from '../../dictaduras-web/modules/presidentes/models/presidente';
 import { WebsocketVotacionService } from '../services/websocket-votacion.service';
-import {PresidentesCardComponent} from '../../dictaduras-web/modules/presidentes/components/presidentes-card/presidentes-card.component';
+import { PresidentesCardComponent } from '../../dictaduras-web/modules/presidentes/components/presidentes-card/presidentes-card.component';
 
 @Component({
   selector: 'app-index',
@@ -35,6 +34,7 @@ export class IndexComponent implements OnInit, OnDestroy {
   scrollToDownload(element: any) {
     element.scrollIntoView({ behavior: 'smooth' });
   }
+
   ngOnInit() {
     const body = document.getElementsByTagName('body')[0];
     body.classList.add('index-page');
@@ -64,6 +64,7 @@ export class IndexComponent implements OnInit, OnDestroy {
       this.conectarAlWebSocketVotacion();
     });
   }
+
   ngOnDestroy() {
     const body = document.getElementsByTagName('body')[0];
     body.classList.remove('index-page');

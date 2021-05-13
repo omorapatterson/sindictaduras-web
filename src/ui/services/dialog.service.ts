@@ -58,6 +58,6 @@ export class DialogService {
 	}
 
 	showLoginDialog(){
-		this.openFromComponent(LoginDialogComponent, '40%', 'auto', {}, 'close-button-login');
+		return this.openFromComponent(LoginDialogComponent, '40%', 'auto', {}, 'close-button-login');
 	}
 }

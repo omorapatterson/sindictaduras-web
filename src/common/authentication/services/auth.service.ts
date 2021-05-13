@@ -21,20 +21,36 @@ import {SocialAuthService} from 'angularx-social-login';
     providedIn: 'root'
 })
 export class AuthService {
+
     loginCommands: any[];
+
     loginNavigationExtras?: NavigationExtras;
+
     redirectCommands: any[];
+
     redirectNavigationExtras?: NavigationExtras;
+
     afterLoginCommands: any[];
+
     afterLoginNavigationExtras?: NavigationExtras;
+
     changePasswordCommands: any[];
+
     changePasswordNavigationExtras: NavigationExtras;
+
     private userSource = new BehaviorSubject<any>({});
+
     public userData = this.userSource.asObservable();
+
     public userPreferences: any;
+
     public userFullName$ = new BehaviorSubject<string>(null);
+
     public twoFactorAuthModalData$ = new BehaviorSubject<any>(null);
+
     public twoFactorAuthModalNavigation$ = new BehaviorSubject<string>(null);
+
+    reAuthenticacion = new BehaviorSubject({});
 
     constructor(
         private http: ErrorHandlingHttpService,
@@ -146,6 +162,8 @@ export class AuthService {
             const data = response.data;
             localStorage.setItem('sindictaduras-token', data.token);
             localStorage.setItem('sindictaduras-user', JSON.stringify(data.usuario));
+            this.reAuthenticacion.next(true)
+            return data;
         }))
     }
 
@@ -155,8 +173,8 @@ export class AuthService {
     }
 
     logout(): void {
-        localStorage.setItem('token', null);
-        localStorage.setItem('user', null);
+        localStorage.setItem('sindictaduras-user', null);
+        localStorage.setItem('sindictaduras-token', null);
         /*let headers = this.getHeaders(false, true, false);
         let credentials = 'grant_type=password'
             + '&token=' + this.userToken;

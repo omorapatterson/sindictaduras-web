@@ -96,7 +96,7 @@ Blk• Design System Angular
 │   │       ├── examples
 │   │       │   ├── landingpage
 │   │       │   │   ├── landingpage.component.html
-│   │       │   │   └── landingpage.component.ts
+│   │       │   │   └── nav-bar.component.ts
 │   │       │   ├── profilepage
 │   │       │   │   ├── profilepage.component.html
 │   │       │   │   └── profilepage.component.ts

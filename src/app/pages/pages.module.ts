@@ -21,10 +21,10 @@ import { IndexComponent } from './index/index.component';
 import { ProfilepageComponent } from './examples/profilepage/profilepage.component';
 import { RegisterpageComponent } from './examples/registerpage/registerpage.component';
 import { LandingpageComponent } from './examples/landingpage/landingpage.component';
-import {UiModule} from '../../ui/ui.module';
-import {DictadurasWebModule} from '../dictaduras-web/dictaduras-web.module';
-import {MatIconModule} from '@angular/material/icon';
-import {PresidentesModule} from '../dictaduras-web/modules/presidentes/presidentes.module';
+import { UiModule } from '../../ui/ui.module';
+import { DictadurasWebModule } from '../dictaduras-web/dictaduras-web.module';
+import { MatIconModule } from '@angular/material/icon';
+import { PresidentesModule } from '../dictaduras-web/modules/presidentes/presidentes.module';
 
 @NgModule({
     imports: [

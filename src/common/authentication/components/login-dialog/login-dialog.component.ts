@@ -48,7 +48,6 @@ export class LoginDialogComponent extends BaseReactiveFormComponent<Login> imple
         private authService: AuthService,
         private socialAuthService: SocialAuthService,
         public translateService: TranslateService,
-        private toastr: ToastrService,
         private errorHandlingService: ErrorHandlingService,
         public snackBar: MatSnackBar,
         public dialogRef: MatDialogRef<LoginDialogComponent>,
@@ -112,7 +111,6 @@ export class LoginDialogComponent extends BaseReactiveFormComponent<Login> imple
             if (userName && password) {
                 this.authService.loginUser(userName, password).subscribe((response) => {
                     // this.rootActions.setState(this.authService.userPreferences);
-                    console.log(response);
                     /*if (this.returnUrl && this.returnUrl.length > 0) {
                         this.router.navigateByUrl(this.returnUrl);
                     } else {
@@ -120,12 +118,13 @@ export class LoginDialogComponent extends BaseReactiveFormComponent<Login> imple
                         this.router.navigate(this.authService.afterLoginCommands, this.authService.afterLoginNavigationExtras);
                     }*/
                     this.close();
+                    this.alertService.success('Bienvenido', 'OK');
                 },
                     error => this.errorHandlingService.handleUiError(errorKey, error)
                 );
             } else {
                 this.translateService.get([requiredUserandPasswordKey, errorKey]).subscribe(translations => {
-                    this.toastr.success(requiredUserandPasswordKey);
+                    this.alertService.success(requiredUserandPasswordKey);
                 });
             }
         }
