@@ -37,8 +37,8 @@ export class ConfirmarUsuarioComponent implements OnInit, OnDestroy {
 			.confirmarUsuario(this.confirmationCode)
 			.pipe(takeUntil(this.onDestroy$))
 			.subscribe(
-				(data) => {
-					this.manageConfirmUser(data);
+				(response) => {
+					this.manageConfirmUser(response.data);
 				},
 				(error) => {
 					const httpError = error as HttpErrorResponse;
@@ -49,8 +49,8 @@ export class ConfirmarUsuarioComponent implements OnInit, OnDestroy {
 	}
 
 	manageConfirmUser(data: any): any {
-		localStorage.setItem('token', data.data.token);
-		localStorage.setItem('user', JSON.stringify(data.data.user));
+		localStorage.setItem('sindictaduras-token', data.token);
+		localStorage.setItem('sindictaduras-user', JSON.stringify(data.usuario));
 		this.alertService.success('Gracias por validar su usuario', 'OK');
 		this.router.navigate(['home']);
 	}
