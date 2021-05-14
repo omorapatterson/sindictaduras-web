@@ -1,0 +1,16 @@
+.img-zoom-container {
+	position: relative;
+	cursor: pointer;
+}
+
+.img-zoom-lens {
+	position: absolute;
+	border: 1px solid #d4d4d4;
+}
+.image {
+	width: auto;
+	height: auto;
+	max-width: 145px;
+	max-height: 145px;
+	display: block;
+}

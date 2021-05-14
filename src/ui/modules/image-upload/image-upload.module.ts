@@ -17,22 +17,19 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatCardModule } from '@angular/material/card';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 //
-import { PresidentesCardComponent } from './components/presidentes-card/presidentes-card.component';
-import { PresidentesFormComponent } from './components/presidentes-form/presidentes-form.component';
-import { ErrorMessagesModule } from '../../../../ui/modules/error-messages/error-messages.module';
-import { AskBeforeRefreshModule } from '../../../../ui/modules/ask-before-refresh/ask-before-refresh.module';
-import { NewPresidenteComponent } from './components/new-presidente/new-presidente.component';
-import { PresidentesTableComponent } from './components/presidentes-table/presidentes-table.component';
-import { MsPresidentesRoutingModule } from './presidentes-routing.module';
 import { TranslateModule } from '@ngx-translate/core';
-import { ImageUploadModule } from '../../../../ui/modules/image-upload/image-upload.module';
+import { ImageUploadComponent } from './image-upload/image-upload.component';
+import { NgxImageCompressService } from 'ngx-image-compress';
+import { ZoomImageComponent } from './zoom-image/zoom-image.component';
+import { ZoomImageDialogComponent } from './zoom-image-dialog/zoom-image-dialog.component';
+import {MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    //
+      //
     MatIconModule,
     MatOptionModule,
     MatFormFieldModule,
@@ -47,24 +44,19 @@ import { ImageUploadModule } from '../../../../ui/modules/image-upload/image-upl
     MatTooltipModule,
     MatCardModule,
     MatAutocompleteModule,
+    MatDialogModule,
     TranslateModule,
-    //
-    ErrorMessagesModule,
-    AskBeforeRefreshModule,
-    MsPresidentesRoutingModule,
-    ImageUploadModule
   ],
   exports: [
-    PresidentesCardComponent,
-    PresidentesFormComponent,
-    NewPresidenteComponent,
-    PresidentesTableComponent
+    ImageUploadComponent,
+    ZoomImageComponent,
+    ZoomImageDialogComponent
   ],
   declarations: [
-    PresidentesCardComponent,
-    PresidentesFormComponent,
-    NewPresidenteComponent,
-    PresidentesTableComponent
-  ]
+    ImageUploadComponent,
+    ZoomImageComponent,
+    ZoomImageDialogComponent
+  ],
+  providers: [NgxImageCompressService],
 })
-export class PresidentesModule { }
+export class ImageUploadModule { }

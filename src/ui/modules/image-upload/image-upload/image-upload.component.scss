@@ -1,0 +1,24 @@
+#profileImgContainer {
+	margin-bottom: 5px;
+}
+.margen-icono-boton {
+	margin-right: 5px;
+}
+.hidden-button {
+	margin-bottom: 36px;
+}
+.img-zoom-result {
+	border: 1px solid #d4d4d4;
+	width: 420px;
+	height: 350px;
+	position: absolute;
+	right: 400px;
+	top: 40px;
+	background-color: white;
+	background-repeat: no-repeat;
+	transition: background-position 0.2s ease-out;
+}
+
+.hidden {
+	display: none !important;
+}

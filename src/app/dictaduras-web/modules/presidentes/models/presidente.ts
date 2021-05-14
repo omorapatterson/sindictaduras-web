@@ -8,6 +8,7 @@ export class Presidente {
   likeCount: number;
   disLikeCount: number;
   dictatorCount: number;
+  pais: string;
   updatedAt?: string;
   createdAt?: string;
 }

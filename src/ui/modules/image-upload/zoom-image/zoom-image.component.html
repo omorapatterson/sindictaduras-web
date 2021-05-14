@@ -1,0 +1,12 @@
+<div class="img-zoom-container" (click)="clickZoom()">
+	<img #img class="image" [src]="imagen" (load)="onLoad()" />
+	<div
+		#len
+		[style.width]="lenSize + 'px'"
+		[style.height]="lenSize + 'px'"
+		[style.left]="posX + 'px'"
+		[style.top]="posY + 'px'"
+		[ngStyle]="{ opacity: showLens ? 1 : 0 }"
+		class="img-zoom-lens"
+	></div>
+</div>

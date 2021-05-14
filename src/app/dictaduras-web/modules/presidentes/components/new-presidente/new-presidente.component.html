@@ -1,0 +1,10 @@
+<h1 class="margin-top-0px">ADD PRESIDENTE</h1>
+
+<app-presidentes-form class="flex-grow-1"
+    [data]="data"    
+    (accept)="submit($event)"
+    (cancel)="cancel()"
+    [validationErrors]="validationErrors"
+    (dataChange)="dataChanged()"
+    (imageChange)="handleImageChangeEvent($event)">
+</app-presidentes-form>

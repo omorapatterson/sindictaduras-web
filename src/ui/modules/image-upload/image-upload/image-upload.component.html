@@ -1,0 +1,25 @@
+<div fxLayout="column" [ngClass]="{ 'hidden-button': !showButton }">
+	<div
+		#divZoomed
+		class="img-zoom-result"
+		[ngStyle]="{ opacity: imgURL && mouseHovering && showZoom ? 1 : 0 }"
+		[ngClass]="{ hidden: !mouseHovering }"
+	></div>
+	<div id="profileImgContainer">
+		<app-zoom-image
+			*ngIf="imgURL"
+			[img]="imgURL"
+			[divZoomOutput]="divZoomed"
+			[showLens]="mouseHovering && showZoom"
+			(mouseover)="mouseHovering = true"
+			(mouseout)="mouseHovering = false"
+		></app-zoom-image>
+	</div>
+	<button mat-button color="primary" (click)="file.click($event)" *ngIf="showButton">
+		<mat-icon class="margen-icono-boton">cloud_upload</mat-icon>Subir imagen
+	</button>
+	<input hidden type="file" accept="image/*" (change)="selectFile($event)" #file />
+	<button mat-button color="warn" (click)="removeImage()" *ngIf="showButton">
+		<mat-icon class="margen-icono-boton">delete_forever</mat-icon>Eliminar imagen
+	</button>
+</div>

@@ -28,7 +28,15 @@ const routes: Routes = [
       config: ConfigResolveService
     }
   },
-  { path: 'landing', component: LandingpageComponent }
+  { path: 'landing', component: LandingpageComponent },
+  {
+    path: 'admin',
+    loadChildren: './dictaduras-web/dictaduras-web.module#DictadurasWebModule',
+    // canActivate: [AuthGuardService],
+    resolve: {
+      config: ConfigResolveService
+    }
+  }
 ];
 
 

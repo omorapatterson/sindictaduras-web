@@ -10,8 +10,9 @@ import { AuthenticationModule } from '../../common/authentication/authentication
 import { PresidentesModule } from './modules/presidentes/presidentes.module';
 import { VotacionModule } from './modules/votacion/votacion.module';
 import { UsuariosModule } from './modules/usuarios/usuarios.module';
-import {NavBarComponent} from './components/nav-bar/nav-bar.component';
-import {RouterModule} from '@angular/router';
+import { NavBarComponent } from './components/nav-bar/nav-bar.component';
+import { RouterModule } from '@angular/router';
+import { DictadurasWebRoutingModule } from './modules/dictaduras-web-routing/dictaduras-web-routing.module';
 
 @NgModule({
   imports: [
@@ -28,7 +29,8 @@ import {RouterModule} from '@angular/router';
     VotacionModule,
     AuthenticationModule,
     UsuariosModule,
-    RouterModule
+    RouterModule,
+    DictadurasWebRoutingModule
   ],
   declarations: [
     NavBarComponent

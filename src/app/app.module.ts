@@ -39,9 +39,9 @@ import {
 } from 'angularx-social-login';
 import {ErrorHandlingModule} from '../common/error-handling/error-handling.module';
 
-export function HttpLoaderFactory(http: HttpClient) {
-  return new TranslateHttpLoader(http);
-}
+export const createTranslateLoader = (http: HttpClient) => {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+};
 
 @NgModule({
   declarations: [
@@ -66,15 +66,11 @@ export function HttpLoaderFactory(http: HttpClient) {
     // TabsModule.forRoot(),
     PagesModule,
     TranslateModule.forRoot({
-      missingTranslationHandler: {
-        provide: MissingTranslationHandler,
-        useClass: TranslationErrorService,
-      },
       loader: {
         provide: TranslateLoader,
-        useFactory: HttpLoaderFactory,
-        deps: [HttpClient],
-      },
+        useFactory: createTranslateLoader,
+        deps: [HttpClient]
+      }
     }),
     // PaginationModule.forRoot(),
     // AlertModule.forRoot(),

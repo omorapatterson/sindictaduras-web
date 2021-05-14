@@ -14,6 +14,7 @@ import {LoginDialogComponent} from '../common/authentication/components/login-di
 import {AuthService} from '../common/authentication/services/auth.service';
 import {DialogService} from '../ui/services/dialog.service';
 import {SocialAuthService} from 'angularx-social-login';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-root',
@@ -31,7 +32,10 @@ export class AppComponent implements OnInit, OnDestroy {
     @Inject(DOCUMENT) document,
     private errorHandlingService: ErrorHandlingService,
     private socialAuthService: SocialAuthService,
-  ) {}
+    private translate: TranslateService
+  ) {
+    translate.setDefaultLang('es');
+  }
   @HostListener('window:scroll', ['$event'])
   onWindowScroll(e) {
     if (window.pageYOffset > 100) {

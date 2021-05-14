@@ -25,6 +25,9 @@
     },
     "votacion": {
       "apiEndpoint": "votacion/"
+    },
+    "file": {
+      "apiEndpoint": "file/"
     }
   }
 }

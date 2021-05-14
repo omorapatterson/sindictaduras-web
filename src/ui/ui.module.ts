@@ -18,6 +18,7 @@ import { ErrorMessagesModule } from './modules/error-messages/error-messages.mod
 import { LogoModule } from './modules/logo/logo.module';
 import { SessionExpireDialogModule } from './modules/session-expire-dialog/session-expire-dialog.module';
 import { SpinnerIndicator200Module } from './modules/spinner-indicator-200/spinner-indicator-200.module';
+import {ImageUploadModule} from './modules/image-upload/image-upload.module';
 
 @NgModule({
   imports: [
@@ -36,7 +37,8 @@ import { SpinnerIndicator200Module } from './modules/spinner-indicator-200/spinn
     LogoModule,
     SessionExpireDialogModule,
     SpinnerIndicator200Module,
-    ConfirmDialogMessageModule
+    ConfirmDialogMessageModule,
+    ImageUploadModule
   ],
   declarations: []
 })
