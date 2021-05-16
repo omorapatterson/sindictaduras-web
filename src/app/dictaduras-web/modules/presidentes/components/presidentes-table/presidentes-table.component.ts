@@ -11,6 +11,7 @@ import {ConfirmDialogComponent} from '../../../../../../ui/modules/confirm-dialo
 import {ErrorHandlingService} from '../../../../../../common/error-handling/services/error-handling.service';
 import {ToastrService} from '../../../../../../common/error-handling/services/toastr.service';
 import {PresidentesService} from '../../services/presidentes.service';
+import {Presidente} from '../../models/presidente';
 //
 
 const titleKey = 'Delete';
@@ -51,6 +52,8 @@ export class PresidentesTableComponent implements OnInit, OnDestroy {
 
     tasks: Array<any> = [];
 
+    presidentes: Presidente[] = [];
+
     constructor(
         public activatedRoute: ActivatedRoute,
         public dialog: MatDialog,
@@ -64,7 +67,7 @@ export class PresidentesTableComponent implements OnInit, OnDestroy {
         this.filter = this.createFilterFormGroup();
         this.filterValueChanges = this.filter.valueChanges.pipe(debounceTime(500)).subscribe(change => this.onFilter());
         this.paginator.pageIndex = 0;
-
+        this.loadPage();
         // Begin observing style list changes.
         /*this.tasksList = this.tasksService.tasksList.subscribe((TasksList: any) => {
             this.totalLength = TasksList.dataCount;
@@ -96,15 +99,9 @@ export class PresidentesTableComponent implements OnInit, OnDestroy {
     }
 
     loadPage() {
-        /*this.tasksService.getTasks(
-            Object.assign({}, this.filter.value),
-            this.sort.active, this.sort.direction,
-            this.paginator.pageIndex, this.paginator.pageSize).subscribe((response: TasksListResponse) => {
-                this.tasksService.tasksList.next(response);
-            },
-                (err: HandledError) => {
-                    this.errorHandlingService.handleUiError(errorKey, err)
-                });*/
+      this.presidentesService.getPresidentes().subscribe(response => {
+          this.presidentes = response.data;
+      })
     }
 
     onFilter() {

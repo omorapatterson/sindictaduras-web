@@ -20,11 +20,12 @@ export class ImagesService {
 		private http: HttpClient,
 		private httpHeaders: HttpHeadersInterceptorService,
 	) {
-		this.apiEndpoint = this.configService.apiUrl + this.configService.config.apiConfigs.files.apiEndpoint;
+		this.apiEndpoint = this.configService.apiUrl + this.configService.config.apiConfigs.file.apiEndpoint;
 	}
 
 	postImagenPresidente(file: File, presidenteId: string): Observable<any> {
 		const requestOptions: RequestOptions = { headers: this.httpHeaders.getHeaders() };
+		console.log(requestOptions);
 		requestOptions.headers = requestOptions.headers.delete('Content-Type');
 		const formData = new FormData();
 		formData.append('file', file);

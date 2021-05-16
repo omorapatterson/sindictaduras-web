@@ -45,5 +45,13 @@ export class PresidentesService {
     getPresidente(presidenteId: string): Observable<PresidenteResponse> {
         return this.http.get<PresidenteResponse>(this.apiEndpoint + presidenteId);
     }
+
+    postCreatePresidente(presidente: Presidente): Observable<PresidenteResponse> {
+        return this.http.post<PresidenteResponse>(this.apiEndpoint, presidente);
+    }
+
+    putEditPresidente(presidente: Presidente): Observable<PresidenteResponse> {
+        return this.http.put<PresidenteResponse>(this.apiEndpoint, presidente);
+    }
 }
 

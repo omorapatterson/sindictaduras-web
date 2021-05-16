@@ -85,6 +85,7 @@
     "iso-country-codes": "0.0.5",
     "jw-bootstrap-switch-ng2": "2.0.5",
     "net": "^1.0.2",
+    "ng2-dragula": "^2.1.1",
     "ngx-bootstrap": "6.2.0",
     "ngx-image-compress": "^11.0.3",
     "ngx-translate": "0.0.1-security",

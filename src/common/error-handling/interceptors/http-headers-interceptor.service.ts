@@ -32,11 +32,11 @@ export class HttpHeadersInterceptorService implements HttpInterceptor {
 	constructor(public httpClient: HttpClient, private errorHandlingService: ErrorHandlingService) {}
 
 	get userToken(): string {
-		return localStorage.getItem('token');
+		return localStorage.getItem('sindictaduras-token');
 	}
 
 	set userToken(value: string) {
-		localStorage.setItem('token', value);
+		localStorage.setItem('sindictaduras-token', value);
 	}
 
 	get currentLanguage(): string {
@@ -52,7 +52,7 @@ export class HttpHeadersInterceptorService implements HttpInterceptor {
 			'Accept-Language': this.currentLanguage ? this.currentLanguage : '',
 			'Content-Type': 'application/json',
 			Authorization: this.userToken ? this.userToken : ''
-			//'useroauth': this.userToken ? this.userToken : '',
+			// 'useroauth': this.userToken ? this.userToken : '',
 		});
 		return requestOptions;
 	}
@@ -65,7 +65,7 @@ export class HttpHeadersInterceptorService implements HttpInterceptor {
 					'Accept-Language': headers.get('Accept-Language'),
 					'Content-Type': headers.get('Content-Type'),
 					Authorization: headers.get('Authorization')
-					//'useroauth': headers.get('useroauth'),
+					// 'useroauth': headers.get('useroauth'),
 				}
 			});
 			return req;

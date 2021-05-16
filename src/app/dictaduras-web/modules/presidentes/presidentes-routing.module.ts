@@ -5,6 +5,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { ConfigResolveService } from '../../../../common/config/services/config-resolve.service';
 import { NewPresidenteComponent } from './components/new-presidente/new-presidente.component';
 import { PresidentesTableComponent } from './components/presidentes-table/presidentes-table.component';
+import {EditPresidenteComponent} from './components/edit-presidente/edit-presidente.component';
+import {IdResolveService} from '../../../routing/services/id-resolve.service';
 
 const routes: Routes = [
     {
@@ -22,18 +24,16 @@ const routes: Routes = [
         },
         data: { closeRouteCommand: ['../'] }
     },
-    /*{
+    {
         path: 'edit/:id',
-        component: EditTaskComponent,
+        component: EditPresidenteComponent,
         // canActivate: [AuthGuardService],
         resolve: {
             config: ConfigResolveService,
-            brands: BrandsResolveService,
-            TaskId: IdResolveService,
-            users: UsersResolveService
+            presidenteId: IdResolveService,
         },
         data: { closeRouteCommand: ['../../'] }
-    },*/
+    },
     /*{
         path: 'delete/:id',
         component: DeleteTaskComponent,

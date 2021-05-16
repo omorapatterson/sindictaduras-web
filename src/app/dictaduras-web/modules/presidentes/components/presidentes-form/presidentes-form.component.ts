@@ -47,7 +47,7 @@ export class PresidentesFormComponent extends BaseReactiveFormComponent<Presiden
     createFormGroup() {
         this.formGroup = new FormGroup({
             nombre: new FormControl(this.data.nombre, [Validators.required]),
-            apellidos: new FormControl(this.data.nombre, [Validators.required]),
+            apellidos: new FormControl(this.data.apellidos, [Validators.required]),
             pais: new FormControl(this.data.pais, [Validators.required]),
             description: new FormControl(this.data.description, [Validators.required]),
         });

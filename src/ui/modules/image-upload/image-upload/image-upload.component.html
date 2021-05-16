@@ -15,11 +15,11 @@
 			(mouseout)="mouseHovering = false"
 		></app-zoom-image>
 	</div>
-	<button mat-button color="primary" (click)="file.click($event)" *ngIf="showButton">
+	<button mat-button color="primary" type="button" (click)="file.click($event)" *ngIf="showButton">
 		<mat-icon class="margen-icono-boton">cloud_upload</mat-icon>Subir imagen
 	</button>
 	<input hidden type="file" accept="image/*" (change)="selectFile($event)" #file />
-	<button mat-button color="warn" (click)="removeImage()" *ngIf="showButton">
+	<button mat-button color="warn" type="button" (click)="removeImage()" *ngIf="showButton">
 		<mat-icon class="margen-icono-boton">delete_forever</mat-icon>Eliminar imagen
 	</button>
 </div>

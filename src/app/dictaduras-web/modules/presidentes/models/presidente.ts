@@ -2,7 +2,7 @@ export class Presidente {
   id?: string;
   sid?: string;
   nombre?: string;
-  apellido?: string;
+  apellidos?: string;
   foto?: string;
   description?: string;
   likeCount: number;
