@@ -22,9 +22,9 @@ import { ProfilepageComponent } from './examples/profilepage/profilepage.compone
 import { RegisterpageComponent } from './examples/registerpage/registerpage.component';
 import { LandingpageComponent } from './examples/landingpage/landingpage.component';
 import { UiModule } from '../../ui/ui.module';
-import { DictadurasWebModule } from '../dictaduras-web/dictaduras-web.module';
 import { MatIconModule } from '@angular/material/icon';
-import { PresidentesModule } from '../dictaduras-web/modules/presidentes/presidentes.module';
+import { PresidentesModule } from '../sindictaduras-web/modules/presidentes/presidentes.module';
+import { SinDictadurasWebModule } from '../sindictaduras-web/sindictaduras-web.module';
 
 @NgModule({
     imports: [
@@ -45,7 +45,7 @@ import { PresidentesModule } from '../dictaduras-web/modules/presidentes/preside
         CarouselModule.forRoot(),
         ModalModule.forRoot(),
         UiModule,
-        DictadurasWebModule,
+        SinDictadurasWebModule,
         MatIconModule,
         PresidentesModule
     ],

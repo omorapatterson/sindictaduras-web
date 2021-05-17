@@ -12,6 +12,7 @@ import {PresidentesService} from '../../services/presidentes.service';
 import {WebsocketVotacionService} from '../../../../../pages/services/websocket-votacion.service';
 import {VotacionService} from '../../../votacion/services/votacion.service';
 import {Votacion} from '../../../votacion/models/votacion';
+import {CountryService} from '../../../../../../common/services/country.service';
 //
 const errorKey = 'Error';
 
@@ -32,7 +33,9 @@ export class PresidentesCardComponent implements OnInit{
 
     public mostrarVoto: false;
 
-    constructor(private dialogService: DialogService,
+    constructor(
+                private countryService: CountryService,
+                private dialogService: DialogService,
                 private svgIconsService: SvgIconsService,
                 private cdRef: ChangeDetectorRef,
                 private votacionService: VotacionService,

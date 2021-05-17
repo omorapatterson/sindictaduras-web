@@ -8,7 +8,7 @@ import { ProfilepageComponent } from './pages/examples/profilepage/profilepage.c
 import { RegisterpageComponent } from './pages/examples/registerpage/registerpage.component';
 import { LandingpageComponent } from './pages/examples/landingpage/landingpage.component';
 import { ConfigResolveService } from '../common/config/services/config-resolve.service';
-import { ConfirmarUsuarioComponent } from './dictaduras-web/modules/usuarios/components/confirmar-usuario/confirmar-usuario.component';
+import { ConfirmarUsuarioComponent } from './sindictaduras-web/modules/usuarios/components/confirmar-usuario/confirmar-usuario.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -30,8 +30,8 @@ const routes: Routes = [
   },
   { path: 'landing', component: LandingpageComponent },
   {
-    path: 'admin',
-    loadChildren: './dictaduras-web/dictaduras-web.module#DictadurasWebModule',
+    path: 'presidentes',
+    loadChildren: './sindictaduras-web/sindictaduras-web.module#SinDictadurasWebModule',
     // canActivate: [AuthGuardService],
     resolve: {
       config: ConfigResolveService

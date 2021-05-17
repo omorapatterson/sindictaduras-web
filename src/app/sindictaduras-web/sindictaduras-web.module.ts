@@ -12,7 +12,7 @@ import { VotacionModule } from './modules/votacion/votacion.module';
 import { UsuariosModule } from './modules/usuarios/usuarios.module';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { RouterModule } from '@angular/router';
-import { DictadurasWebRoutingModule } from './modules/dictaduras-web-routing/dictaduras-web-routing.module';
+import {SinDictadurasWebRoutingModule} from './modules/sindictaduras-web-routing/sin-dictaduras-web-routing.module';
 
 @NgModule({
   imports: [
@@ -30,7 +30,7 @@ import { DictadurasWebRoutingModule } from './modules/dictaduras-web-routing/dic
     AuthenticationModule,
     UsuariosModule,
     RouterModule,
-    DictadurasWebRoutingModule
+    SinDictadurasWebRoutingModule
   ],
   declarations: [
     NavBarComponent
@@ -39,4 +39,4 @@ import { DictadurasWebRoutingModule } from './modules/dictaduras-web-routing/dic
     NavBarComponent
   ]
 })
-export class DictadurasWebModule { }
+export class SinDictadurasWebModule { }

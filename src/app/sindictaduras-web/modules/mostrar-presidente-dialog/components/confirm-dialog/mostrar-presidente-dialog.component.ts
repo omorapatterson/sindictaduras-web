@@ -14,6 +14,7 @@ import { Votacion } from '../../../votacion/models/votacion';
 import { VotacionService } from '../../../votacion/services/votacion.service';
 import {PresidentesService} from '../../../presidentes/services/presidentes.service';
 import {WebsocketVotacionService} from '../../../../../pages/services/websocket-votacion.service';
+import {CountryService} from '../../../../../../common/services/country.service';
 
 @Component({
   selector: 'app-mostrar-presidente-dialog',
@@ -49,7 +50,8 @@ export class MostrarPresidenteDialogComponent implements OnInit{
       private presidentesService: PresidentesService,
       private svgIconsService: SvgIconsService,
       private votacionService: VotacionService,
-      private websocketVotacionService: WebsocketVotacionService
+      private websocketVotacionService: WebsocketVotacionService,
+      private countryService: CountryService
   ) {
     this.svgIconsService.registerIcons();
     // setTranslations(this.translate, TRANSLATIONS);

@@ -17,9 +17,9 @@ import { RootActionsService } from '../../../ngrx/services/root-actions.service'
 import { ErrorHandlingService } from '../../../error-handling/services/error-handling.service';
 import { Login } from '../../models/login';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { MostrarPresidenteDialogData } from '../../../../app/dictaduras-web/modules/mostrar-presidente-dialog/models/mostrar-presidente-dialog-data';
-import { Usuario } from '../../../../app/dictaduras-web/modules/usuarios/models/usuario';
-import { UsuariosService } from '../../../../app/dictaduras-web/modules/usuarios/services/usuarios.service';
+import { MostrarPresidenteDialogData } from '../../../../app/sindictaduras-web/modules/mostrar-presidente-dialog/models/mostrar-presidente-dialog-data';
+import { Usuario } from '../../../../app/sindictaduras-web/modules/usuarios/models/usuario';
+import { UsuariosService } from '../../../../app/sindictaduras-web/modules/usuarios/services/usuarios.service';
 import { AlertService } from '../../../error-handling/services/alert.service';
 
 const errorKey = 'LoginComponent/Error';

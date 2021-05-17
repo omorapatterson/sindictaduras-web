@@ -11,7 +11,7 @@ import { takeUntil } from 'rxjs/operators';
 export class ImageUploadComponent implements OnInit, OnDestroy {
 	@ViewChild('file') imageChild: ElementRef;
 
-	@Input() actualImagePath: BehaviorSubject<string>;
+	@Input() actualImagePath: string;
 	@Input() showButton: boolean = true;
 	@Input() showZoom: boolean = true;
 
@@ -27,9 +27,11 @@ export class ImageUploadComponent implements OnInit, OnDestroy {
 
 	ngOnInit() {
 		if (this.actualImagePath) {
-			this.actualImagePath.pipe(takeUntil(this.onDestroy$)).subscribe((x) => {
+			this.imgURL = this.actualImagePath;
+			/*this.actualImagePath.pipe(takeUntil(this.onDestroy$)).subscribe((x) => {
 				this.imgURL = x;
-			});
+				console.log(x);
+			});*/
 		}
 	}
 

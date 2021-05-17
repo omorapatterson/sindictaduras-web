@@ -100,6 +100,7 @@ export class EditPresidenteComponent implements OnInit, AfterViewInit, CanDeacti
   }
 
   updatePresidente(data: Presidente) {
+    console.log(this.file);
     if (this.file !== null && this.file !== undefined) {
       this.imagesService.postImagenPresidente(this.file, 'presidenteId')
           .pipe(takeUntil(this.onDestroy$))
@@ -114,8 +115,16 @@ export class EditPresidenteComponent implements OnInit, AfterViewInit, CanDeacti
 
   update(data){
     this.presidentesService.putEditPresidente(data).subscribe(response => {
-      console.log(response);
+      this.close();
     })
+  }
+
+  cancel() {
+    this.close();
+  }
+
+  close() {
+    this.router.navigate(this.activatedRoute.snapshot.data.closeRouteCommand, { relativeTo: this.activatedRoute });
   }
 
 }

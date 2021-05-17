@@ -4,11 +4,14 @@ export class Presidente {
   nombre?: string;
   apellidos?: string;
   foto?: string;
-  description?: string;
-  likeCount: number;
-  disLikeCount: number;
-  dictatorCount: number;
-  pais: string;
+  descripcion?: string;
+  biografia?: string;
+  mandatos?: string;
+  likeCount?: number;
+  disLikeCount?: number;
+  dictatorCount?: number;
+  pais?: string;
+  paisCode?: string;
   updatedAt?: string;
   createdAt?: string;
 }

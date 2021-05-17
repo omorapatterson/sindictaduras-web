@@ -36,6 +36,14 @@
     transition: 0.5s ease-out;
     overflow: hidden;
     border-radius: 20%;
+    &.square0 {
+      animation: move-left-right 6s infinite;
+      height: 300px;
+      width: 300px;
+      opacity: 0.5;
+      left: 59%;
+      bottom: 30%;
+    }
     &.square1 {
       animation: move-left-right 4s infinite;
       height: 300px;
@@ -485,6 +493,15 @@
     border-radius: 2px;
     background-size: 100%;
     border-radius: 20%;
+  }
+
+  .square-0 {
+    width: 200px;
+    height: 200px;
+    background-image: url("/assets/img/square3.png");
+    opacity: 0.3;
+    top: -50px;
+    right: 400px;
   }
 
   .square-1 {

@@ -49,13 +49,16 @@ export class PresidentesFormComponent extends BaseReactiveFormComponent<Presiden
             nombre: new FormControl(this.data.nombre, [Validators.required]),
             apellidos: new FormControl(this.data.apellidos, [Validators.required]),
             pais: new FormControl(this.data.pais, [Validators.required]),
-            description: new FormControl(this.data.description, [Validators.required]),
+            biografia: new FormControl(this.data.biografia),
+            mandatos: new FormControl(this.data.mandatos),
+            descripcion: new FormControl(this.data.descripcion),
         });
 
     }
 
     submitClicked() {
         if (this.formGroup.valid) {
+            this.data.paisCode = this.countryService.getCodeByCountry(this.formGroup.get('pais').value);
             this.accept.emit(this.data);
         } else {
             this.triggerValidation();

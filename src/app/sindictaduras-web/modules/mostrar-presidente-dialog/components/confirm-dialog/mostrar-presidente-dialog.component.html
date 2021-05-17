@@ -6,17 +6,19 @@
 <div class="height-100pct position-relative" *ngIf="presidente !== undefined">
     <div class="card d-flex height-100pct">
         <img class="card-img-top" [src]="this.presidente.foto">
-        <!--<div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
 
+        <div class="position-absolute left-10px top-10px">
+            <div class="justify-content-start label-presidente-dialog">
+                <h1 class="h1-seo text-h1 font-size-15px margin-0px cursor-pointer color-withe"><a class="color-withe" target="_blank" href="{{presidente.biografia}}">{{ presidente.nombre + ' ' + presidente.apellidos}}</a></h1>
+                <span class="h1-seo text-h1 font-size-10px margin-0px cursor-pointer">{{ presidente.mandatos}}</span>
+                <h1 class="h1-seo text-h1 margin-0px color-withe font-size-18px">{{ countryService.getCountryByCode(presidente.pais) }}</h1>
+            </div>
+        </div>
 
-        </div>-->
         <div class="background-color-black d-flex position-absolute width-100pct bottom-0px padding-10px align-items-center">
 
             <div class="d-flex justify-content-center">
-                <h2 class="margin-0px color-withe">Crees que fue un buen presidente? </h2>
+                <h2 class="margin-0px color-withe">{{ presidente.mandatos.indexOf("Actualidad") > -1 ? 'Crees que es un buen presidente?' : 'Crees que fue un buen presidente?'}} </h2>
             </div>
 
 

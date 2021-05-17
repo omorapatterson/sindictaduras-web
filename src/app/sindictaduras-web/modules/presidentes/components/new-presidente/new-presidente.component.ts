@@ -98,12 +98,16 @@ export class NewPresidenteComponent implements CanDeactivateMixin {
 
  save(data){
     this.presidentesService.postCreatePresidente(data).subscribe(response => {
-      console.log(response);
+        this.close();
     })
  }
 
+ cancel() {
+    this.close();
+ }
 
-  cancel(){
-
+  close() {
+        this.router.navigate(this.activatedRoute.snapshot.data.closeRouteCommand, { relativeTo: this.activatedRoute });
   }
+
 }

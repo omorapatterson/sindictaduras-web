@@ -12,6 +12,7 @@ import {ErrorHandlingService} from '../../../../../../common/error-handling/serv
 import {ToastrService} from '../../../../../../common/error-handling/services/toastr.service';
 import {PresidentesService} from '../../services/presidentes.service';
 import {Presidente} from '../../models/presidente';
+import {CountryService} from '../../../../../../common/services/country.service';
 //
 
 const titleKey = 'Delete';
@@ -60,6 +61,7 @@ export class PresidentesTableComponent implements OnInit, OnDestroy {
         public errorHandlingService: ErrorHandlingService,
         public presidentesService: PresidentesService,
         private toastr: ToastrService,
+        private countryService: CountryService,
     ) {
     }
 

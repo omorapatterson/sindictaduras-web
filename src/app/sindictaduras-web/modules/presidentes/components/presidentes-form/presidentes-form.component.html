@@ -32,10 +32,26 @@
             <mat-select disableOptionCentering placeholder="Select" formControlName="pais" required>
 
               <div *ngFor="let element of countries">
-                <mat-option [value]="element?.alpha2">{{ element?.name }}</mat-option>
+                <mat-option [value]="element?.name">{{ element?.name }}</mat-option>
               </div>
 
             </mat-select>
+
+          </mat-form-field>
+
+          <mat-form-field class="width-100pc">
+
+            <mat-label>Mandatos</mat-label>
+
+            <input matInput type="text" formControlName="mandatos">
+
+          </mat-form-field>
+
+          <mat-form-field class="width-100pc">
+
+            <mat-label>Biografia</mat-label>
+
+            <input matInput type="text" formControlName="biografia">
 
           </mat-form-field>
 
@@ -43,14 +59,14 @@
 
             <mat-label>Descripcion</mat-label>
 
-            <textarea matInput formControlName="description" class="min-height-100px"></textarea>
+            <textarea matInput formControlName="description" class="min-height-100px"  formControlName="descripcion"></textarea>
 
           </mat-form-field>
 
           <app-image-upload
                   (fileChange)="handleImageChangeEvent($event)"
                   (fileRemove)="handleImageRemoveEvent($event)"
-                  [actualImagePath]=""
+                  [actualImagePath]="data.foto"
                   [showButton]="true"
                   class="image-upload"
           ></app-image-upload>

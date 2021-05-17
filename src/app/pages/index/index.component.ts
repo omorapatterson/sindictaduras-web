@@ -1,11 +1,11 @@
 import {Component, OnInit, OnDestroy, ViewChildren, QueryList} from '@angular/core';
 import { DialogService } from '../../../ui/services/dialog.service';
-import { MostrarPresidenteDialogComponent } from '../../dictaduras-web/modules/mostrar-presidente-dialog/components/confirm-dialog/mostrar-presidente-dialog.component';
+import { MostrarPresidenteDialogComponent } from '../../sindictaduras-web/modules/mostrar-presidente-dialog/components/confirm-dialog/mostrar-presidente-dialog.component';
 import { SvgIconsService } from '../../../ui/services/svg-icons.service';
-import { PresidentesService } from '../../dictaduras-web/modules/presidentes/services/presidentes.service';
-import { Presidente } from '../../dictaduras-web/modules/presidentes/models/presidente';
+import { PresidentesService } from '../../sindictaduras-web/modules/presidentes/services/presidentes.service';
+import { Presidente } from '../../sindictaduras-web/modules/presidentes/models/presidente';
 import { WebsocketVotacionService } from '../services/websocket-votacion.service';
-import { PresidentesCardComponent } from '../../dictaduras-web/modules/presidentes/components/presidentes-card/presidentes-card.component';
+import { PresidentesCardComponent } from '../../sindictaduras-web/modules/presidentes/components/presidentes-card/presidentes-card.component';
 
 @Component({
   selector: 'app-index',
@@ -72,5 +72,12 @@ export class IndexComponent implements OnInit, OnDestroy {
 
   mostrarPresidente(fotoUrl: string){
     this.dialogService.openFromComponent(MostrarPresidenteDialogComponent, '50%', '80%', { foto: fotoUrl }, 'close-button');
+  }
+
+  obtenerPosicion(posicion: number){
+    if(posicion > 8){
+      posicion = posicion % 8;
+    }
+    return posicion;
   }
 }
