@@ -1,11 +1,11 @@
 {
-  "name": "blk-design-system-angular",
-  "version": "1.2.0",
+  "name": "sindictaduras",
+  "version": "1.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "description": "BLK Design System Angular: Free Angular Design System For Bootstrap 4 and Angular",
+    "description": "SINDICTADURAS",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
@@ -56,12 +56,12 @@
     "blk design system",
     "blk design system angular"
   ],
-  "author": "Creative Tim <hello@creative-tim.com> (https://www.creative-tim.com/)",
-  "license": "MIT",
+  "author": "",
+  "license": "",
   "bugs": {
-    "url": "https://github.com/creativetimofficial/blk-design-system-angular/issues"
+    "url": ""
   },
-  "homepage": "https://demos.creative-tim.com/blk-design-system-angular/",
+  "homepage": "",
   "private": false,
   "dependencies": {
     "@angular/animations": "11.0.5",

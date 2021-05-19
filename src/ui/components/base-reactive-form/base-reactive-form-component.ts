@@ -1,5 +1,5 @@
 import {
-    AfterViewInit,
+    AfterViewInit, Component,
     EventEmitter,
     Input,
     OnDestroy,
@@ -10,6 +10,9 @@ import { Subscription } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
 import { TranslatedValidationError } from '../../modules/error-messages/models/translated-validation-error';
 
+@Component({
+    template: ''
+})
 export abstract class BaseReactiveFormComponent<T> implements OnDestroy, AfterViewInit {
 
     onLangChange$: Subscription;

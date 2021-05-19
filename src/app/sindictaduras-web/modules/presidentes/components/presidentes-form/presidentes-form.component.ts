@@ -3,9 +3,9 @@ import { FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms'
 //
 import { TranslateService } from '@ngx-translate/core';
 //
-import {BaseReactiveFormComponent} from '../../../../../../ui/components/base-reactive-form/base-reactive-form-component';
-import {Presidente} from '../../models/presidente';
-import {CountryService} from '../../../../../../common/services/country.service';
+import { BaseReactiveFormComponent } from '../../../../../../ui/components/base-reactive-form/base-reactive-form-component';
+import { Presidente } from '../../models/presidente';
+import { CountryService } from '../../../../../../common/services/country.service';
 
 @Component({
     selector: 'app-presidentes-form',

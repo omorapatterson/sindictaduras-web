@@ -40,6 +40,12 @@ export class LoginDialogComponent extends BaseReactiveFormComponent<Login> imple
 
     usuario: Usuario;
 
+    focus;
+
+    focus1;
+
+    focus2;
+
     constructor(
         private route: ActivatedRoute,
         private alertService: AlertService,

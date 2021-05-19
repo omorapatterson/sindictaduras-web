@@ -25,7 +25,7 @@ const savedMessageKey = 'Saved';
   templateUrl: './new-presidente.component.html',
   styleUrls: ['./new-presidente.component.scss']
 })
-@Mixin([CanDeactivateMixin])
+// @Mixin([CanDeactivateMixin])
 export class NewPresidenteComponent implements CanDeactivateMixin {
 
   data: any = {
