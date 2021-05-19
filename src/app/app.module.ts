@@ -38,6 +38,7 @@ import {
   FacebookLoginProvider
 } from 'angularx-social-login';
 import {ErrorHandlingModule} from '../common/error-handling/error-handling.module';
+import {LoginDialogComponent} from '../common/authentication/components/login-dialog/login-dialog.component';
 
 export const createTranslateLoader = (http: HttpClient) => {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -100,6 +101,9 @@ export const createTranslateLoader = (http: HttpClient) => {
       } as SocialAuthServiceConfig,
     }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    LoginDialogComponent
+  ]
 })
 export class AppModule {}

@@ -34,7 +34,7 @@ export class AppComponent implements OnInit, OnDestroy {
     private socialAuthService: SocialAuthService,
     private translate: TranslateService
   ) {
-    translate.setDefaultLang('es');
+    translate.setDefaultLang('en');
   }
   @HostListener('window:scroll', ['$event'])
   onWindowScroll(e) {
