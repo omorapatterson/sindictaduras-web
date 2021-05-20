@@ -6,9 +6,9 @@ import { Routes, RouterModule } from '@angular/router';
 import { IndexComponent } from './pages/index/index.component';
 import { ProfilepageComponent } from './pages/examples/profilepage/profilepage.component';
 import { RegisterpageComponent } from './pages/examples/registerpage/registerpage.component';
-import { LandingpageComponent } from './pages/examples/landingpage/landingpage.component';
 import { ConfigResolveService } from '../common/config/services/config-resolve.service';
 import { ConfirmarUsuarioComponent } from './sindictaduras-web/modules/usuarios/components/confirmar-usuario/confirmar-usuario.component';
+import {ContactPageComponent} from './pages/examples/contact-page/contact-page.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -28,7 +28,7 @@ const routes: Routes = [
       config: ConfigResolveService
     }
   },
-  { path: 'landing', component: LandingpageComponent },
+  { path: 'contact', component: ContactPageComponent },
   {
     path: 'presidentes',
     loadChildren: './sindictaduras-web/sindictaduras-web.module#SinDictadurasWebModule',

@@ -29,7 +29,7 @@ import { PagesModule } from './pages/pages.module';
 import { IndexComponent } from './pages/index/index.component';
 import { ProfilepageComponent } from './pages/examples/profilepage/profilepage.component';
 import { RegisterpageComponent } from './pages/examples/registerpage/registerpage.component';
-import { LandingpageComponent } from './pages/examples/landingpage/landingpage.component';
+import { ContactPageComponent } from './pages/examples/contact-page/contact-page.component';
 import {TranslationErrorService} from '../common/shared/services/translation-error.service';
 //
 import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
@@ -50,7 +50,7 @@ export const createTranslateLoader = (http: HttpClient) => {
     // IndexComponent,
     // ProfilepageComponent,
     // RegisterpageComponent,
-    // LandingpageComponent
+    // ContactPageComponent
   ],
   imports: [
     BrowserAnimationsModule,

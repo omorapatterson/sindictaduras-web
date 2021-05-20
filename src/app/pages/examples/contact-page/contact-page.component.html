@@ -1,0 +1,228 @@
+<nav
+  class="navbar navbar-expand-lg fixed-top navbar-transparent"
+  color-on-scroll="100"
+  id="navbar-top"
+>
+  <div class="container">
+    <div class="navbar-translate">
+      <a
+        class="navbar-brand"
+        [routerLink]="['/home']"
+        placement="bottom"
+        tooltip="Por un mundo mejor."
+      >
+        <span> SINDICTADURAS </span>
+      </a>
+      <button
+        aria-controls="navigation-index"
+        aria-label="Toggle navigation"
+        class="navbar-toggler navbar-toggler"
+        [attr.aria-expanded]="!isCollapsed"
+        (click)="isCollapsed = !isCollapsed"
+        id="navigation"
+        type="button"
+      >
+        <span class="navbar-toggler-bar bar1"> </span>
+        <span class="navbar-toggler-bar bar2"> </span>
+        <span class="navbar-toggler-bar bar3"> </span>
+      </button>
+    </div>
+    <div
+      class="navbar-collapse justify-content-end"
+      [collapse]="isCollapsed"
+      id="navigation"
+    >
+      <div class="navbar-collapse-header">
+        <div class="row">
+          <div class="col-6 collapse-brand"><a> BLK• </a></div>
+          <div class="col-6 collapse-close text-right">
+            <button
+              aria-controls="navigation-index"
+              aria-label="Toggle navigation"
+              class="navbar-toggler"
+              [attr.aria-expanded]="!isCollapsed"
+              (click)="isCollapsed = !isCollapsed"
+              id="navigation"
+              type="button"
+            >
+              <i class="tim-icons icon-simple-remove"> </i>
+            </button>
+          </div>
+        </div>
+      </div>
+      <ul class="navbar-nav">
+        <li class="nav-item p-0">
+          <a
+            class="nav-link"
+            placement="bottom"
+            target="_blank"
+            tooltip="Follow us on Twitter"
+          >
+            <i class="fab fa-twitter"> </i>
+            <p class="d-lg-none d-xl-none">Twitter</p>
+          </a>
+        </li>
+        <li class="nav-item p-0">
+          <a
+            class="nav-link"
+            placement="bottom"
+            target="_blank"
+            tooltip="Like us on Facebook"
+          >
+            <i class="fab fa-facebook-square"> </i>
+            <p class="d-lg-none d-xl-none">Facebook</p>
+          </a>
+        </li>
+        <li class="nav-item p-0">
+          <a
+            class="nav-link"
+            placement="bottom"
+            target="_blank"
+            tooltip="Follow us on Instagram"
+          >
+            <i class="fab fa-instagram"> </i>
+            <p class="d-lg-none d-xl-none">Instagram</p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/home']"> Regresar </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="wrapper">
+  <div class="page-header">
+    <img class="path" src="assets/img/blob.png" />
+
+    <img class="path2" src="assets/img/path2.png" />
+
+    <img class="shapes triangle" src="assets/img/triunghiuri.png" />
+
+    <img class="shapes wave" src="assets/img/waves.png" />
+
+    <img class="shapes squares" src="assets/img/patrat.png" />
+
+    <img class="shapes circle" src="assets/img/cercuri.png" />
+
+    <div class="content-center">
+      <div
+        class="row row-grid justify-content-between align-items-center text-left"
+      >
+        <div class="col-lg-6 col-md-6">
+          <h1 class="text-white">
+            We keep your coin <br />
+
+            <span class="text-white"> secured </span>
+          </h1>
+          <p class="text-white mb-3">
+            A wonderful serenity has taken possession of my entire soul, like
+            these sweet mornings of spring which I enjoy with my whole heart. I
+            am alone, and feel...
+          </p>
+          <div class="btn-wrapper mb-3">
+            <p class="category text-success d-inline mr-1">From 9.99%/mo</p>
+            <a
+              class="btn btn-success btn-link btn-sm"
+              href="javascript:void(0)"
+            >
+              <i class="tim-icons icon-minimal-right"> </i>
+            </a>
+          </div>
+          <div class="btn-wrapper">
+            <div class="button-container">
+              <button
+                class="btn btn-icon btn-simple btn-round btn-neutral mr-1"
+                href="javascript:void(0)"
+              >
+                <i class="fab fa-twitter"> </i>
+              </button>
+              <button
+                class="btn btn-icon btn-simple btn-round btn-neutral mr-1"
+                href="javascript:void(0)"
+              >
+                <i class="fab fa-dribbble"> </i>
+              </button>
+              <button
+                class="btn btn-icon btn-simple btn-round btn-neutral"
+                href="javascript:void(0)"
+              >
+                <i class="fab fa-facebook"> </i>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-5">
+          <img
+            alt="Circle image"
+            class="img-fluid"
+            src="assets/img/etherum.png"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <section class="section section-lg">
+    <section class="section">
+      <img class="path" src="assets/img/path4.png" />
+
+      <div class="container">
+        <div class="row row-grid justify-content-between">
+          <div class="col-md-12">
+            <div class="pl-md-5">
+              <p class="color-withe">
+                Una dictadura es una forma autoritaria de gobierno, caracterizada por tener un solo líder o un grupo de líderes y una escasa o nula tolerancia hacia el pluralismo político o la libertad de prensa. Según otras definiciones, las democracias son regímenes en los que «quienes gobiernan son seleccionados mediante elecciones competitivas»; por lo tanto, las dictaduras no son «democracias».
+                Con el advenimiento de los siglos XIX y XX, las dictaduras y las democracias constitucionales emergieron como las dos principales formas de gobierno del mundo, eliminando gradualmente las monarquías, una de las formas tradicionales de gobierno extendidas entonces. Típicamente, en un régimen dictatorial, el líder del país se identifica con el título de dictador; aunque, su título formal puede parecerse más a algo similar a líder. Un aspecto común que caracteriza a los dictadores es aprovechar su fuerte personalidad, generalmente suprimiendo la libertad de expresión y el discurso de las masas, para mantener una supremacía y estabilidad política y social completa. La dictadura y las sociedades totalitarias generalmente emplean propaganda política para disminuir la influencia de los defensores de sistemas de gobierno alternativos
+              </p>
+              <br />
+              <a
+                class="font-weight-bold text-info mt-5"
+                href="https://es.wikipedia.org/wiki/Dictadura"
+                target="_blank"
+              >
+                Seguir leyendo... <i class="tim-icons icon-minimal-right text-info"> </i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3">
+
+          <h1 class="title">SINDICTADURAS</h1>
+         <div>
+           <a class="font-weight-bold text-info mt-5" target="_blank" href="https://www.paypal.com/donate?hosted_button_id=U8456AX4PL5GQ">Hacer una Donación</a>
+         </div>
+
+        </div>
+       <span class="d-flex flex-grow-1"></span>
+
+        <div class="col-md-3">
+          <h3 class="title">Escribanos a: sindictadur4s@gmail.com</h3>
+          <div class="btn-wrapper profile">
+            <a
+              class="btn btn-icon btn-neutral btn-round btn-simple mr-1"
+            >
+              <i class="fab fa-twitter"> </i>
+            </a>
+            <a
+              class="btn btn-icon btn-neutral btn-round btn-simple mr-1"
+            >
+              <i class="fab fa-facebook-square"> </i>
+            </a>
+            <a
+              class="btn btn-icon btn-neutral btn-round btn-simple"
+            >
+              <i class="fab fa-instagram"> </i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>

@@ -168,13 +168,13 @@ export class AuthService {
     }
 
     isLoggedIn() {
-        // this.tokenIsFresh.next(true);
-        return localStorage.getItem('sindictaduras-token') != null;
+        // this.tokenIsFresh.next(true);}
+        return localStorage.getItem('sindictaduras-token') !== null && localStorage.getItem('sindictaduras-token') !== 'null'
     }
 
     logout(): void {
-        localStorage.setItem('sindictaduras-user', null);
-        localStorage.setItem('sindictaduras-token', null);
+        localStorage.removeItem('sindictaduras-user');
+        localStorage.removeItem('sindictaduras-token');
         /*let headers = this.getHeaders(false, true, false);
         let credentials = 'grant_type=password'
             + '&token=' + this.userToken;

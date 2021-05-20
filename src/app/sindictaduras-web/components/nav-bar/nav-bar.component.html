@@ -6,10 +6,10 @@
   <div class="container">
     <div class="navbar-translate">
       <a
-              class="navbar-brand"
-              placement="bottom"
-              [routerLink]="['/home']"
-              tooltip="Por un mundo mejor."
+        class="navbar-brand"
+        [routerLink]="['/home']"
+        placement="bottom"
+        tooltip="Por un mundo mejor."
       >
         <span> SINDICTADURAS </span>
       </a>
@@ -82,6 +82,11 @@
             <i class="fab fa-instagram"> </i>
             <p class="d-lg-none d-xl-none">Instagram</p>
           </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link"
+             tooltip="Contactenos"
+             [routerLink]="['/contact']"> Contactenos </a>
         </li>
         <li class="nav-item">
           <a *ngIf="!isLogguedIn"

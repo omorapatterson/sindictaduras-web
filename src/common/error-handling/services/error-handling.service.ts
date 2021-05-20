@@ -9,7 +9,7 @@ import { TranslateService } from '@ngx-translate/core';
 //
 import { HandledError } from '../models/handled-error';
 import { CustomSnackbarComponent } from '../modules/custom-snackbar/components/custom-snackbar/custom-snackbar.component';
-import {AlertService} from './alert.service';
+import { AlertService } from './alert.service';
 
 const errorClientKey = 'Bad request';
 
@@ -40,6 +40,7 @@ export class ErrorHandlingService {
 
 	constructor(
 		public snackBar: MatSnackBar,
+		private alertService: AlertService,
 		private translate: TranslateService,
 		private router: Router,
 	) {
@@ -68,13 +69,7 @@ export class ErrorHandlingService {
 			)
 			.subscribe(value => {
 				this.lastEmittedNotification = value;
-				this.snackBar.openFromComponent(CustomSnackbarComponent, {
-					data: { messageData: value.errorMessage, messageType: 'Error' },
-					duration: 2000,
-					horizontalPosition: 'right',
-					panelClass: ['background-color-accent']
-				});
-				//  });
+				this.alertService.error(value.errorMessage, 'OK');
 			});
 	}
 
@@ -229,7 +224,7 @@ export class ErrorHandlingService {
 
 	public handleUiError(key: string, err: HandledError, url?: string) {
 		const serverState = this.serverOnline.getValue();
-		const error = <any>err.error;
+		const error = err.error as any;
 		// If server state is online then continues managing the
 		if (serverState) {
 			// Displaying the error if it really contains a message
@@ -247,7 +242,7 @@ export class ErrorHandlingService {
 					}
 				}
 				this.showNotificationObservable.next({
-					key: key,
+					key,
 					errorMessage: error.message,
 					errorCode: error.errorCode,
 					date: new Date(),
@@ -280,7 +275,7 @@ export class ErrorHandlingService {
 	private buildingErrorMessage(error: any, handledError: HandledError) {
 		// Checking if the error comes with more than one validation error
 		if (error.detail[0].constructor === Object) {
-			let path = [];
+			const path = [];
 			this.errorDaemon(path, error.detail[0], handledError);
 			// sending the form validations errors to the component where are the fields
 			handledError.formErrors = error.detail[0];

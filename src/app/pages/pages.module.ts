@@ -20,11 +20,11 @@ import { PopoverModule } from 'ngx-bootstrap/popover';
 import { IndexComponent } from './index/index.component';
 import { ProfilepageComponent } from './examples/profilepage/profilepage.component';
 import { RegisterpageComponent } from './examples/registerpage/registerpage.component';
-import { LandingpageComponent } from './examples/landingpage/landingpage.component';
 import { UiModule } from '../../ui/ui.module';
 import { MatIconModule } from '@angular/material/icon';
 import { PresidentesModule } from '../sindictaduras-web/modules/presidentes/presidentes.module';
 import { SinDictadurasWebModule } from '../sindictaduras-web/sindictaduras-web.module';
+import { ContactPageComponent } from './examples/contact-page/contact-page.component';
 
 @NgModule({
     imports: [
@@ -53,13 +53,13 @@ import { SinDictadurasWebModule } from '../sindictaduras-web/sindictaduras-web.m
     IndexComponent,
     ProfilepageComponent,
     RegisterpageComponent,
-    LandingpageComponent
+    ContactPageComponent
   ],
   exports: [
     IndexComponent,
     ProfilepageComponent,
     RegisterpageComponent,
-    LandingpageComponent
+    ContactPageComponent
   ],
   providers: []
 })

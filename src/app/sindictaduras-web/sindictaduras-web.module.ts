@@ -12,7 +12,8 @@ import { VotacionModule } from './modules/votacion/votacion.module';
 import { UsuariosModule } from './modules/usuarios/usuarios.module';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { RouterModule } from '@angular/router';
-import {SinDictadurasWebRoutingModule} from './modules/sindictaduras-web-routing/sin-dictaduras-web-routing.module';
+import { SinDictadurasWebRoutingModule } from './modules/sindictaduras-web-routing/sin-dictaduras-web-routing.module';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
 
 @NgModule({
   imports: [
@@ -30,7 +31,8 @@ import {SinDictadurasWebRoutingModule} from './modules/sindictaduras-web-routing
     AuthenticationModule,
     UsuariosModule,
     RouterModule,
-    SinDictadurasWebRoutingModule
+    SinDictadurasWebRoutingModule,
+    TooltipModule
   ],
   declarations: [
     NavBarComponent

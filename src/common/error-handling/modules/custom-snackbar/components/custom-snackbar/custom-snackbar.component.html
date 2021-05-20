@@ -1,8 +1,8 @@
-<div fxLayoutAlign="space-between center" *ngIf="data.messageType === 'Error'" (click)="dismiss()">
-	<div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+<div class="d-flex align-items-center" fxLayoutAlign="space-between center" *ngIf="data.messageType === 'Error'" (click)="dismiss()">
+	<div class="d-flex align-items-center" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
 		<mat-icon>error_outline</mat-icon>
 
-		<div fxLayoutAlign="start center">
+		<div class="padding-left-15px" fxLayoutAlign="start center">
 			{{ data.messageData | translate }}
 		</div>
 	</div>
