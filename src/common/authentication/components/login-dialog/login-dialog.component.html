@@ -75,7 +75,7 @@
         <img
                 alt="Card image"
                 class="card-img"
-                src="assets/img/square1-red.png"
+                src="assets/img/square1.png"
         />
 
         <h6 class="card-title">sindictaduras</h6>
@@ -140,7 +140,7 @@
       </div>
       <div class="padding-left-10px padding-right-10px">
         <a (click)="isLogin ? login() : register(false)"
-                class="btn btn-danger btn-round btn-lg width-100pct"
+                class="btn btn-default btn-round btn-lg width-100pct"
                 href="javascript:void(0)"
         >
           {{isLogin ? 'Entrar' : 'Registrarse'}}
@@ -148,7 +148,7 @@
       </div>
       <div class="d-flex padding-left-10px padding-right-10px padding-bottom-10px justify-content-space-between">
         <a
-                class="btn btn-danger btn-round btn-lg width-100pct color-withe"
+                class="btn btn-default btn-round btn-lg width-100pct color-withe"
                 (click)="signInWithGoogle()"
         >
           {{isLogin ? 'Entrar ' : 'Registrarse '}} con Google

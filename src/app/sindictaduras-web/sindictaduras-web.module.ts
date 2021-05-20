@@ -14,26 +14,28 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { RouterModule } from '@angular/router';
 import { SinDictadurasWebRoutingModule } from './modules/sindictaduras-web-routing/sin-dictaduras-web-routing.module';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
+import {CollapseModule} from 'ngx-bootstrap/collapse';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    //
-    BsDropdownModule,
-    //
-    UiModule,
-    //
-    MostrarPresidenteDialogModule,
-    PresidentesModule,
-    VotacionModule,
-    AuthenticationModule,
-    UsuariosModule,
-    RouterModule,
-    SinDictadurasWebRoutingModule,
-    TooltipModule
-  ],
+    imports: [
+        CommonModule,
+        FormsModule,
+        ReactiveFormsModule,
+        //
+        BsDropdownModule,
+        //
+        UiModule,
+        //
+        MostrarPresidenteDialogModule,
+        PresidentesModule,
+        VotacionModule,
+        AuthenticationModule,
+        UsuariosModule,
+        RouterModule,
+        SinDictadurasWebRoutingModule,
+        TooltipModule,
+        CollapseModule
+    ],
   declarations: [
     NavBarComponent
   ],

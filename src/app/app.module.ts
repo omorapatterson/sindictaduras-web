@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 //
+
 import { MatIconModule } from '@angular/material/icon';
 
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
@@ -39,6 +40,8 @@ import {
 } from 'angularx-social-login';
 import {ErrorHandlingModule} from '../common/error-handling/error-handling.module';
 import {LoginDialogComponent} from '../common/authentication/components/login-dialog/login-dialog.component';
+import { LoadingComponent } from 'src/common/http-request-indicator/components/loading/loading.component';
+import {HttpRequestIndicatorModule} from '../common/http-request-indicator/http-request-indicator.module';
 
 export const createTranslateLoader = (http: HttpClient) => {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -79,7 +82,10 @@ export const createTranslateLoader = (http: HttpClient) => {
     // CarouselModule.forRoot(),
     // ModalModule.forRoot(),
     ErrorHandlingModule,
-    SocialLoginModule
+    HttpRequestIndicatorModule,
+    SocialLoginModule,
+    CollapseModule.forRoot(),
+    BsDropdownModule
   ],
   providers: [
     {
@@ -103,7 +109,8 @@ export const createTranslateLoader = (http: HttpClient) => {
   ],
   bootstrap: [AppComponent],
   entryComponents: [
-    LoginDialogComponent
+    LoginDialogComponent,
+    LoadingComponent
   ]
 })
 export class AppModule {}

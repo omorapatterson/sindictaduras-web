@@ -315,3 +315,9 @@ background-color-black{
 }
 
 :focus {outline:0 !important;}
+
+.close-menu {
+   position: absolute !important;
+   top: -20px !important;
+   right: -13px !important;
+ }
