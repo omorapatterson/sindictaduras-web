@@ -15,6 +15,8 @@ import { VotacionService } from '../../../votacion/services/votacion.service';
 import {PresidentesService} from '../../../presidentes/services/presidentes.service';
 import {WebsocketVotacionService} from '../../../../../pages/services/websocket-votacion.service';
 import {CountryService} from '../../../../../../common/services/country.service';
+import {LoadingService} from '../../../../../../common/http-request-indicator/services/loading.service';
+import {ErrorHandlingService} from '../../../../../../common/error-handling/services/error-handling.service';
 
 @Component({
   selector: 'app-mostrar-presidente-dialog',
@@ -51,7 +53,9 @@ export class MostrarPresidenteDialogComponent implements OnInit{
       private svgIconsService: SvgIconsService,
       private votacionService: VotacionService,
       private websocketVotacionService: WebsocketVotacionService,
-      private countryService: CountryService
+      private countryService: CountryService,
+      private loadingService: LoadingService,
+      private errorHandlingService: ErrorHandlingService
   ) {
     this.svgIconsService.registerIcons();
     // setTranslations(this.translate, TRANSLATIONS);
@@ -110,12 +114,12 @@ export class MostrarPresidenteDialogComponent implements OnInit{
       this.voto = voto;
     }
     const votacion = new Votacion(this.presidente.id, this.voto);
+    this.loadingService.showLoader(true);
     this.votacionService.realizarVotacion(votacion).subscribe(response => {
       this.votacion = response.data;
       this.cargarPresidente(this.presidente.id);
-    }, error => {
-      console.log('Error');
-    });
+      this.loadingService.showLoader(false);
+    }, error => this.errorHandlingService.handleUiError('', error));
   }
 
   cargarPresidente(presidenteId){

@@ -2,3 +2,7 @@ svg {
     width: 200px;
     height: 200px;
 }
+
+::ng-deep .mat-progress-spinner circle, .mat-spinner circle {
+    stroke: #888888;
+}

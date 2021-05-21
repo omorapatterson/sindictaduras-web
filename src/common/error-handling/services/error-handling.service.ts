@@ -10,6 +10,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { HandledError } from '../models/handled-error';
 import { CustomSnackbarComponent } from '../modules/custom-snackbar/components/custom-snackbar/custom-snackbar.component';
 import { AlertService } from './alert.service';
+import {LoadingService} from '../../http-request-indicator/services/loading.service';
 
 const errorClientKey = 'Bad request';
 
@@ -43,6 +44,7 @@ export class ErrorHandlingService {
 		private alertService: AlertService,
 		private translate: TranslateService,
 		private router: Router,
+		private loadingService: LoadingService
 	) {
 		// setTranslations(translate, TRANSLATIONS);
 		this.onServerUp();
@@ -225,6 +227,7 @@ export class ErrorHandlingService {
 	public handleUiError(key: string, err: HandledError, url?: string) {
 		const serverState = this.serverOnline.getValue();
 		const error = err.error as any;
+		this.loadingService.showLoader(false);
 		// If server state is online then continues managing the
 		if (serverState) {
 			// Displaying the error if it really contains a message

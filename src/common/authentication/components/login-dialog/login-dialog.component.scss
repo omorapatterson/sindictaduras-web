@@ -44,13 +44,14 @@
         right: 0;
     }*/
 }
+
 .text-center {
     text-align: center;
 }
+
 .w-100 {
     width: 100%;
 }
-
 
 ::ng-deep .close-button-login {
     position: relative !important;
@@ -66,6 +67,10 @@
     min-width: auto;
 }
 
-::ng-deep .mat-dialog-container{
+::ng-deep .mat-dialog-container {
     padding: 0px !important;
+}
+
+::ng-deep .cdk-overlay-container {
+    z-index: 1050 !important;
 }

@@ -59,6 +59,10 @@ export class LoadingService {
         });
     }
 
+    public showLoader(mostrarIndicador){
+        this.loading$.next(mostrarIndicador);
+    }
+
     private getOverlayConfig(config: LoadingOverlayConfig): OverlayConfig {
         const positionStrategy = this.overlay.position()
           .global()

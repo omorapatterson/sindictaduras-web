@@ -21,6 +21,7 @@ import { MostrarPresidenteDialogData } from '../../../../app/sindictaduras-web/m
 import { Usuario } from '../../../../app/sindictaduras-web/modules/usuarios/models/usuario';
 import { UsuariosService } from '../../../../app/sindictaduras-web/modules/usuarios/services/usuarios.service';
 import { AlertService } from '../../../error-handling/services/alert.service';
+import {LoadingService} from '../../../http-request-indicator/services/loading.service';
 
 const errorKey = 'LoginComponent/Error';
 const requiredUserandPasswordKey = 'El email o contraseña no pueden estar vacios.';
@@ -58,7 +59,8 @@ export class LoginDialogComponent extends BaseReactiveFormComponent<Login> imple
         public snackBar: MatSnackBar,
         public dialogRef: MatDialogRef<LoginDialogComponent>,
         @Inject(MAT_DIALOG_DATA) public dialogData: MostrarPresidenteDialogData,
-        private usuariosService: UsuariosService
+        private usuariosService: UsuariosService,
+        private loadingService: LoadingService,
         // private rootActions: RootActionsService
     ) {
         super(translateService);
@@ -115,6 +117,7 @@ export class LoginDialogComponent extends BaseReactiveFormComponent<Login> imple
             this.router.navigate(this.authService.afterLoginCommands, this.authService.afterLoginNavigationExtras);
         } else {
             if (userName && password) {
+                this.loadingService.showLoader(true);
                 this.authService.loginUser(userName, password).subscribe((response) => {
                     // this.rootActions.setState(this.authService.userPreferences);
                     /*if (this.returnUrl && this.returnUrl.length > 0) {
@@ -125,6 +128,7 @@ export class LoginDialogComponent extends BaseReactiveFormComponent<Login> imple
                     }*/
                     this.close();
                     this.alertService.success('Bienvenido', 'OK');
+                    this.loadingService.showLoader(false);
                 },
                     error => this.errorHandlingService.handleUiError(errorKey, error)
                 );
@@ -145,6 +149,7 @@ export class LoginDialogComponent extends BaseReactiveFormComponent<Login> imple
                 contrasena: password
             };
         }
+        this.loadingService.showLoader(true);
         this.usuariosService.registrarUsuario(this.usuario).subscribe(response => {
             if(response.data.usuario.signInWithSocialNetwork){
                 localStorage.setItem('sindictaduras-token', response.data.token);
@@ -153,6 +158,7 @@ export class LoginDialogComponent extends BaseReactiveFormComponent<Login> imple
             } else {
                 this.alertService.success('Se ha registrado con exito. Le hemos enviado un mail para confirmar su usuario', 'OK');
             }
+            this.loadingService.showLoader(false);
             this.close();
         },error => {
             this.alertService.error(error.message, 'OK');

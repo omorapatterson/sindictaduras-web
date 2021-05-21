@@ -28,13 +28,13 @@
       </button>
     </div>
     <div
-            class="navbar-collapse justify-content-end"
+            class="navbar-collapse justify-content-end width-250px"
             [collapse]="isCollapsed"
             id="navigation"
     >
       <div class="navbar-collapse-header">
         <div class="row">
-          <div class="col-6 collapse-brand"><a> SINDICTADURAS </a></div>
+          <div class="col-6 collapse-brand"></div>
           <div class="col-6 collapse-close text-right">
             <button
                     aria-controls="navigation-index"
@@ -88,18 +88,18 @@
         </li>
         <li class="nav-item">
           <a *ngIf="!isLogguedIn"
-                  class="nav-link btn btn-default"
+                  class="nav-link btn btn-default padding-left-10px padding-right-10px"
                   href="javascript:void(0)"
                   (click)="showLoginDialog()"
           >
-            <i class=""> </i> Entrar
+           Entrar
           </a>
           <a *ngIf="isLogguedIn"
-             class="nav-link btn btn-default"
+             class="nav-link btn btn-default padding-left-10px padding-right-10px"
              href="javascript:void(0)"
              (click)="logOut()"
           >
-            <i class=""> </i> Salir
+           Salir
           </a>
         </li>
       </ul>

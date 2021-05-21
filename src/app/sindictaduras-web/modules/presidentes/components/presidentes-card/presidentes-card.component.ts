@@ -13,6 +13,7 @@ import {WebsocketVotacionService} from '../../../../../pages/services/websocket-
 import {VotacionService} from '../../../votacion/services/votacion.service';
 import {Votacion} from '../../../votacion/models/votacion';
 import {CountryService} from '../../../../../../common/services/country.service';
+import {AuthService} from '../../../../../../common/authentication/services/auth.service';
 //
 const errorKey = 'Error';
 
@@ -36,6 +37,7 @@ export class PresidentesCardComponent implements OnInit{
     constructor(
                 private countryService: CountryService,
                 private dialogService: DialogService,
+                private authService: AuthService,
                 private svgIconsService: SvgIconsService,
                 private cdRef: ChangeDetectorRef,
                 private votacionService: VotacionService,
@@ -45,6 +47,9 @@ export class PresidentesCardComponent implements OnInit{
 
     ngOnInit() {
         this.cargarVotacion(this.presidente.id);
+        this.authService.reAuthenticacion.subscribe(response => {
+            this.cargarVotacion(this.presidente.id);
+        });
     }
 
     actualizarVotacion(presidente: Presidente){

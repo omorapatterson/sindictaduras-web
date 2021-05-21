@@ -6,11 +6,13 @@ import { HttpRequestIndicatorComponent } from './components/http-request-indicat
 import { IndicatedInterceptor } from './services/indicated-interceptor.service';
 import { LoadingInterceptor } from './services/loading-interceptor.service';
 import { LoadingComponent } from './components/loading/loading.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
-  imports: [
-    CommonModule
-  ],
+    imports: [
+        CommonModule,
+        MatProgressSpinnerModule
+    ],
   declarations: [HttpRequestIndicatorComponent, LoadingComponent],
   exports: [HttpRequestIndicatorComponent, LoadingComponent]
 })

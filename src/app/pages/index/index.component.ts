@@ -6,6 +6,8 @@ import { PresidentesService } from '../../sindictaduras-web/modules/presidentes/
 import { Presidente } from '../../sindictaduras-web/modules/presidentes/models/presidente';
 import { WebsocketVotacionService } from '../services/websocket-votacion.service';
 import { PresidentesCardComponent } from '../../sindictaduras-web/modules/presidentes/components/presidentes-card/presidentes-card.component';
+import {LoadingService} from '../../../common/http-request-indicator/services/loading.service';
+import {ErrorHandlingService} from '../../../common/error-handling/services/error-handling.service';
 
 @Component({
   selector: 'app-index',
@@ -26,7 +28,9 @@ export class IndexComponent implements OnInit, OnDestroy {
   constructor(private dialogService: DialogService,
               private svgIconsService: SvgIconsService,
               private presidentesService: PresidentesService,
-              private websocketVotacionService: WebsocketVotacionService
+              private websocketVotacionService: WebsocketVotacionService,
+              private loadingService: LoadingService,
+              private errorHandlingService: ErrorHandlingService
   ) {
     this.svgIconsService.registerIcons();
   }
@@ -59,10 +63,12 @@ export class IndexComponent implements OnInit, OnDestroy {
   }
 
   cargarPresidentes(){
+    this.loadingService.showLoader(true);
     this.presidentesService.getPresidentes().subscribe(response => {
       this.presidentes = response.data;
       this.conectarAlWebSocketVotacion();
-    });
+      this.loadingService.showLoader(false);
+    },error => this.errorHandlingService.handleUiError('', error));
   }
 
   ngOnDestroy() {

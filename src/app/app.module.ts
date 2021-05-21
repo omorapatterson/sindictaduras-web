@@ -82,7 +82,7 @@ export const createTranslateLoader = (http: HttpClient) => {
     // CarouselModule.forRoot(),
     // ModalModule.forRoot(),
     ErrorHandlingModule,
-    HttpRequestIndicatorModule,
+    HttpRequestIndicatorModule.forRoot(),
     SocialLoginModule,
     CollapseModule.forRoot(),
     BsDropdownModule
