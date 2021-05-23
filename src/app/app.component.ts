@@ -52,14 +52,12 @@ export class AppComponent implements OnInit, OnDestroy {
       }
     }
   }
+
   ngOnInit() {
     this.onWindowScroll(event);
     this.errorHandlingService.showExpireLogin.pipe(takeUntil(this.onDestroy$)).subscribe((userDetails) => {
       localStorage.removeItem('sindictaduras-token');
-      this.socialAuthService.signOut();
       this.dialogService.showLoginDialog();
-      // this.authenticationService.tokenIsFresh.next(false);
-      // this.authenticationService.openLoginDialog();
     });
   }
 

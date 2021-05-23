@@ -162,7 +162,7 @@ export class AuthService {
             const data = response.data;
             localStorage.setItem('sindictaduras-token', data.token);
             localStorage.setItem('sindictaduras-user', JSON.stringify(data.usuario));
-            this.reAuthenticacion.next(true)
+            this.reAuthenticacion.next(true);
             return data;
         }))
     }
@@ -175,6 +175,13 @@ export class AuthService {
     logout(): void {
         localStorage.removeItem('sindictaduras-user');
         localStorage.removeItem('sindictaduras-token');
+        try{
+            this.socialAuthService.signOut();
+        } catch (e) {
+            // no hacer nada
+        }
+
+        sessionStorage.clear();
         /*let headers = this.getHeaders(false, true, false);
         let credentials = 'grant_type=password'
             + '&token=' + this.userToken;

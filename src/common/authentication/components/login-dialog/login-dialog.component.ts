@@ -89,18 +89,20 @@ export class LoginDialogComponent extends BaseReactiveFormComponent<Login> imple
         this.createFormGroup();
 
         this.socialAuthService.authState.subscribe((user) => {
-            this.usuario = new Usuario(user);
-            this.formGroup.get('userName').setValue(user.email);
-            this.formGroup.get('password').setValue(user.id);
-            // this.dialogRef.close();
-            if (!this.isLogin){
-                this.register(true);
-            } else {
-                this.login();
+            if(user !== null && user !== undefined){
+                this.usuario = new Usuario(user);
+                this.formGroup.get('userName').setValue(user.email);
+                this.formGroup.get('password').setValue(user.id);
+                if (!this.isLogin){
+                    this.register(true);
+                } else {
+                    this.login();
+                }
             }
         }, error => {
             console.log('error');
         });
+
     }
 
     createFormGroup() {
@@ -159,8 +161,10 @@ export class LoginDialogComponent extends BaseReactiveFormComponent<Login> imple
                 this.alertService.success('Se ha registrado con exito. Le hemos enviado un mail para confirmar su usuario', 'OK');
             }
             this.loadingService.showLoader(false);
+            this.authService.reAuthenticacion.next(true);
             this.close();
         },error => {
+            this.loadingService.showLoader(false);
             this.alertService.error(error.message, 'OK');
         })
     }

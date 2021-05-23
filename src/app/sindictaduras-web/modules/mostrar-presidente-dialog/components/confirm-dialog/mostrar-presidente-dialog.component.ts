@@ -67,16 +67,19 @@ export class MostrarPresidenteDialogComponent implements OnInit{
     this.conectarAlWebSocketVotacion();
     this.actualizarUltimaVotacion();
     this.authService.reAuthenticacion.subscribe(response => {
-      this.reAuthenticacion();
+      if (response === true && this.dialogRef?.componentInstance != null && this.dialogRef?.componentInstance !== undefined) {
+        this.reAuthenticacion();
+      }
     })
   }
 
   reAuthenticacion(){
+    let voto = '';
     if(this.voto !== ''){
-      const voto = this.voto;
+      voto = this.voto;
       this.voto = '';
-      this.votar(voto);
     }
+    this.votar(voto);
   }
 
   conectarAlWebSocketVotacion() {
@@ -108,6 +111,7 @@ export class MostrarPresidenteDialogComponent implements OnInit{
   }
 
   votar(voto: string){
+    const anteriorVotacion = this.voto;
     if(this.voto === voto){
       this.voto = '';
     }else{
@@ -119,7 +123,10 @@ export class MostrarPresidenteDialogComponent implements OnInit{
       this.votacion = response.data;
       this.cargarPresidente(this.presidente.id);
       this.loadingService.showLoader(false);
-    }, error => this.errorHandlingService.handleUiError('', error));
+    }, error => {
+      this.voto = anteriorVotacion !== voto ? voto : '';
+      this.errorHandlingService.handleUiError('', error)
+    });
   }
 
   cargarPresidente(presidenteId){
