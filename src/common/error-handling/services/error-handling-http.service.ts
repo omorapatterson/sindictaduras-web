@@ -43,7 +43,7 @@ export class ErrorHandlingHttpService {
 	}
 
 	set userToken(value: string) {
-		localStorage.setItem('userToken', value);
+		localStorage.setItem('sindictaduras-token', value);
 	}
 
 	get currentLanguage(): string {

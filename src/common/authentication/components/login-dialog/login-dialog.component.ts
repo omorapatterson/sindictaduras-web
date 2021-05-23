@@ -97,6 +97,7 @@ export class LoginDialogComponent extends BaseReactiveFormComponent<Login> imple
                     this.register(true);
                 } else {
                     this.login();
+                    localStorage.setItem('signInWithSocialNetwork', 'true');
                 }
             }
         }, error => {
@@ -131,6 +132,7 @@ export class LoginDialogComponent extends BaseReactiveFormComponent<Login> imple
                     this.close();
                     this.alertService.success('Bienvenido', 'OK');
                     this.loadingService.showLoader(false);
+                    this.authService.reAuthenticacion.next(false);
                 },
                     error => this.errorHandlingService.handleUiError(errorKey, error)
                 );
@@ -156,6 +158,7 @@ export class LoginDialogComponent extends BaseReactiveFormComponent<Login> imple
             if(response.data.usuario.signInWithSocialNetwork){
                 localStorage.setItem('sindictaduras-token', response.data.token);
                 localStorage.setItem('sindictaduras-user', JSON.stringify(response.data.usuario));
+                localStorage.setItem('signInWithSocialNetwork', 'true');
                 this.alertService.success('Se ha registrado con exito. Gracias', 'OK');
             } else {
                 this.alertService.success('Se ha registrado con exito. Le hemos enviado un mail para confirmar su usuario', 'OK');

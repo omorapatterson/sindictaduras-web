@@ -175,10 +175,10 @@ export class AuthService {
     logout(): void {
         localStorage.removeItem('sindictaduras-user');
         localStorage.removeItem('sindictaduras-token');
-        try{
+
+        if(localStorage.getItem('signInWithSocialNetwork') === 'true'){
             this.socialAuthService.signOut();
-        } catch (e) {
-            // no hacer nada
+            localStorage.removeItem('signInWithSocialNetwork');
         }
 
         sessionStorage.clear();
@@ -188,7 +188,7 @@ export class AuthService {
         // Using the builtin Http of angular for prevent handling the errors and showing messages to the user
         this.http.httpClient.post(this.configService.config.apiConfigs.authentication.revokeUser.apiEndpoint,
             credentials, { headers: headers }).subscribe();*/
-        this.logoutSpa();
+       // this.logoutSpa();
     }
 
     postUserPreferences(preferences: string): Observable<any> {
