@@ -17,6 +17,7 @@ import {WebsocketVotacionService} from '../../../../../pages/services/websocket-
 import {CountryService} from '../../../../../../common/services/country.service';
 import {LoadingService} from '../../../../../../common/http-request-indicator/services/loading.service';
 import {ErrorHandlingService} from '../../../../../../common/error-handling/services/error-handling.service';
+import {AlertService} from '../../../../../../common/error-handling/services/alert.service';
 
 @Component({
   selector: 'app-mostrar-presidente-dialog',
@@ -43,6 +44,7 @@ export class MostrarPresidenteDialogComponent implements OnInit{
   public votacion: Votacion;
 
   constructor(
+      private alertService: AlertService,
       private translate: TranslateService,
       private authService: AuthService,
       private cdRef: ChangeDetectorRef,
@@ -123,6 +125,7 @@ export class MostrarPresidenteDialogComponent implements OnInit{
       this.votacion = response.data;
       this.cargarPresidente(this.presidente.id);
       this.loadingService.showLoader(false);
+      this.alertService.success('Gracias por darnos su opinion.', 'OK')
     }, error => {
       this.voto = anteriorVotacion !== voto ? voto : '';
       this.errorHandlingService.handleUiError('', error)
