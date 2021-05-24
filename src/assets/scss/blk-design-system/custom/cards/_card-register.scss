@@ -5,8 +5,8 @@
 
   .card-header img {
     position: absolute;
-    margin-left: -50px;
-    margin-top: -200px;
+    margin-left: -15%;
+    margin-top: -65%;
     border-radius: 20%;
     width: 350px;
   }
@@ -84,7 +84,4 @@
 }
 
 @include media-breakpoint-down(xs) {
-  .card.card-register {
-    margin-top: 50px;
-  }
 }

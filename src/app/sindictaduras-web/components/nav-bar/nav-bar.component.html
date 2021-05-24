@@ -90,14 +90,14 @@
           <a *ngIf="!isLogguedIn"
                   class="nav-link btn btn-default padding-left-10px padding-right-10px"
                   href="javascript:void(0)"
-                  (click)="showLoginDialog()"
+                  (click)="showLoginDialog(); isCollapsed = !isCollapsed"
           >
            Entrar
           </a>
           <a *ngIf="isLogguedIn"
              class="nav-link btn btn-default padding-left-10px padding-right-10px"
              href="javascript:void(0)"
-             (click)="logOut()"
+             (click)="logOut(); isCollapsed = !isCollapsed"
           >
            Salir
           </a>

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import {MatDialog, MatDialogConfig, MatDialogRef} from '@angular/material/dialog';
 
 import { ConfirmDialogComponent } from '../modules/confirm-dialog/components/confirm-dialog/confirm-dialog.component';
 import {LoginDialogComponent} from '../../common/authentication/components/login-dialog/login-dialog.component';
@@ -8,6 +8,9 @@ import {LoginDialogComponent} from '../../common/authentication/components/login
 	providedIn: 'root'
 })
 export class DialogService {
+
+	modalRef: MatDialogRef<any>;
+
 	constructor(private dialog: MatDialog) {}
 
 	defaultDialogConfig = {
@@ -58,6 +61,9 @@ export class DialogService {
 	}
 
 	showLoginDialog(){
-		return this.openFromComponent(LoginDialogComponent, '40%', 'auto', {}, 'close-button-login');
+		if(this.modalRef === undefined || this.modalRef?.componentInstance === null) {
+			this.modalRef = this.openFromComponent(LoginDialogComponent, '40%', 'auto', {}, 'close-button-login');
+			return this.modalRef;
+		}
 	}
 }

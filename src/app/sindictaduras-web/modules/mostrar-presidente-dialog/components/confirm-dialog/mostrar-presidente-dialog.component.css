@@ -22,3 +22,16 @@
     line-height: 14px;
     min-width: auto;
 }
+
+@media screen and (max-width: 700px) {
+    .votacion {
+        flex-direction: column !important;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .votar {
+        flex-direction: column !important;
+    }
+}
+

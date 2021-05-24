@@ -448,6 +448,30 @@
   font-weight: 300;
 }
 
+@media screen and (max-width: 808px) {
+  .brand .h1-seo {
+    font-size: 4em;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .brand .h1-seo {
+    font-size: 3em;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .brand .h1-seo {
+    font-size: 2em;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .brand .h1-seo {
+    font-size: 1em;
+  }
+}
+
 .brand .n-logo {
   max-width: 100px;
   margin-bottom: 40px;
