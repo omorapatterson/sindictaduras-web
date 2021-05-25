@@ -8,12 +8,12 @@ import { ProfilepageComponent } from './pages/examples/profilepage/profilepage.c
 import { RegisterpageComponent } from './pages/examples/registerpage/registerpage.component';
 import { ConfigResolveService } from '../common/config/services/config-resolve.service';
 import { ConfirmarUsuarioComponent } from './sindictaduras-web/modules/usuarios/components/confirmar-usuario/confirmar-usuario.component';
-import {ContactPageComponent} from './pages/examples/contact-page/contact-page.component';
+import { ContactPageComponent } from './pages/examples/contact-page/contact-page.component';
+import { AuthGuardService } from '../common/authentication/services/auth-guard.service';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
   {
-    path: 'home',
+    path: '',
     component: IndexComponent,
     resolve: {
       config: ConfigResolveService
@@ -32,10 +32,14 @@ const routes: Routes = [
   {
     path: 'presidentes',
     loadChildren: './sindictaduras-web/sindictaduras-web.module#SinDictadurasWebModule',
-    // canActivate: [AuthGuardService],
+    canActivate: [ AuthGuardService ],
     resolve: {
       config: ConfigResolveService
     }
+  },
+  {
+    path: '**',
+    redirectTo: ''
   }
 ];
 
@@ -73,10 +77,7 @@ const routes: Routes =[
         loadChildren: './layouts/auth-layout/auth-layout.module#AuthLayoutModule'
       }
     ]
-  }, {
-    path: '**',
-    redirectTo: 'dashboard'
-  }
+  },
 ];
 */
 

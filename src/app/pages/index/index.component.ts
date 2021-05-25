@@ -77,7 +77,7 @@ export class IndexComponent implements OnInit, OnDestroy {
   }
 
   mostrarPresidente(fotoUrl: string){
-    this.dialogService.openFromComponent(MostrarPresidenteDialogComponent, '50%', '80%', { foto: fotoUrl }, 'close-button');
+    this.dialogService.openFromComponent(MostrarPresidenteDialogComponent, '50%', '80%', { foto: fotoUrl }, 'mostrar-presidente-dialog');
   }
 
   obtenerPosicion(posicion: number){

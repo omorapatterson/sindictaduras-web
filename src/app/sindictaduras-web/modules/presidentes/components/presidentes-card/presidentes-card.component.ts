@@ -64,7 +64,7 @@ export class PresidentesCardComponent implements OnInit{
             presidente: this.presidente,
             votacion: this.votacion
         }
-        const dialogRef = this.dialogService.openFromComponent(MostrarPresidenteDialogComponent, '50%', '80%', dialogData, 'close-button');
+        const dialogRef = this.dialogService.openFromComponent(MostrarPresidenteDialogComponent, '50%', '80%', dialogData, 'mostrar-presidente-dialog');
         dialogRef.afterClosed().subscribe(response => {
            this.votacion = response;
            this.cdRef.detectChanges();

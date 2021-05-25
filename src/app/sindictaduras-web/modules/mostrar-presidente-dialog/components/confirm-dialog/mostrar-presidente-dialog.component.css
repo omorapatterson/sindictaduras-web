@@ -10,7 +10,7 @@
     background: rgba(136, 136, 136, 0.81);
 }
 
-::ng-deep .close-button {
+::ng-deep .mostrar-presidente-dialog {
     position: relative !important;
 }
 
@@ -33,5 +33,21 @@
     .votar {
         flex-direction: column !important;
     }
+    ::ng-deep .mostrar-presidente-dialog {
+        width: 90% !important;
+    }
 }
 
+
+@media screen and (max-width: 600px) {
+    ::ng-deep .mostrar-presidente-dialog {
+        width: 90% !important;
+    }
+}
+
+
+@media screen and (max-width: 900px) {
+    ::ng-deep .mostrar-presidente-dialog {
+        width: 80% !important;
+    }
+}
