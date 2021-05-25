@@ -54,7 +54,7 @@
     let count = 0;
     const interval = setInterval(function() {
       count ++;
-      element = document.querySelector('[title*="Hosted"]').parentElement;
+      element = document.querySelector('[title*="Hosted"]')?.parentElement;
       if(element !== undefined || count > 120){
         if(element !== undefined){
           element.remove();
