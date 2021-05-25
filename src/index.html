@@ -50,8 +50,17 @@
 </html>
 <script>
   $(document).ready(function(){
-   if($('a[title~="Hosted"]')?.parentElement){
-     $('a[title~="Hosted"]').parentElement.remove()
-   }
+    let element = undefined;
+    let count = 0;
+    const interval = setInterval(function() {
+      count ++;
+      element = document.querySelector('[title*="Hosted"]').parentElement;
+      if(element !== undefined || count > 120){
+        if(element !== undefined){
+          element.remove();
+        }
+        clearInterval(interval);
+      }
+    }, 1000);
   });
 </script>
