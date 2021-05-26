@@ -2,9 +2,13 @@
   'background-image': 'url(' + presidente.foto + ')'}" style="background-size: cover;"
   (mouseenter)="mostrarTexto(true)" (mouseleave)="mostrarTexto(false)"
 >
-  <div class="position-absolute left-10px bottom-40px width-100pct">
+  <div class="position-absolute bottom-30px width-100pct">
     <div class="justify-content-start label-pais">
-      <h1 class="h1-seo text-h1 font-size-12px margin-0px cursor-pointer"><a class="color-withe" target="_blank" href="{{presidente.biografia}}">{{ presidente.nombre + ' ' + presidente.apellidos}}</a></h1>
+      <h1 class="h1-seo text-h1 font-size-12px margin-0px cursor-pointer">
+        <a class="color-withe" target="_blank" href="{{presidente.biografia}}">{{ presidente.nombre + ' ' + presidente.apellidos}}
+          <mat-icon class="margin-left-10px" svgIcon="wikipedia" [matTooltip]="'Biografía'"></mat-icon>
+        </a>
+      </h1>
       <span class="h1-seo text-h1 font-size-10px margin-0px cursor-pointer">{{ presidente.mandatos}}</span>
       <h1 class="h1-seo text-h1 margin-0px font-size-18px">{{ countryService.getCountryByCode(presidente.pais) }}</h1>
     </div>

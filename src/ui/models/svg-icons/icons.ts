@@ -13,6 +13,7 @@ import { USER } from './user';
 import { STYLE } from './style';
 import { FIST_UP } from './fist-up';
 import { FIST_UP_RED } from './fist-up-red';
+import { WIKIPEDIA } from './wikipedia';
 
 export const ICONS = [
   {iconName: 'moresneakers-event-detectors', literal: EVENT_DETECTORS},
@@ -30,5 +31,6 @@ export const ICONS = [
   {iconName: 'moresneakers-style', literal: STYLE},
   //
   {iconName: 'fist-up', literal: FIST_UP},
-  {iconName: 'fist-up-red', literal: FIST_UP_RED}
+  {iconName: 'fist-up-red', literal: FIST_UP_RED},
+  {iconName: 'wikipedia', literal: WIKIPEDIA},
 ];
