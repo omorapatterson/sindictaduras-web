@@ -15,6 +15,7 @@ import { RouterModule } from '@angular/router';
 import { SinDictadurasWebRoutingModule } from './modules/sindictaduras-web-routing/sin-dictaduras-web-routing.module';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import {CollapseModule} from 'ngx-bootstrap/collapse';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 @NgModule({
     imports: [
@@ -34,7 +35,8 @@ import {CollapseModule} from 'ngx-bootstrap/collapse';
         RouterModule,
         SinDictadurasWebRoutingModule,
         TooltipModule,
-        CollapseModule
+        CollapseModule,
+        MatTooltipModule
     ],
   declarations: [
     NavBarComponent

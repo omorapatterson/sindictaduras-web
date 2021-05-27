@@ -9,7 +9,7 @@
         class="navbar-brand"
         [routerLink]="['/home']"
         placement="bottom"
-        tooltip="Por un mundo mejor."
+        [matTooltip]="'Por un mundo mejor.'"
       >
         <span> SINDICTADURAS </span>
       </a>
@@ -51,7 +51,7 @@
         </div>
       </div>
       <ul class="navbar-nav">
-        <li class="nav-item p-0">
+        <!--<li class="nav-item p-0">
           <a
             class="nav-link"
             placement="bottom"
@@ -80,9 +80,9 @@
             <i class="fab fa-instagram"> </i>
             <p class="d-lg-none d-xl-none">Instagram</p>
           </a>
-        </li>
+        </li>-->
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/home']"> Regresar </a>
+          <a class="nav-link" [matTooltip]="'Regresar'" [routerLink]="['/home']"> Regresar </a>
         </li>
       </ul>
     </div>
@@ -192,8 +192,9 @@
         <div class="col-md-3">
 
           <h1 class="title">SINDICTADURAS</h1>
-         <div>
-           <a class="font-weight-bold title mt-5" target="_blank" href="https://www.paypal.com/donate?hosted_button_id=U8456AX4PL5GQ">Hacer una Donación</a>
+
+         <div class="d-flex">
+           <a class="font-weight-bold title" target="_blank" href="https://www.paypal.com/donate?hosted_button_id=U8456AX4PL5GQ">Hacer una Donación</a>
          </div>
 
         </div>
@@ -202,7 +203,7 @@
         <div class="col-md-3">
           <h3 class="title">Escribanos a: sindictadur4s@gmail.com</h3>
           <div class="btn-wrapper profile">
-            <a
+            <!--<a
               class="btn btn-icon btn-neutral btn-round btn-simple mr-1"
             >
               <i class="fab fa-twitter"> </i>
@@ -216,7 +217,7 @@
               class="btn btn-icon btn-neutral btn-round btn-simple"
             >
               <i class="fab fa-instagram"> </i>
-            </a>
+            </a>-->
           </div>
         </div>
       </div>

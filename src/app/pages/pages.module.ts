@@ -25,6 +25,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { PresidentesModule } from '../sindictaduras-web/modules/presidentes/presidentes.module';
 import { SinDictadurasWebModule } from '../sindictaduras-web/sindictaduras-web.module';
 import { ContactPageComponent } from './examples/contact-page/contact-page.component';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 @NgModule({
     imports: [
@@ -47,7 +48,8 @@ import { ContactPageComponent } from './examples/contact-page/contact-page.compo
         UiModule,
         SinDictadurasWebModule,
         MatIconModule,
-        PresidentesModule
+        PresidentesModule,
+        MatTooltipModule
     ],
   declarations: [
     IndexComponent,
