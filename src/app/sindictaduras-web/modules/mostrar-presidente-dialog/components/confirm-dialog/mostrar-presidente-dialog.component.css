@@ -12,6 +12,7 @@
 
 ::ng-deep .mostrar-presidente-dialog {
     position: relative !important;
+    max-width: 100% !important;
 }
 
 .close.mat-button {
@@ -23,31 +24,44 @@
     min-width: auto;
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 600px) {
     .votacion {
         flex-direction: column !important;
     }
 }
 
-@media screen and (max-width: 400px) {
-    .votar {
-        flex-direction: column !important;
+@media screen and (max-width : 320px) {
+    ::ng-deep .mostrar-presidente-dialog {
+        width: 98% !important;
     }
+}
+
+@media screen and (min-width : 320px) and (max-width : 480px) {
+    ::ng-deep .mostrar-presidente-dialog {
+        width: 97% !important;
+    }
+}
+
+@media screen and (min-width : 481px) and (max-width : 768px) {
     ::ng-deep .mostrar-presidente-dialog {
         width: 90% !important;
     }
 }
 
-
-@media screen and (max-width: 600px) {
+@media screen and (min-width : 769px) and (max-width : 1024px) {
     ::ng-deep .mostrar-presidente-dialog {
-        width: 90% !important;
+        width: 65% !important;
     }
 }
 
-
-@media screen and (max-width: 900px) {
+@media screen and (min-width : 1025px) and (max-width : 1200px) {
     ::ng-deep .mostrar-presidente-dialog {
-        width: 80% !important;
+        width: 60% !important;
+    }
+}
+
+@media screen and (min-width : 1201px) {
+    ::ng-deep .mostrar-presidente-dialog {
+        width: 50% !important;
     }
 }
