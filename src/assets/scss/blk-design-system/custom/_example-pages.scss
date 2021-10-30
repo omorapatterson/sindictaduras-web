@@ -30,14 +30,14 @@
   }
 
   .squares {
-    animation: move-left-right 1s infinite;
+    animation: move-left-right 100s infinite;
     @include linear-gradient($primary-states, $primary);
     /* position: absolute; */
     transition: 0.5s ease-out;
     overflow: hidden;
     border-radius: 20%;
     &.square0 {
-      animation: move-left-right 6s infinite;
+      animation: move-left-right 60s infinite;
       height: 300px;
       width: 300px;
       opacity: 0.5;
@@ -45,7 +45,7 @@
       bottom: 30%;
     }
     &.square1 {
-      animation: move-left-right 4s infinite;
+      animation: move-left-right 40s infinite;
       height: 300px;
       width: 300px;
       opacity: 0.5;
@@ -54,7 +54,7 @@
     }
 
     &.square2 {
-      animation: move-left-right 6s infinite;
+      animation: move-left-right 60s infinite;
       height: 300px;
       width: 300px;
       opacity: 0.4;
@@ -63,7 +63,7 @@
     }
 
     &.square3 {
-      animation: move-left-right 5s infinite;
+      animation: move-left-right 50s infinite;
       height: 300px;
       width: 300px;
       opacity: 0.5;
@@ -72,7 +72,7 @@
     }
 
     &.square4 {
-      animation: move-left-right 3s infinite;
+      animation: move-left-right 30s infinite;
       width: 300px;
       height: 300px;
       right: 3%;
@@ -81,7 +81,7 @@
     }
 
     &.square5 {
-      animation: move-left-right 10s infinite;
+      animation: move-left-right 100s infinite;
       height: 300px;
       width: 300px;
       opacity: 0.9;
@@ -90,7 +90,7 @@
     }
 
     &.square6 {
-      animation: move-left-right 5s infinite;
+      animation: move-left-right 50s infinite;
       height: 300px;
       width: 300px;
       opacity: 0.5;
@@ -99,7 +99,7 @@
     }
 
     &.square7 {
-      animation: move-left-right 9s infinite;
+      animation: move-left-right 90s infinite;
       left: 20%;
       top: 30%;
       height: 300px;
@@ -108,7 +108,7 @@
     }
 
     &.square8 {
-      animation: move-left-right 6s infinite;
+      animation: move-left-right 60s infinite;
       height: 300px;
       width: 300px;
       opacity: 0.5;
