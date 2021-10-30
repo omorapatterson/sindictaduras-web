@@ -32,9 +32,14 @@ export class AppComponent implements OnInit, OnDestroy {
     @Inject(DOCUMENT) document,
     private errorHandlingService: ErrorHandlingService,
     private socialAuthService: SocialAuthService,
-    private translate: TranslateService
+    private translate: TranslateService,
+    private authService: AuthService
   ) {
     translate.setDefaultLang('en');
+    this.authService.loginCommands = ['/login'];
+    this.authService.afterLoginCommands = ['/home'];
+    this.authService.logoutCommands = ['/logout'];
+    this.authService.changePasswordCommands = ['/home'];
   }
   @HostListener('window:scroll', ['$event'])
   onWindowScroll(e) {
