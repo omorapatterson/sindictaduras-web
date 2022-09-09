@@ -7,8 +7,8 @@ import { TranslateService } from '@ngx-translate/core';
 import { DropFilesDirective } from '../../directives/drop-files.directive';
 import { Face, State, Status } from '../../models/face';
 import { ConfirmDialogComponent } from '../../../confirm-dialog/components/confirm-dialog/confirm-dialog.component';
+import { ToastrService } from '../../../../../common/error-handling/services/toastr.service';
 import { DragulaService } from 'ng2-dragula';
-import {ToastrService} from '../../../../../common/error-handling/services/toastr.service';
 
 const imageSizeErrorMessageKey = 'Image Size Error Message';
 const imageTypeErrorMessageKey = 'Image Type Error Message';

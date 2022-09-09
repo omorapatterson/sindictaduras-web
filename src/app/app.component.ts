@@ -7,14 +7,12 @@ import {
 } from '@angular/core';
 import { Location } from '@angular/common';
 import { DOCUMENT } from '@angular/common';
-import {ErrorHandlingService} from '../common/error-handling/services/error-handling.service';
-import {takeUntil} from 'rxjs/operators';
-import {Subject} from 'rxjs';
-import {LoginDialogComponent} from '../common/authentication/components/login-dialog/login-dialog.component';
-import {AuthService} from '../common/authentication/services/auth.service';
-import {DialogService} from '../ui/services/dialog.service';
-import {SocialAuthService} from 'angularx-social-login';
-import {TranslateService} from '@ngx-translate/core';
+import { ErrorHandlingService } from '../common/error-handling/services/error-handling.service';
+import { takeUntil } from 'rxjs/operators';
+import { Subject} from 'rxjs';
+import { AuthService } from '../common/authentication/services/auth.service';
+import { DialogService } from '../ui/services/dialog.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-root',
@@ -31,7 +29,6 @@ export class AppComponent implements OnInit, OnDestroy {
     public location: Location,
     @Inject(DOCUMENT) document,
     private errorHandlingService: ErrorHandlingService,
-    private socialAuthService: SocialAuthService,
     private translate: TranslateService,
     private authService: AuthService
   ) {

@@ -33,15 +33,11 @@ import { RegisterpageComponent } from './pages/examples/registerpage/registerpag
 import { ContactPageComponent } from './pages/examples/contact-page/contact-page.component';
 import {TranslationErrorService} from '../common/shared/services/translation-error.service';
 //
-import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
-import {
-  GoogleLoginProvider,
-  FacebookLoginProvider
-} from 'angularx-social-login';
-import {ErrorHandlingModule} from '../common/error-handling/error-handling.module';
-import {LoginDialogComponent} from '../common/authentication/components/login-dialog/login-dialog.component';
-import { LoadingComponent } from 'src/common/http-request-indicator/components/loading/loading.component';
-import {HttpRequestIndicatorModule} from '../common/http-request-indicator/http-request-indicator.module';
+
+import { ErrorHandlingModule } from '../common/error-handling/error-handling.module';
+import { LoginDialogComponent } from '../common/authentication/components/login-dialog/login-dialog.component';
+import { HttpRequestIndicatorModule} from '../common/http-request-indicator/http-request-indicator.module';
+import { LoadingComponent } from '../common/http-request-indicator/components/loading/loading.component';
 
 export const createTranslateLoader = (http: HttpClient) => {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -83,29 +79,10 @@ export const createTranslateLoader = (http: HttpClient) => {
     // ModalModule.forRoot(),
     ErrorHandlingModule,
     HttpRequestIndicatorModule.forRoot(),
-    SocialLoginModule,
     CollapseModule.forRoot(),
     BsDropdownModule
   ],
   providers: [
-    {
-      provide: 'SocialAuthServiceConfig',
-      useValue: {
-        autoLogin: false,
-        providers: [
-          {
-            id: GoogleLoginProvider.PROVIDER_ID,
-            provider: new GoogleLoginProvider(
-                '762921540185-ksaf5icuhccfp1fg4462cdgn880ks8d4.apps.googleusercontent.com'
-            )
-          },
-          {
-            id: FacebookLoginProvider.PROVIDER_ID,
-            provider: new FacebookLoginProvider('clientId')
-          }
-        ]
-      } as SocialAuthServiceConfig,
-    }
   ],
   bootstrap: [AppComponent],
   entryComponents: [

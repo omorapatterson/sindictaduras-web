@@ -25,12 +25,13 @@ export class IndexComponent implements OnInit, OnDestroy {
 
   @ViewChildren(PresidentesCardComponent) presidentesCardComponents: QueryList<PresidentesCardComponent>;
 
-  constructor(private dialogService: DialogService,
-              private svgIconsService: SvgIconsService,
-              private presidentesService: PresidentesService,
-              private websocketVotacionService: WebsocketVotacionService,
-              private loadingService: LoadingService,
-              private errorHandlingService: ErrorHandlingService
+  constructor(
+      private dialogService: DialogService,
+      private svgIconsService: SvgIconsService,
+      private presidentesService: PresidentesService,
+      private websocketVotacionService: WebsocketVotacionService,
+      private loadingService: LoadingService,
+      private errorHandlingService: ErrorHandlingService
   ) {
     this.svgIconsService.registerIcons();
   }

@@ -1,4 +1,4 @@
-import {SocialUser} from 'angularx-social-login';
+// import { SocialUser } from '@abacritt/angularx-social-login';
 
 export class Usuario {
   id?: number;
@@ -12,7 +12,7 @@ export class Usuario {
   activo?: boolean;
   signInWithSocialNetwork?: boolean;
 
-  constructor(usuario: SocialUser) {
+  constructor(usuario: any) {
     this.nombre = usuario.name;
     this.apellido = usuario.lastName;
     this.email = usuario.email;

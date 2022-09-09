@@ -14,7 +14,7 @@ const routes: Routes = [
             },
             {
                 path: 'presidentes',
-                loadChildren: '../presidentes/presidentes.module#PresidentesModule'
+                loadChildren: () => import('../presidentes/presidentes.module').then((m) => m.PresidentesModule),
             }
         ]
     }

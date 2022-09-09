@@ -31,7 +31,7 @@ const routes: Routes = [
   { path: 'contact', component: ContactPageComponent },
   {
     path: 'presidentes',
-    loadChildren: './sindictaduras-web/sindictaduras-web.module#SinDictadurasWebModule',
+    loadChildren: () => import('./sindictaduras-web/sindictaduras-web.module').then((m) => m.SinDictadurasWebModule),
     canActivate: [ AuthGuardService ],
     resolve: {
       config: ConfigResolveService

@@ -3,17 +3,10 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslateService } from '@ngx-translate/core';
-// import { setTranslations } from 'ngx-translate';
-import { TRANSLATIONS } from './i18n/login-dialog.component.translations';
-//
-import { SocialAuthService } from 'angularx-social-login';
-import { FacebookLoginProvider, GoogleLoginProvider } from 'angularx-social-login';
-//
+
 import { ConfigService } from '../../../config/services/config.service';
 import { BaseReactiveFormComponent } from '../../../../ui/components/base-reactive-form/base-reactive-form-component';
 import { AuthService } from '../../services/auth.service';
-import { ToastrService } from '../../../error-handling/services/toastr.service';
-import { RootActionsService } from '../../../ngrx/services/root-actions.service';
 import { ErrorHandlingService } from '../../../error-handling/services/error-handling.service';
 import { Login } from '../../models/login';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
@@ -21,7 +14,8 @@ import { MostrarPresidenteDialogData } from '../../../../app/sindictaduras-web/m
 import { Usuario } from '../../../../app/sindictaduras-web/modules/usuarios/models/usuario';
 import { UsuariosService } from '../../../../app/sindictaduras-web/modules/usuarios/services/usuarios.service';
 import { AlertService } from '../../../error-handling/services/alert.service';
-import {LoadingService} from '../../../http-request-indicator/services/loading.service';
+import { LoadingService } from '../../../http-request-indicator/services/loading.service';
+// import { GoogleLoginProvider, SocialAuthService } from '@abacritt/angularx-social-login';
 
 const errorKey = 'LoginComponent/Error';
 const requiredUserandPasswordKey = 'El email o contraseña no pueden estar vacios.';
@@ -53,7 +47,7 @@ export class LoginDialogComponent extends BaseReactiveFormComponent<Login> imple
         private router: Router,
         public configService: ConfigService,
         private authService: AuthService,
-        private socialAuthService: SocialAuthService,
+        // private socialAuthService: SocialAuthService,
         public translateService: TranslateService,
         private errorHandlingService: ErrorHandlingService,
         public snackBar: MatSnackBar,
@@ -61,10 +55,8 @@ export class LoginDialogComponent extends BaseReactiveFormComponent<Login> imple
         @Inject(MAT_DIALOG_DATA) public dialogData: MostrarPresidenteDialogData,
         private usuariosService: UsuariosService,
         private loadingService: LoadingService,
-        // private rootActions: RootActionsService
     ) {
         super(translateService);
-        // setTranslations(this.translateService, TRANSLATIONS);
     }
 
     ngOnInit() {
@@ -88,7 +80,7 @@ export class LoginDialogComponent extends BaseReactiveFormComponent<Login> imple
         }
         this.createFormGroup();
 
-        this.socialAuthService.authState.subscribe((user) => {
+        /*this.socialAuthService.authState.subscribe((user) => {
             if(user !== null && user !== undefined){
                 this.usuario = new Usuario(user);
                 this.formGroup.get('userName').setValue(user.email);
@@ -102,7 +94,7 @@ export class LoginDialogComponent extends BaseReactiveFormComponent<Login> imple
             }
         }, error => {
             console.log('error');
-        });
+        });*/
 
     }
 
@@ -173,11 +165,11 @@ export class LoginDialogComponent extends BaseReactiveFormComponent<Login> imple
     }
 
     signInWithGoogle(): void {
-        this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID);
+        // this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID);
     }
 
     signOut(): void {
-        this.socialAuthService.signOut();
+        // this.socialAuthService.signOut();
     }
 
     close(): void {

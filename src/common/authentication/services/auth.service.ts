@@ -1,21 +1,15 @@
 import { ActivatedRoute, NavigationCancel, NavigationExtras, Router } from '@angular/router';
 import { Injectable } from '@angular/core';
 import { HttpHeaders } from '@angular/common/http';
-import { HttpClientModule } from '@angular/common/http';
-//
+
 import { BehaviorSubject, empty, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { TranslateService } from '@ngx-translate/core';
-//
+
 import { ConfigService } from '../../config/services/config.service';
 import { ErrorHandlingService } from '../../error-handling/services/error-handling.service';
 import { ErrorHandlingHttpService } from '../../error-handling/services/error-handling-http.service';
-import { LoginUser } from '../models/login-user';
-// import { LocaleService, setTranslations } from '@c/ngx-translate';
-// import { RootActionsService } from '../../ngrx/services/root-actions.service';
-import { TRANSLATIONS } from './i18n/auth-service.translations';
 import { LoginResponse } from '../models/loginResponse';
-import {SocialAuthService} from 'angularx-social-login';
 
 @Injectable({
     providedIn: 'root'
@@ -59,7 +53,7 @@ export class AuthService {
         private configService: ConfigService,
         private translate: TranslateService,
         private activatedRoute: ActivatedRoute,
-        private socialAuthService: SocialAuthService,
+        // private socialAuthService: SocialAuthService,
         // private localService: LocaleService,
         // private rootActions: RootActionsService
     ) {
@@ -177,7 +171,7 @@ export class AuthService {
         localStorage.removeItem('sindictaduras-token');
 
         if(localStorage.getItem('signInWithSocialNetwork') === 'true'){
-            this.socialAuthService.signOut();
+            // this.socialAuthService.signOut();
             localStorage.removeItem('signInWithSocialNetwork');
         }
 
@@ -234,6 +228,6 @@ export class AuthService {
     }
 
     signOutSocial(): void {
-        this.socialAuthService.signOut();
+        // this.socialAuthService.signOut();
     }
 }
