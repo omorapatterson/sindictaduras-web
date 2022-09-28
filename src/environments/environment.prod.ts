@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  apiUrl: 'http://ec2-13-58-79-219.us-east-2.compute.amazonaws.com:8080/',
+  apiUrl: 'http://localhost:8080/',
   apiBucket: 'https://s3.us-east-2.amazonaws.com/dictaduras.recursos/'
 };

@@ -1,4 +1,4 @@
-<div *ngIf="presidente" class="squares square{{ posicion }}  align-items-center icon-box d-flex" [ngStyle]="{
+<div *ngIf="presidente" class="squares square{{ posicion }}  align-items-center icon-box d-flex position-relative justify-content-space-around" [ngStyle]="{
   'background-image': 'url(' + presidente.foto + ')'}" style="background-size: cover;"
   (mouseenter)="mostrarTexto(true)" (mouseleave)="mostrarTexto(false)"
 >

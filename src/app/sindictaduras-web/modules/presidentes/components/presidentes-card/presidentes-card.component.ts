@@ -1,21 +1,13 @@
-import {ChangeDetectionStrategy, ChangeDetectorRef, Component, Inject, Input, OnInit,} from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
-import { Router, ActivatedRoute } from '@angular/router';
-//
-import { TranslateService } from '@ngx-translate/core';
-import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import {Presidente} from '../../models/presidente';
-import {MostrarPresidenteDialogComponent} from '../../../mostrar-presidente-dialog/components/confirm-dialog/mostrar-presidente-dialog.component';
-import {DialogService} from '../../../../../../ui/services/dialog.service';
-import {SvgIconsService} from '../../../../../../ui/services/svg-icons.service';
-import {PresidentesService} from '../../services/presidentes.service';
-import {WebsocketVotacionService} from '../../../../../pages/services/websocket-votacion.service';
-import {VotacionService} from '../../../votacion/services/votacion.service';
-import {Votacion} from '../../../votacion/models/votacion';
-import {CountryService} from '../../../../../../common/services/country.service';
-import {AuthService} from '../../../../../../common/authentication/services/auth.service';
-//
-const errorKey = 'Error';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
+
+import { Presidente } from '../../models/presidente';
+import { MostrarPresidenteDialogComponent } from '../../../mostrar-presidente-dialog/components/confirm-dialog/mostrar-presidente-dialog.component';
+import { DialogService } from '../../../../../../ui/services/dialog.service';
+import { SvgIconsService } from '../../../../../../ui/services/svg-icons.service';
+import { VotacionService } from '../../../votacion/services/votacion.service';
+import { Votacion } from '../../../votacion/models/votacion';
+import { CountryService } from '../../../../../../common/services/country.service';
+import { AuthService } from '../../../../../../common/authentication/services/auth.service';
 
 @Component({
     selector: 'app-presidentes-card',
@@ -35,12 +27,12 @@ export class PresidentesCardComponent implements OnInit{
     public mostrarVoto: false;
 
     constructor(
-                private countryService: CountryService,
-                private dialogService: DialogService,
-                private authService: AuthService,
-                private svgIconsService: SvgIconsService,
-                private cdRef: ChangeDetectorRef,
-                private votacionService: VotacionService,
+        private countryService: CountryService,
+        private dialogService: DialogService,
+        private authService: AuthService,
+        private svgIconsService: SvgIconsService,
+        private cdRef: ChangeDetectorRef,
+        private votacionService: VotacionService
     ) {
         this.svgIconsService.registerIcons();
     }
@@ -71,10 +63,10 @@ export class PresidentesCardComponent implements OnInit{
         })
     }
 
-    cargarVotacion(presidenteId){
+    cargarVotacion(presidenteId) {
         this.votacionService.cargarVotacion(presidenteId).subscribe(respose => {
             this.votacion = respose.data;
-            if(this.votacion === null || this.votacion === undefined){
+            if (this.votacion === null || this.votacion === undefined) {
                 this.votacion = new Votacion('', '');
             }
             this.cdRef.detectChanges();

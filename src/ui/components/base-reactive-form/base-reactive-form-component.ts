@@ -114,7 +114,7 @@ export abstract class BaseReactiveFormComponent<T> implements OnDestroy, AfterVi
         if (this.validationErrors) {
             this.executeInAllFormControls((path: string[], formControl: FormControl, data: ValidationErrors) => {
                 let control = data;
-                for (let key of path) {
+                for (const key of path) {
                     if (control[key]) {
                         if (typeof control[key] === 'string' || control[key].length > 0) {
                             formControl.setErrors({message: control[key]});

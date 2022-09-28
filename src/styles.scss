@@ -266,6 +266,18 @@ background-color-black{
   color: #f2292a !important;
 }
 
+.color-black {
+  color: #000000 !important;
+}
+
+
+.presidentes {
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
 .mostrar-votacion{
   background: rgb(136 136 136);
   display: flex;

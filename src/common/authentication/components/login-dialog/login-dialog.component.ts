@@ -15,7 +15,7 @@ import { Usuario } from '../../../../app/sindictaduras-web/modules/usuarios/mode
 import { UsuariosService } from '../../../../app/sindictaduras-web/modules/usuarios/services/usuarios.service';
 import { AlertService } from '../../../error-handling/services/alert.service';
 import { LoadingService } from '../../../http-request-indicator/services/loading.service';
-// import { GoogleLoginProvider, SocialAuthService } from '@abacritt/angularx-social-login';
+import { GoogleLoginProvider, SocialAuthService } from '@abacritt/angularx-social-login';
 
 const errorKey = 'LoginComponent/Error';
 const requiredUserandPasswordKey = 'El email o contraseña no pueden estar vacios.';
@@ -47,7 +47,7 @@ export class LoginDialogComponent extends BaseReactiveFormComponent<Login> imple
         private router: Router,
         public configService: ConfigService,
         private authService: AuthService,
-        // private socialAuthService: SocialAuthService,
+        private socialAuthService: SocialAuthService,
         public translateService: TranslateService,
         private errorHandlingService: ErrorHandlingService,
         public snackBar: MatSnackBar,
@@ -165,11 +165,11 @@ export class LoginDialogComponent extends BaseReactiveFormComponent<Login> imple
     }
 
     signInWithGoogle(): void {
-        // this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID);
+        this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID);
     }
 
     signOut(): void {
-        // this.socialAuthService.signOut();
+        this.socialAuthService.signOut();
     }
 
     close(): void {

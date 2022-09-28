@@ -114,9 +114,9 @@ export class MostrarPresidenteDialogComponent implements OnInit{
 
   votar(voto: string){
     const anteriorVotacion = this.voto;
-    if(this.voto === voto){
+    if (this.voto === voto) {
       this.voto = '';
-    }else{
+    } else {
       this.voto = voto;
     }
     const votacion = new Votacion(this.presidente.id, this.voto);
@@ -125,14 +125,14 @@ export class MostrarPresidenteDialogComponent implements OnInit{
       this.votacion = response.data;
       this.cargarPresidente(this.presidente.id);
       this.loadingService.showLoader(false);
-      this.alertService.success('Gracias por darnos su opinion.', 'OK')
+      this.alertService.success('Viva la libertad.', '')
     }, error => {
       this.voto = anteriorVotacion !== voto ? voto : '';
       this.errorHandlingService.handleUiError('', error)
     });
   }
 
-  cargarPresidente(presidenteId){
+  cargarPresidente(presidenteId) {
     this.presidentesService.getPresidente(presidenteId).subscribe(respose => {
       this.presidente = respose.data;
     });

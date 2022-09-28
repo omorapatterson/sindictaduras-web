@@ -32,7 +32,6 @@ const routes: Routes = [
   {
     path: 'presidentes',
     loadChildren: () => import('./sindictaduras-web/sindictaduras-web.module').then((m) => m.SinDictadurasWebModule),
-    canActivate: [ AuthGuardService ],
     resolve: {
       config: ConfigResolveService
     }
@@ -42,44 +41,6 @@ const routes: Routes = [
     redirectTo: ''
   }
 ];
-
-
-/*
-const routes: Routes =[
-  {
-    path: '',
-    redirectTo: 'home',
-    pathMatch: 'full',
-  },
-  {
-    path: 'backoffice',
-    loadChildren: './ms-back-office/ms-back-office.module#MsBackOfficeModule',
-    // canActivate: [AuthGuardService],
-    resolve: {
-      config: ConfigResolveService
-    }
-  },
-  {
-    path: '',
-    component: IndexComponent,
-    children: [
-      {
-        path: '',
-        loadChildren: './layouts/admin-layout/admin-layout.module#AdminLayoutModule'
-      }
-    ]
-  }, {
-    path: '',
-    component: AuthLayoutComponent,
-    children: [
-      {
-        path: '',
-        loadChildren: './layouts/auth-layout/auth-layout.module#AuthLayoutModule'
-      }
-    ]
-  },
-];
-*/
 
 @NgModule({
   imports: [
