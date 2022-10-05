@@ -62,7 +62,7 @@ export class DialogService {
 
 	showLoginDialog(){
 		if(this.modalRef === undefined || this.modalRef?.componentInstance === null) {
-			this.modalRef = this.openFromComponent(LoginDialogComponent, '40%', 'auto', {}, 'close-button-login');
+			this.modalRef = this.openFromComponent(LoginDialogComponent, '', 'auto', {}, '', false);
 			return this.modalRef;
 		}
 	}

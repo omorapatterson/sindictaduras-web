@@ -8,6 +8,7 @@ import { VotacionService } from '../../../votacion/services/votacion.service';
 import { Votacion } from '../../../votacion/models/votacion';
 import { CountryService } from '../../../../../../common/services/country.service';
 import { AuthService } from '../../../../../../common/authentication/services/auth.service';
+import {AlertService} from '../../../../../../common/error-handling/services/alert.service';
 
 @Component({
     selector: 'app-presidentes-card',
@@ -26,7 +27,10 @@ export class PresidentesCardComponent implements OnInit{
 
     public mostrarVoto: false;
 
+    public voto;
+
     constructor(
+        private alertService: AlertService,
         private countryService: CountryService,
         private dialogService: DialogService,
         private authService: AuthService,
@@ -70,6 +74,25 @@ export class PresidentesCardComponent implements OnInit{
                 this.votacion = new Votacion('', '');
             }
             this.cdRef.detectChanges();
+        });
+    }
+
+    votar(voto: string){
+        const anteriorVotacion = this.voto;
+        if (this.voto === voto) {
+            this.voto = '';
+        } else {
+            this.voto = voto;
+        }
+        const votacion = new Votacion(this.presidente.id, this.voto);
+        this.votacionService.realizarVotacion(votacion).subscribe({
+            next: response => {
+                this.votacion = response.data;
+                this.alertService.success('Viva la libertad!!!', '')
+            },
+            error: error => {
+                this.voto = anteriorVotacion !== voto ? voto : '';
+            }
         });
     }
 

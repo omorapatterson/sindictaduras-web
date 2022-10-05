@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 //
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
@@ -39,7 +39,7 @@ export class PresidentesTableComponent implements OnInit, OnDestroy {
         'actions'
     ];
 
-    filter: FormGroup;
+    filter: UntypedFormGroup;
 
     filterValueChanges: Subscription;
 
@@ -96,8 +96,8 @@ export class PresidentesTableComponent implements OnInit, OnDestroy {
 
     createFilterFormGroup() {
         let group: any = {};
-        group['description'] = new FormControl('');
-        return new FormGroup(group);
+        group['description'] = new UntypedFormControl('');
+        return new UntypedFormGroup(group);
     }
 
     loadPage() {

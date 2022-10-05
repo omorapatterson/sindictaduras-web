@@ -121,14 +121,17 @@ export class MostrarPresidenteDialogComponent implements OnInit{
     }
     const votacion = new Votacion(this.presidente.id, this.voto);
     this.loadingService.showLoader(true);
-    this.votacionService.realizarVotacion(votacion).subscribe(response => {
-      this.votacion = response.data;
-      this.cargarPresidente(this.presidente.id);
-      this.loadingService.showLoader(false);
-      this.alertService.success('Viva la libertad.', '')
-    }, error => {
-      this.voto = anteriorVotacion !== voto ? voto : '';
-      this.errorHandlingService.handleUiError('', error)
+    this.votacionService.realizarVotacion(votacion).subscribe({
+      next: response => {
+        this.votacion = response.data;
+        this.cargarPresidente(this.presidente.id);
+        this.loadingService.showLoader(false);
+        this.alertService.success('Viva la libertad!!!', '')
+      },
+      error: error => {
+        this.voto = anteriorVotacion !== voto ? voto : '';
+        this.errorHandlingService.handleUiError('', error)
+      }
     });
   }
 

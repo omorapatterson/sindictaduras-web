@@ -1,4 +1,4 @@
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { Component, Inject, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -25,7 +25,7 @@ const requiredUserandPasswordKey = 'El email o contraseña no pueden estar vacio
     templateUrl: './login-dialog.component.html',
     styleUrls: ['./login-dialog.component.scss']
 })
-export class LoginDialogComponent extends BaseReactiveFormComponent<Login> implements OnInit {
+export class LoginDialogComponent implements OnInit {
 
     returnUrl: string;
 
@@ -56,77 +56,37 @@ export class LoginDialogComponent extends BaseReactiveFormComponent<Login> imple
         private usuariosService: UsuariosService,
         private loadingService: LoadingService,
     ) {
-        super(translateService);
     }
 
     ngOnInit() {
-        this.data = {
-            userName: '',
-            password: '',
-        }
-        this.validationErrorMessages = [
-            {
-                type: 'required',
-                key: 'Required Field',
-                params: null,
-                translation: ''
-            }
-        ];
         if (this.authService.isAuthenticated) {
             this.router.navigate(this.authService.afterLoginCommands, this.authService.afterLoginNavigationExtras);
         } else {
             this.returnUrl = this.route.snapshot.queryParams['returnUrl'];
             this.authService.loginNavigationExtras = undefined;
         }
-        this.createFormGroup();
-
-        /*this.socialAuthService.authState.subscribe((user) => {
-            if(user !== null && user !== undefined){
-                this.usuario = new Usuario(user);
-                this.formGroup.get('userName').setValue(user.email);
-                this.formGroup.get('password').setValue(user.id);
-                if (!this.isLogin){
-                    this.register(true);
-                } else {
-                    this.login();
-                    localStorage.setItem('signInWithSocialNetwork', 'true');
-                }
-            }
-        }, error => {
-            console.log('error');
-        });*/
-
-    }
-
-    createFormGroup() {
-        this.formGroup = new FormGroup({
-            userName: new FormControl(this.data.userName, [Validators.required]),
-            password: new FormControl(this.data.password, [Validators.required]),
-        });
+        this.signInWithGoogle();
     }
 
     login() {
-        const userName = this.formGroup.get('userName').value;
-        const password = this.formGroup.get('password').value;
         if (this.authService.isAuthenticated) {
             this.router.navigate(this.authService.afterLoginCommands, this.authService.afterLoginNavigationExtras);
         } else {
-            if (userName && password) {
+            if (this.usuario) {
                 this.loadingService.showLoader(true);
-                this.authService.loginUser(userName, password).subscribe((response) => {
-                    // this.rootActions.setState(this.authService.userPreferences);
-                    /*if (this.returnUrl && this.returnUrl.length > 0) {
-                        this.router.navigateByUrl(this.returnUrl);
-                    } else {
-                        // tslint:disable-next-line:max-line-length
-                        this.router.navigate(this.authService.afterLoginCommands, this.authService.afterLoginNavigationExtras);
-                    }*/
-                    this.close();
-                    this.alertService.success('Bienvenido', 'OK');
-                    this.loadingService.showLoader(false);
-                    this.authService.reAuthenticacion.next(false);
-                },
-                    error => this.errorHandlingService.handleUiError(errorKey, error)
+                this.authService.loginUser(this.usuario.usuario, this.usuario.id)
+                    .subscribe({
+                        next: (response) => {
+                            this.close();
+                            this.alertService.success('Bienvenido', 'OK');
+                            this.loadingService.showLoader(false);
+                            this.authService.reAuthenticacion.next(false);
+                        },
+                        error: (error) => {
+                            this.errorHandlingService.handleUiError(errorKey, error);
+                            this.authService.reAuthenticacion.next(false);
+                        }
+                    }
                 );
             } else {
                 this.translateService.get([requiredUserandPasswordKey, errorKey]).subscribe(translations => {
@@ -136,36 +96,43 @@ export class LoginDialogComponent extends BaseReactiveFormComponent<Login> imple
         }
     }
 
-    register(signInWithSocialNetwork: boolean = false) {
-        if(!signInWithSocialNetwork){
-            const userName = this.formGroup.get('userName').value;
-            const password = this.formGroup.get('password').value;
-            this.usuario = {
-                usuario: userName,
-                contrasena: password
-            };
-        }
+    register() {
         this.loadingService.showLoader(true);
-        this.usuariosService.registrarUsuario(this.usuario).subscribe(response => {
-            if(response.data.usuario.signInWithSocialNetwork){
-                localStorage.setItem('sindictaduras-token', response.data.token);
-                localStorage.setItem('sindictaduras-user', JSON.stringify(response.data.usuario));
-                localStorage.setItem('signInWithSocialNetwork', 'true');
-                this.alertService.success('Se ha registrado con exito. Gracias', 'OK');
-            } else {
-                this.alertService.success('Se ha registrado con exito. Le hemos enviado un mail para confirmar su usuario', 'OK');
+        this.usuariosService.registrarUsuario(this.usuario).subscribe({
+            next: response => {
+                if(response.data.usuario.signInWithSocialNetwork){
+                    localStorage.setItem('sindictaduras-token', response.data.token);
+                    localStorage.setItem('sindictaduras-user', JSON.stringify(response.data.usuario));
+                    localStorage.setItem('signInWithSocialNetwork', 'true');
+                    this.alertService.success('Se ha registrado con exito. Gracias', 'OK');
+                } else {
+                    this.alertService.success('Se ha registrado con exito. Le hemos enviado un mail para confirmar su usuario', 'OK');
+                }
+                this.loadingService.showLoader(false);
+                this.authService.reAuthenticacion.next(true);
+                this.close();
+            },
+            error: (error) => {
+                this.loadingService.showLoader(false);
+                this.alertService.error(error.message, 'OK');
             }
-            this.loadingService.showLoader(false);
-            this.authService.reAuthenticacion.next(true);
-            this.close();
-        },error => {
-            this.loadingService.showLoader(false);
-            this.alertService.error(error.message, 'OK');
         })
     }
 
     signInWithGoogle(): void {
-        this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID);
+        this.socialAuthService.authState.subscribe({
+            next: (user) => {
+                console.log(user);
+                if(user !== null && user !== undefined){
+                    this.usuario = new Usuario(user);
+                    this.login();
+                    localStorage.setItem('signInWithSocialNetwork', 'true');
+                }
+            },
+            error: (error) => {
+            console.log(error);
+        }
+        });
     }
 
     signOut(): void {

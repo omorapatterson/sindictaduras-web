@@ -5,7 +5,7 @@ import {
     OnDestroy,
     Output,
 } from '@angular/core';
-import { AbstractControl, FormArray, FormControl, FormGroup, ValidationErrors } from '@angular/forms';
+import { AbstractControl, UntypedFormArray, UntypedFormControl, UntypedFormGroup, ValidationErrors } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
 import { TranslatedValidationError } from '../../modules/error-messages/models/translated-validation-error';
@@ -33,7 +33,7 @@ export abstract class BaseReactiveFormComponent<T> implements OnDestroy, AfterVi
 
     @Output() dataChange = new EventEmitter<T>();
 
-    public formGroup: FormGroup;
+    public formGroup: UntypedFormGroup;
 
 
     protected constructor(public translateService: TranslateService) {
@@ -112,7 +112,7 @@ export abstract class BaseReactiveFormComponent<T> implements OnDestroy, AfterVi
 
     private updateValidationAndValidity() {
         if (this.validationErrors) {
-            this.executeInAllFormControls((path: string[], formControl: FormControl, data: ValidationErrors) => {
+            this.executeInAllFormControls((path: string[], formControl: UntypedFormControl, data: ValidationErrors) => {
                 let control = data;
                 for (const key of path) {
                     if (control[key]) {
@@ -127,7 +127,7 @@ export abstract class BaseReactiveFormComponent<T> implements OnDestroy, AfterVi
         }
     }
 
-    executeInAllFormControls(actionToExecute: (path: string[], formControl: FormControl, data: any) => void, data?: any) {
+    executeInAllFormControls(actionToExecute: (path: string[], formControl: UntypedFormControl, data: any) => void, data?: any) {
         Object.keys(this.formGroup.controls).forEach(field => {
             const item = this.formGroup.controls[field];
             let path = [];
@@ -137,11 +137,11 @@ export abstract class BaseReactiveFormComponent<T> implements OnDestroy, AfterVi
     }
 
     executeInControl(path: string[], item: AbstractControl,
-                     actionToExecute: (path: string[], formControl: FormControl, data?: any) => void, data: any) {
-        if (item instanceof FormControl) {
+                     actionToExecute: (path: string[], formControl: UntypedFormControl, data?: any) => void, data: any) {
+        if (item instanceof UntypedFormControl) {
             actionToExecute(path, item, data);
             path.pop();
-        } else if (item instanceof FormGroup || item instanceof FormArray) {
+        } else if (item instanceof UntypedFormGroup || item instanceof UntypedFormArray) {
             Object.keys(item.controls).forEach(field => {
                 const control = item.controls[field];
                 path.push(field);

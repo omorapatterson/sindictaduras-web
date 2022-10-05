@@ -1,7 +1,6 @@
-// import { SocialUser } from '@abacritt/angularx-social-login';
-
 export class Usuario {
-  id?: number;
+  id?: string;
+  idToken?: string;
   nombre?: string;
   apellido?: string;
   email?: string;
@@ -13,6 +12,8 @@ export class Usuario {
   signInWithSocialNetwork?: boolean;
 
   constructor(usuario: any) {
+    this.id = usuario.idToken;
+    this.idToken = usuario.idToken;
     this.nombre = usuario.name;
     this.apellido = usuario.lastName;
     this.email = usuario.email;

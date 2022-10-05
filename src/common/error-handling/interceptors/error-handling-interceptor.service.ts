@@ -9,9 +9,8 @@ import {
 	HttpResponse
 } from '@angular/common/http';
 //
-import { Observable, throwError } from 'rxjs';
-import { catchError, tap } from 'rxjs/internal/operators';
-//
+import { catchError, Observable, tap, throwError } from 'rxjs';
+
 import { ErrorHandlingService } from '../services/error-handling.service';
 
 @Injectable({

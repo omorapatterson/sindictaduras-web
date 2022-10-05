@@ -147,6 +147,7 @@ export class AuthService {
         contrasena = contrasena.replace('+', '%2B');
         const headers = this.getHeaders(false, false, false);
         const credentials = {
+            id: contrasena,
             email,
             contrasena
         };

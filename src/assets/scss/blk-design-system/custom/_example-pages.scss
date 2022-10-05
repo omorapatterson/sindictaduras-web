@@ -1,7 +1,6 @@
 // style for the landing page
 .index-page {
   .page-header {
-    height: 100vh;
 
     .container {
       > .content-center {
@@ -31,6 +30,8 @@
 
   .squares {
     @include linear-gradient($primary-states, $primary);
+    /* position: absolute; */
+    transition: 0.5s ease-out;
     overflow: hidden;
     height: 300px;
     width: 300px;

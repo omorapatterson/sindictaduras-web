@@ -20,75 +20,69 @@ import { PagesModule } from './pages/pages.module';
 import { ErrorHandlingModule } from '../common/error-handling/error-handling.module';
 import { LoginDialogComponent } from '../common/authentication/components/login-dialog/login-dialog.component';
 import { HttpRequestIndicatorModule} from '../common/http-request-indicator/http-request-indicator.module';
-import { LoadingComponent } from '../common/http-request-indicator/components/loading/loading.component';
-import { GoogleLoginProvider, SocialAuthServiceConfig } from '@abacritt/angularx-social-login';
+import {GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule} from '@abacritt/angularx-social-login';
 
 export const createTranslateLoader = (http: HttpClient) => {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 };
 
 @NgModule({
-  declarations: [
-    AppComponent
-    // IndexComponent,
-    // ProfilepageComponent,
-    // RegisterpageComponent,
-    // ContactPageComponent
-  ],
-  imports: [
-    BrowserAnimationsModule,
-    FormsModule,
-    HttpClientModule,
-    RouterModule,
-    AppRoutingModule,
-    //
-    MatIconModule,
-    // BsDropdownModule.forRoot(),
-    // ProgressbarModule.forRoot(),
-    // TooltipModule.forRoot(),
-    // CollapseModule.forRoot(),
-    // TabsModule.forRoot(),
-    PagesModule,
-    TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: createTranslateLoader,
-        deps: [HttpClient]
-      }
-    }),
-    // PaginationModule.forRoot(),
-    // AlertModule.forRoot(),
-    // BsDatepickerModule.forRoot(),
-    // CarouselModule.forRoot(),
-    // ModalModule.forRoot(),
-    ErrorHandlingModule,
-    HttpRequestIndicatorModule.forRoot(),
-    CollapseModule.forRoot(),
-    BsDropdownModule
-  ],
-  providers: [
-    {
-      provide: 'SocialAuthServiceConfig',
-      useValue: {
-        autoLogin: false,
-        providers: [
-          {
-            id: GoogleLoginProvider.PROVIDER_ID,
-            provider: new GoogleLoginProvider(
-                'clientId'
-            )
-          }
-        ],
-        onError: (err) => {
-          console.error(err);
+    declarations: [
+        AppComponent
+        // IndexComponent,
+        // ProfilepageComponent,
+        // RegisterpageComponent,
+        // ContactPageComponent
+    ],
+    imports: [
+        BrowserAnimationsModule,
+        FormsModule,
+        HttpClientModule,
+        RouterModule,
+        AppRoutingModule,
+        //
+        MatIconModule,
+        // BsDropdownModule.forRoot(),
+        // ProgressbarModule.forRoot(),
+        // TooltipModule.forRoot(),
+        // CollapseModule.forRoot(),
+        // TabsModule.forRoot(),
+        PagesModule,
+        TranslateModule.forRoot({
+            loader: {
+                provide: TranslateLoader,
+                useFactory: createTranslateLoader,
+                deps: [HttpClient]
+            }
+        }),
+        // PaginationModule.forRoot(),
+        // AlertModule.forRoot(),
+        // BsDatepickerModule.forRoot(),
+        // CarouselModule.forRoot(),
+        // ModalModule.forRoot(),
+        ErrorHandlingModule,
+        HttpRequestIndicatorModule.forRoot(),
+        CollapseModule.forRoot(),
+        BsDropdownModule,
+        SocialLoginModule
+    ],
+    providers: [
+        {
+            provide: 'SocialAuthServiceConfig',
+            useValue: {
+                autoLogin: false,
+                providers: [
+                    {
+                        id: GoogleLoginProvider.PROVIDER_ID,
+                        provider: new GoogleLoginProvider('516760920769-g4upas49mc8qabmeid25qmruti7voc3l.apps.googleusercontent.com')
+                    }
+                ],
+                onError: (err) => {
+                    console.error(err);
+                }
+            } as SocialAuthServiceConfig,
         }
-      } as SocialAuthServiceConfig,
-    }
-  ],
-  bootstrap: [AppComponent],
-  entryComponents: [
-    LoginDialogComponent,
-    LoadingComponent
-  ]
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModule {}

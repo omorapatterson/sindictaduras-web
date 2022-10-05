@@ -145,7 +145,6 @@
       }
     }
   },
-  "defaultProject": "sindictaduras",
   "cli": {
     "analytics": false
   }

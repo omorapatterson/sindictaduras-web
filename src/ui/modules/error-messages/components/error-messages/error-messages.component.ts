@@ -1,5 +1,5 @@
 import { Component, HostBinding, Input, OnDestroy, OnInit } from '@angular/core';
-import { ControlContainer, FormControl, FormGroup } from '@angular/forms';
+import { ControlContainer, UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 //
 import { merge, Subscription } from 'rxjs';
 //
@@ -16,7 +16,7 @@ export class ErrorMessagesComponent implements OnInit, OnDestroy {
     
     errorToDisplay = '';
 
-    formControl: FormControl;
+    formControl: UntypedFormControl;
 
     formControlChanges: Subscription;
 
@@ -53,7 +53,7 @@ export class ErrorMessagesComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
-        this.formControl = <FormControl>(this.controlContainer.control as FormGroup).get(this.for);
+        this.formControl = <UntypedFormControl>(this.controlContainer.control as UntypedFormGroup).get(this.for);
         this.formControlChanges = merge(this.formControl.valueChanges, this.formControl.statusChanges).subscribe(() => {
             this.checkAndBuildErrorMessage()
         });

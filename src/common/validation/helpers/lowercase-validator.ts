@@ -1,7 +1,7 @@
-import {AbstractControl, FormControl, ValidationErrors, ValidatorFn} from '@angular/forms';
+import {AbstractControl, UntypedFormControl, ValidationErrors, ValidatorFn} from '@angular/forms';
 
 export function lowercase(minRequired: number): ValidatorFn {
-    return (control: FormControl): { [key: string]: any } => {
+    return (control: UntypedFormControl): { [key: string]: any } => {
         const inputValue: String = control.value;
         if (inputValue && minRequired && minRequired > 0) {
             let regExp = new RegExp(/([^a-z])/g);

@@ -1,6 +1,6 @@
 import { Component, Inject, Input } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 
 //import { setTranslations } from '@c/ngx-translate';
 import { TRANSLATIONS } from './i18n/confirm-dialog.component.translations';
@@ -25,7 +25,7 @@ export class ConfirmDialogMessageComponent {
 
   public cancelBtnKey = 'Cancel';
 
-  confirmDelete = new FormControl();
+  confirmDelete = new UntypedFormControl();
 
   constructor(private translate: TranslateService, public dialogRef: MatDialogRef<ConfirmDialogMessageComponent>,
     @Inject(MAT_DIALOG_DATA) public data: ConfirmDialogData) {

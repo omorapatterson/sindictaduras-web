@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 //
 import { BaseReactiveFormComponent } from '../../../../ui/components/base-reactive-form/base-reactive-form-component';
 import { digitsCount } from '../../../validation/helpers/digits-count-validator';
@@ -21,7 +21,7 @@ import { TRANSLATIONS } from './i18n/change-password-form.component.translations
 
 export class ChangePasswordFormComponent extends BaseReactiveFormComponent<ChangePassword> implements OnInit {
 
-    password: FormControl;
+    password: UntypedFormControl;
 
     public capsLockOn: boolean;
 
@@ -72,7 +72,7 @@ export class ChangePasswordFormComponent extends BaseReactiveFormComponent<Chang
     }
 
     createFormGroup() {
-        this.password = new FormControl(this.data.password, [
+        this.password = new UntypedFormControl(this.data.password, [
             Validators.required,
             Validators.maxLength(28),
             Validators.minLength(this.passwordSize),
@@ -81,10 +81,10 @@ export class ChangePasswordFormComponent extends BaseReactiveFormComponent<Chang
             digitsCount(this.digitsCount),
             specialChars(this.specialCharsCount),
         ]);
-        this.formGroup = new FormGroup({
-            old_password: new FormControl(this.data.old_password, [Validators.required]),
+        this.formGroup = new UntypedFormGroup({
+            old_password: new UntypedFormControl(this.data.old_password, [Validators.required]),
             password: this.password,
-            confirm_password: new FormControl(this.data.confirmPassword, [
+            confirm_password: new UntypedFormControl(this.data.confirmPassword, [
                 Validators.required,
                 samePassword(this.password)
             ]),

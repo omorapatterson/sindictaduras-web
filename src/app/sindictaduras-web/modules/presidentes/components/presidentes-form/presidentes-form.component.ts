@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output,} from '@angular/core';
-import { FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, ValidatorFn, Validators } from '@angular/forms';
 //
 import { TranslateService } from '@ngx-translate/core';
 //
@@ -45,13 +45,13 @@ export class PresidentesFormComponent extends BaseReactiveFormComponent<Presiden
     }
 
     createFormGroup() {
-        this.formGroup = new FormGroup({
-            nombre: new FormControl(this.data.nombre, [Validators.required]),
-            apellidos: new FormControl(this.data.apellidos, [Validators.required]),
-            pais: new FormControl(this.data.pais, [Validators.required]),
-            biografia: new FormControl(this.data.biografia),
-            mandatos: new FormControl(this.data.mandatos),
-            descripcion: new FormControl(this.data.descripcion),
+        this.formGroup = new UntypedFormGroup({
+            nombre: new UntypedFormControl(this.data.nombre, [Validators.required]),
+            apellidos: new UntypedFormControl(this.data.apellidos, [Validators.required]),
+            pais: new UntypedFormControl(this.data.pais, [Validators.required]),
+            biografia: new UntypedFormControl(this.data.biografia),
+            mandatos: new UntypedFormControl(this.data.mandatos),
+            descripcion: new UntypedFormControl(this.data.descripcion),
         });
 
     }

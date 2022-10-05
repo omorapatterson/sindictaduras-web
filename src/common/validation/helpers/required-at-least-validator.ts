@@ -1,7 +1,7 @@
-import { AbstractControl, ValidatorFn, Validators, FormGroup } from '@angular/forms';
+import { AbstractControl, ValidatorFn, Validators, UntypedFormGroup } from '@angular/forms';
 
 export function requiredAtLeast(amount = 1): ValidatorFn {
-    return (formGroup: FormGroup): { [key: string]: any } => {
+    return (formGroup: UntypedFormGroup): { [key: string]: any } => {
       const controls = Object.keys(formGroup.controls || {});
 
       const isValid = controls.filter(ctrlName => {

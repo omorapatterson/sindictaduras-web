@@ -1,4 +1,4 @@
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -65,9 +65,9 @@ export class LoginComponent extends BaseReactiveFormComponent<Login> implements 
     }
 
     createFormGroup() {
-        this.formGroup = new FormGroup({
-            userName: new FormControl(this.data.userName, [Validators.required]),
-            password: new FormControl(this.data.password, [Validators.required]),
+        this.formGroup = new UntypedFormGroup({
+            userName: new UntypedFormControl(this.data.userName, [Validators.required]),
+            password: new UntypedFormControl(this.data.password, [Validators.required]),
         });
     }
 
