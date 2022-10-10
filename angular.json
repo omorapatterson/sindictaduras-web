@@ -37,10 +37,7 @@
               "node_modules/ngx-bootstrap/datepicker/bs-datepicker.css",
               "src/assets/scss/blk-design-system.scss",
               "src/assets/demo/demo.css",
-              "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "node_modules/@smart-webcomponents-angular/carousel/styles/smart.base.css",
-              "node_modules/@smart-webcomponents-angular/carousel/styles/smart.carousel.css",
-              "node_modules/@smart-webcomponents-angular/carousel/styles/smart.common.css"
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js", "node_modules/bootstrap/dist/js/bootstrap.min.js"

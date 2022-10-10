@@ -16,6 +16,7 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { PagesModule } from './pages/pages.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { ErrorHandlingModule } from '../common/error-handling/error-handling.module';
 import { LoginDialogComponent } from '../common/authentication/components/login-dialog/login-dialog.component';
@@ -67,6 +68,7 @@ export const createTranslateLoader = (http: HttpClient) => {
         BsDropdownModule,
         SocialLoginModule,
         CarouselModule.forRoot(),
+        NgbModule
     ],
     providers: [
         {
