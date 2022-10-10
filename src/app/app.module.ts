@@ -20,7 +20,8 @@ import { PagesModule } from './pages/pages.module';
 import { ErrorHandlingModule } from '../common/error-handling/error-handling.module';
 import { LoginDialogComponent } from '../common/authentication/components/login-dialog/login-dialog.component';
 import { HttpRequestIndicatorModule} from '../common/http-request-indicator/http-request-indicator.module';
-import {GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule} from '@abacritt/angularx-social-login';
+import { GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule } from '@abacritt/angularx-social-login';
+import { CarouselModule } from 'ngx-bootstrap/carousel';
 
 export const createTranslateLoader = (http: HttpClient) => {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -64,7 +65,8 @@ export const createTranslateLoader = (http: HttpClient) => {
         HttpRequestIndicatorModule.forRoot(),
         CollapseModule.forRoot(),
         BsDropdownModule,
-        SocialLoginModule
+        SocialLoginModule,
+        CarouselModule.forRoot(),
     ],
     providers: [
         {
@@ -74,7 +76,7 @@ export const createTranslateLoader = (http: HttpClient) => {
                 providers: [
                     {
                         id: GoogleLoginProvider.PROVIDER_ID,
-                        provider: new GoogleLoginProvider('516760920769-g4upas49mc8qabmeid25qmruti7voc3l.apps.googleusercontent.com')
+                        provider: new GoogleLoginProvider('338812207472-rk6qb8op96n8rphaa3bptk8mt0psgq2e.apps.googleusercontent.com')
                     }
                 ],
                 onError: (err) => {

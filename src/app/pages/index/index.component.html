@@ -1,19 +1,29 @@
 <app-nav-bar></app-nav-bar>
 
-<div class="wrapper presidentes">
- <div class="page-header header-filter d-flex flex-wrap-wrap justify-content-space-around padding-top-120px">
-    <div *ngFor="let presidente of presidentes; index as indexOfelement" class="d-flex align-items-center padding-bottom-10px padding-left-15px">
-      <app-presidentes-card [presidente]="presidente" [posicion]="obtenerPosicion(indexOfelement + 1)"></app-presidentes-card>
+<div class="padding-top-120px">
+    <div class="d-flex justify-content-center">
+        <h1>Dictadores (1959 - Actualidad)</h1>
     </div>
-    <div class="width-100pct height-100pct z-index--1000 position-fixed hidden">
-      <div class="content-center brand">
-        <h1 class="h1-seo text-h1">SINDICTADURAS</h1>
-        <h3 class="text-h3">
-          Por un mundo mejor.
-        </h3>
+    <div class="wrapper presidentes">
+     <div class="page-header header-filter d-flex flex-wrap-wrap justify-content-space-around">
+        <div *ngFor="let presidente of presidentes; index as indexOfelement" class="d-flex align-items-center padding-bottom-10px padding-left-15px">
+          <app-presidentes-card [presidente]="presidente" [posicion]="obtenerPosicion(indexOfelement + 1)"></app-presidentes-card>
+        </div>
+        <div class="width-100pct height-100pct z-index--1000 position-fixed hidden">
+          <div class="content-center brand">
+            <h1 class="h1-seo text-h1">SINDICTADURAS</h1>
+            <h3 class="text-h3">
+              Por un mundo mejor.
+            </h3>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
 </div>
+<div>
+    <h1>Carousel</h1>
+</div>
+
+
 
 

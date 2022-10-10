@@ -496,13 +496,13 @@
   }
 }
 
-.index-page,
+/*.index-page,
 .landing-page,
 .profile-page,
 .register-page {
-  background-image: url("/assets/img/dots.png");
+  background-image: url("/assets/img/bandera-cuba.jpg");
   background-size: contain;
-}
+}*/
 
 @include media-breakpoint-down(md) {
   .section:nth-of-type(2) {
