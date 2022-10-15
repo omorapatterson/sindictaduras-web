@@ -140,7 +140,7 @@ export class ErrorHandlingService {
 				if (err.status >= 400 && err.status < 500) {
 					if (err.status === 401) {
 						// redirecting the user to login page if the error is caused by token expiration
-						if (errObj.includes('Token expirado')) {
+						if (errObj.error.includes('Token expirado')) {
 							this.showExpireLogin.next(true);
 						}
 					}

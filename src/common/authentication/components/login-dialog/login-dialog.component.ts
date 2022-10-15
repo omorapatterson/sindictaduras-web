@@ -122,7 +122,6 @@ export class LoginDialogComponent implements OnInit {
     signInWithGoogle(): void {
         this.socialAuthService.authState.subscribe({
             next: (user) => {
-                console.log(user);
                 if(user !== null && user !== undefined){
                     this.usuario = new Usuario(user);
                     this.login();
@@ -130,8 +129,7 @@ export class LoginDialogComponent implements OnInit {
                 }
             },
             error: (error) => {
-            console.log(error);
-        }
+            }
         });
     }
 

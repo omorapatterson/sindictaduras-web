@@ -96,11 +96,9 @@ export class EditPresidenteComponent implements OnInit, AfterViewInit, CanDeacti
 
   handleImageChangeEvent(image: any) {
     this.file = image;
-    console.log(image);
   }
 
   updatePresidente(data: Presidente) {
-    console.log(this.file);
     if (this.file !== null && this.file !== undefined) {
       this.imagesService.postImagenPresidente(this.file, 'presidenteId')
           .pipe(takeUntil(this.onDestroy$))

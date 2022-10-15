@@ -1,3 +1,4 @@
+import {Presidente} from '../../presidentes/models/presidente';
 
 export class Votacion {
 
@@ -9,10 +10,12 @@ export class Votacion {
 
   dictator: boolean;
 
-  constructor(spresidente: string, voto: string) {
+  presidente: Presidente
+
+  constructor(spresidente: string) {
     this.spresidente = spresidente;
-    this.like = (voto === 'like');
-    this.disLike = (voto === 'disLike');
-    this.dictator = (voto === 'dictator');
+    this.like = false;
+    this.disLike = false;
+    this.dictator = false;
   }
 }

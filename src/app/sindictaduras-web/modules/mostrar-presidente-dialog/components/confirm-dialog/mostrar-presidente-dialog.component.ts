@@ -119,7 +119,7 @@ export class MostrarPresidenteDialogComponent implements OnInit{
     } else {
       this.voto = voto;
     }
-    const votacion = new Votacion(this.presidente.id, this.voto);
+    const votacion = new Votacion(this.presidente.id);
     this.loadingService.showLoader(true);
     this.votacionService.realizarVotacion(votacion).subscribe({
       next: response => {

@@ -36,8 +36,8 @@ import { LoginComponent } from './components/login/login.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { ManageSessionComponent } from './components/manage-session/manage-session.component';
 import { TestComponent } from './components/test/test.component';
-import {LoginDialogComponent} from './components/login-dialog/login-dialog.component';
-import {SocialLoginModule} from '@abacritt/angularx-social-login';
+import { LoginDialogComponent } from './components/login-dialog/login-dialog.component';
+import { SocialLoginModule } from '@abacritt/angularx-social-login';
 
 @NgModule({
   imports: [

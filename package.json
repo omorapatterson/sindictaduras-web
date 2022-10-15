@@ -91,6 +91,7 @@
     "ng2-dragula": "^2.1.1",
     "ngx-bootstrap": "^9.0.0",
     "ngx-image-compress": "^13.1.13",
+    "ngx-skeleton-loader": "^6.0.0",
     "ngx-translate": "0.0.1-security",
     "nouislider": "14.6.3",
     "raven-js": "^3.27.2",

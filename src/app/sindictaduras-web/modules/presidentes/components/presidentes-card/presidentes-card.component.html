@@ -16,30 +16,40 @@
 
   <div class="d-flex width-100pct height-100pct justify-content-center align-items-flex-end">
 
-    <div [ngClass]="{'hidden': !mostrarVoto}" class="mostrar-votacion height-30px width-100pct justify-content-center align-items-center realizar-votacion cursor-pointer"
-         (click)="mostrarPresidente()"
-    >
-      <div class="d-flex align-items-center justify-content-center">
-        <mat-icon>how_to_vote</mat-icon> <span class="padding-left-10px">Votar</span>
-      </div>
+    <div *ngIf="showLoader" class="mostrar-votacion height-30px width-100pct justify-content-center align-items-center">
+      <ngx-skeleton-loader
+              count="1"
+              [theme]="{
+                          'height.px': 30,
+                          'width.px': 300,
+                          'display': 'block',
+                          'background-color': 'rgb(136,136,136)',
+                          'margin-bottom': '0px',
+                          'border-radius': '0px'
+                        }"
+              appearance="line"
+      >
+      </ngx-skeleton-loader>
     </div>
 
-    <div *ngIf="votacion" class="mostrar-votacion height-30px width-100pct justify-content-center align-items-center">
-      <div class="d-flex align-items-center cursor-pointer" (click)="votar('like')">
-        <mat-icon [disabled]="true" class="" [ngClass]="{'color-default': votacion?.like}" [matTooltip]="'Buen Presidente'">thumb_up</mat-icon>
-        <span class="color-withe padding-left-5px"> {{ presidente.likeCount }}</span>
-      </div>
+    <div *ngIf="!showLoader" class="mostrar-votacion height-30px width-100pct justify-content-center align-items-center">
 
-      <div class="d-flex align-items-center padding-left-15px cursor-pointer" (click)="votar('disLike')">
-        <mat-icon class="" [ngClass]="{'color-default': votacion?.disLike}" [matTooltip]="'Mal Presidente'" >thumb_down</mat-icon>
-        <span class="color-withe padding-left-5px"> {{ presidente.disLikeCount }}</span>
-      </div>
+        <div class="d-flex align-items-center cursor-pointer" (click)="votarLike()">
+          <mat-icon [disabled]="true" class="" [ngClass]="{'color-default': votacion?.like}" [matTooltip]="'Buen Presidente'">thumb_up</mat-icon>
+          <span class="color-withe padding-left-5px"> {{ presidente.likeCount }}</span>
+        </div>
 
-      <div class="d-flex align-items-center padding-left-15px cursor-pointer" (click)="votar('dictator')">
-        <mat-icon class="" svgIcon="fist-up" [matTooltip]="'Dictador'" *ngIf="!votacion?.dictator"></mat-icon>
-        <mat-icon class="" svgIcon="fist-up-red" [matTooltip]="'Dictador'" *ngIf="votacion?.dictator"></mat-icon>
-        <span class="color-withe padding-left-5px"> {{ presidente.dictatorCount }}</span>
-      </div>
+        <div class="d-flex align-items-center padding-left-15px cursor-pointer" (click)="votarDisLike()">
+          <mat-icon class="" [ngClass]="{'color-default': votacion?.disLike}" [matTooltip]="'Mal Presidente'" >thumb_down</mat-icon>
+          <span class="color-withe padding-left-5px"> {{ presidente.disLikeCount }}</span>
+        </div>
+
+        <div class="d-flex align-items-center padding-left-15px cursor-pointer" (click)="votarDictator()">
+          <mat-icon class="" svgIcon="fist-up" [matTooltip]="'Dictador'" *ngIf="!votacion?.dictator"></mat-icon>
+          <mat-icon class="" svgIcon="fist-up-red" [matTooltip]="'Dictador'" *ngIf="votacion?.dictator"></mat-icon>
+          <span class="color-withe padding-left-5px"> {{ presidente.dictatorCount }}</span>
+        </div>
+
     </div>
   </div>
 </div>

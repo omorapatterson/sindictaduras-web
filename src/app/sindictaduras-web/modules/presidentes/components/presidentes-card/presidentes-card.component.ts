@@ -14,7 +14,6 @@ import {AlertService} from '../../../../../../common/error-handling/services/ale
     selector: 'app-presidentes-card',
     templateUrl: './presidentes-card.component.html',
     styleUrls: ['./presidentes-card.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
 })
 
 export class PresidentesCardComponent implements OnInit{
@@ -28,6 +27,8 @@ export class PresidentesCardComponent implements OnInit{
     public mostrarVoto: false;
 
     public voto;
+
+    showLoader = false;
 
     constructor(
         private alertService: AlertService,
@@ -68,30 +69,62 @@ export class PresidentesCardComponent implements OnInit{
     }
 
     cargarVotacion(presidenteId) {
-        this.votacionService.cargarVotacion(presidenteId).subscribe(respose => {
-            this.votacion = respose.data;
-            if (this.votacion === null || this.votacion === undefined) {
-                this.votacion = new Votacion('', '');
+        this.votacion = new Votacion(presidenteId);
+        this.votacionService.cargarVotacion(presidenteId).subscribe({
+            next: respose => {
+                this.votacion = respose.data;
+                if (this.votacion === null || this.votacion === undefined) {
+                    this.votacion = new Votacion('');
+                }
+                this.cdRef.detectChanges();
+            },
+            error: (error) => {
+                console.log(error);
             }
-            this.cdRef.detectChanges();
         });
     }
 
-    votar(voto: string){
+    votarLike() {
         const anteriorVotacion = this.voto;
-        if (this.voto === voto) {
-            this.voto = '';
-        } else {
-            this.voto = voto;
-        }
-        const votacion = new Votacion(this.presidente.id, this.voto);
+        this.votacion.like = !this.votacion.like;
+        this.votacion.disLike = false;
+        this.votacion.dictator = false;
+        this.cdRef.detectChanges();
+        this.enviarVotacion(this.votacion);
+    }
+
+    votarDisLike() {
+        const anteriorVotacion = this.voto;
+        this.votacion.like = false;
+        this.votacion.disLike = !this.votacion.disLike;
+        this.votacion.dictator = false;
+        this.cdRef.detectChanges();
+        this.enviarVotacion(this.votacion);
+    }
+
+    votarDictator() {
+        const anteriorVotacion = this.voto;
+        this.votacion.like = false;
+        this.votacion.disLike = false;
+        this.votacion.dictator = !this.votacion.dictator;
+        this.cdRef.detectChanges();
+        this.enviarVotacion(this.votacion);
+    }
+
+    public enviarVotacion(votacion) {
+        this.showLoader = true;
         this.votacionService.realizarVotacion(votacion).subscribe({
             next: response => {
                 this.votacion = response.data;
-                this.alertService.success('Viva la libertad!!!', '')
+                this.presidente.likeCount = this.votacion.presidente.likeCount;
+                this.presidente.disLikeCount = this.votacion.presidente.disLikeCount;
+                this.presidente.dictatorCount = this.votacion.presidente.dictatorCount;
+                this.cdRef.detectChanges();
+                this.showLoader = false;
             },
             error: error => {
-                this.voto = anteriorVotacion !== voto ? voto : '';
+                this.showLoader = false;
+                // this.voto = anteriorVotacion !== voto ? voto : '';
             }
         });
     }

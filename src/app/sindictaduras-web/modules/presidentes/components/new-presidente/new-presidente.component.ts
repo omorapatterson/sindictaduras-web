@@ -80,7 +80,6 @@ export class NewPresidenteComponent implements CanDeactivateMixin {
 
   handleImageChangeEvent(image: any) {
     this.file = image;
-    console.log(image);
   }
 
  createPresidente(data: Presidente) {

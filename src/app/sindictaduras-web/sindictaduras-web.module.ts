@@ -27,7 +27,6 @@ import { MatTooltipModule } from '@angular/material/tooltip';
         MostrarPresidenteDialogModule,
         PresidentesModule,
         VotacionModule,
-        AuthenticationModule,
         UsuariosModule,
         RouterModule,
         SinDictadurasWebRoutingModule,

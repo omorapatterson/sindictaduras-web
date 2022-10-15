@@ -5,8 +5,8 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 //
 import { ConfigService } from '../../../../../common/config/services/config.service';
-import {Presidente, PresidenteResponse, PresidentesResponse} from '../models/presidente';
-import {HttpHeadersInterceptorService} from '../../../../../common/error-handling/interceptors/http-headers-interceptor.service';
+import { Presidente, PresidenteResponse, PresidentesResponse } from '../models/presidente';
+import { HttpHeadersInterceptorService } from '../../../../../common/error-handling/interceptors/http-headers-interceptor.service';
 
 export const ASCENDING = 'asc';
 

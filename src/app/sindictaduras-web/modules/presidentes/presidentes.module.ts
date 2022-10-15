@@ -26,7 +26,8 @@ import { PresidentesTableComponent } from './components/presidentes-table/presid
 import { MsPresidentesRoutingModule } from './presidentes-routing.module';
 import { TranslateModule } from '@ngx-translate/core';
 import { ImageUploadModule } from '../../../../ui/modules/image-upload/image-upload.module';
-import {EditPresidenteComponent} from './components/edit-presidente/edit-presidente.component';
+import { EditPresidenteComponent } from './components/edit-presidente/edit-presidente.component';
+import {NgxSkeletonLoaderModule} from 'ngx-skeleton-loader';
 
 @NgModule({
   imports: [
@@ -53,7 +54,8 @@ import {EditPresidenteComponent} from './components/edit-presidente/edit-preside
     ErrorMessagesModule,
     AskBeforeRefreshModule,
     MsPresidentesRoutingModule,
-    ImageUploadModule
+    ImageUploadModule,
+    NgxSkeletonLoaderModule.forRoot(),
   ],
   exports: [
     PresidentesCardComponent,

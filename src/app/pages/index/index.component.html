@@ -1,17 +1,17 @@
 <app-nav-bar></app-nav-bar>
 
 <div class="padding-top-120px">
+    <div class="wrapper presidentes flex-direction-column">
     <div class="d-flex justify-content-center">
-        <h1>Dictadores (1959 - Actualidad)</h1>
+        <h3>Dictadores (1959 - Actualidad)</h3>
     </div>
-    <div class="wrapper presidentes">
      <div class="page-header header-filter d-flex flex-wrap-wrap justify-content-space-around">
         <div *ngFor="let presidente of presidentes; index as indexOfelement" class="d-flex align-items-center padding-bottom-10px padding-left-15px">
           <app-presidentes-card [presidente]="presidente" [posicion]="obtenerPosicion(indexOfelement + 1)"></app-presidentes-card>
         </div>
         <div class="width-100pct height-100pct z-index--1000 position-fixed hidden">
           <div class="content-center brand">
-            <h1 class="h1-seo text-h1">SINDICTADURAS</h1>
+            <h1 class="h1-seo text-h1">CUBA ES UNA DICTADURA</h1>
             <h3 class="text-h3">
               Por un mundo mejor.
             </h3>
@@ -20,8 +20,50 @@
       </div>
     </div>
 </div>
-<div>
-    <h1>Carousel</h1>
+
+<div class="d-flex justify-content-center height-25pct align-items-center">
+    <ngb-carousel  [showNavigationArrows]="false" [showNavigationIndicators]="false" [interval]="10000">
+        <ng-template ngbSlide>
+            <div class="picsum-img-wrapper">
+                <h2 class="color-black">La ignorancia mata a los pueblos, y es preciso matar a la ignorancia.</h2>
+            </div>
+        </ng-template>
+        <ng-template ngbSlide>
+            <div class="picsum-img-wrapper">
+                <h2 class="color-black">La libertad es el derecho que tienen las personas de actuar libremente, pensar y hablar sin hipocresía.</h2>
+            </div>
+        </ng-template>
+        <ng-template ngbSlide>
+            <div class="picsum-img-wrapper">
+                <h2 class="color-black">Los derechos se toman, no se piden; se arrancan, no se mendigan.</h2>
+            </div>
+        </ng-template>
+        <ng-template ngbSlide>
+            <div class="picsum-img-wrapper">
+                <h2 class="color-black">El derecho del obrero no puede ser nunca el odio al capital; es la armonía, la conciliación, el acercamiento común de uno y del otro.</h2>
+            </div>
+        </ng-template>
+        <ng-template ngbSlide>
+            <div class="picsum-img-wrapper">
+                <h2 class="color-black">Sin aire, la tierra muere. Sin libertad, como sin aire propio y esencial, nada vive.</h2>
+            </div>
+        </ng-template>
+        <ng-template ngbSlide>
+            <div class="picsum-img-wrapper">
+                <h2 class="color-black">Cuando un pueblo emigra, sus gobernantes sobran.</h2>
+            </div>
+        </ng-template>
+        <ng-template ngbSlide>
+            <div class="picsum-img-wrapper">
+                <h2 class="color-black">Los pueblos del mundo, tienen los gobernantes que se merecen.</h2>
+            </div>
+        </ng-template>
+        <ng-template ngbSlide>
+            <div class="picsum-img-wrapper">
+                <h2 class="color-black">Ser culto es el único modo de ser libre.</h2>
+            </div>
+        </ng-template>
+    </ngb-carousel>
 </div>
 
 

@@ -23,6 +23,8 @@ import { LoginDialogComponent } from '../common/authentication/components/login-
 import { HttpRequestIndicatorModule} from '../common/http-request-indicator/http-request-indicator.module';
 import { GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule } from '@abacritt/angularx-social-login';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
+import { AuthenticationModule } from '../common/authentication/authentication.module';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 
 export const createTranslateLoader = (http: HttpClient) => {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -42,6 +44,7 @@ export const createTranslateLoader = (http: HttpClient) => {
         HttpClientModule,
         RouterModule,
         AppRoutingModule,
+        AuthenticationModule,
         //
         MatIconModule,
         // BsDropdownModule.forRoot(),
@@ -68,7 +71,8 @@ export const createTranslateLoader = (http: HttpClient) => {
         BsDropdownModule,
         SocialLoginModule,
         CarouselModule.forRoot(),
-        NgbModule
+        NgbModule,
+        NgxSkeletonLoaderModule.forRoot(),
     ],
     providers: [
         {
