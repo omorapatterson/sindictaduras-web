@@ -78,7 +78,6 @@ export class LoginDialogComponent implements OnInit {
                     .subscribe({
                         next: (response) => {
                             this.close();
-                            this.alertService.success('Bienvenido', 'OK');
                             this.loadingService.showLoader(false);
                             this.authService.reAuthenticacion.next(false);
                         },
@@ -94,29 +93,6 @@ export class LoginDialogComponent implements OnInit {
                 });
             }
         }
-    }
-
-    register() {
-        this.loadingService.showLoader(true);
-        this.usuariosService.registrarUsuario(this.usuario).subscribe({
-            next: response => {
-                if(response.data.usuario.signInWithSocialNetwork){
-                    localStorage.setItem('sindictaduras-token', response.data.token);
-                    localStorage.setItem('sindictaduras-user', JSON.stringify(response.data.usuario));
-                    localStorage.setItem('signInWithSocialNetwork', 'true');
-                    this.alertService.success('Se ha registrado con exito. Gracias', 'OK');
-                } else {
-                    this.alertService.success('Se ha registrado con exito. Le hemos enviado un mail para confirmar su usuario', 'OK');
-                }
-                this.loadingService.showLoader(false);
-                this.authService.reAuthenticacion.next(true);
-                this.close();
-            },
-            error: (error) => {
-                this.loadingService.showLoader(false);
-                this.alertService.error(error.message, 'OK');
-            }
-        })
     }
 
     signInWithGoogle(): void {
@@ -141,7 +117,7 @@ export class LoginDialogComponent implements OnInit {
         this.dialogRef.close(false);
     }
 
-    registro(isLogin){
+    registro(isLogin) {
         this.isLogin = isLogin;
     }
 }

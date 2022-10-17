@@ -85,7 +85,6 @@ export class PresidentesCardComponent implements OnInit{
     }
 
     votarLike() {
-        const anteriorVotacion = this.voto;
         this.votacion.like = !this.votacion.like;
         this.votacion.disLike = false;
         this.votacion.dictator = false;
@@ -94,7 +93,6 @@ export class PresidentesCardComponent implements OnInit{
     }
 
     votarDisLike() {
-        const anteriorVotacion = this.voto;
         this.votacion.like = false;
         this.votacion.disLike = !this.votacion.disLike;
         this.votacion.dictator = false;
@@ -103,7 +101,6 @@ export class PresidentesCardComponent implements OnInit{
     }
 
     votarDictator() {
-        const anteriorVotacion = this.voto;
         this.votacion.like = false;
         this.votacion.disLike = false;
         this.votacion.dictator = !this.votacion.dictator;
@@ -111,8 +108,9 @@ export class PresidentesCardComponent implements OnInit{
         this.enviarVotacion(this.votacion);
     }
 
-    public enviarVotacion(votacion) {
+    public enviarVotacion(votacion: Votacion) {
         this.showLoader = true;
+        votacion.spresidente = this.presidente.id;
         this.votacionService.realizarVotacion(votacion).subscribe({
             next: response => {
                 this.votacion = response.data;
