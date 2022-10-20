@@ -79,7 +79,6 @@ export class PresidentesCardComponent implements OnInit{
                 this.cdRef.detectChanges();
             },
             error: (error) => {
-                console.log(error);
             }
         });
     }

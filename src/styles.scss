@@ -1,5 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 
+@use '~assets/scss/_text.scss';
+
 html, body { height: 100%; }
 body {
   margin: 0;
@@ -40,8 +42,16 @@ body {
   margin: 0px !important;
 }
 
+.margin-bottom-5px{
+  margin-bottom: 5px !important;
+}
+
 .height-25pct{
   height: 25% !important;
+}
+
+.min-height-25pct{
+  min-height: 25% !important;
 }
 
 .height-80pct{
@@ -50,6 +60,10 @@ body {
 
 .height-100pct{
   height: 100% !important;
+}
+
+.max-height-85vh{
+  max-height: 85vh !important;
 }
 
 .z-index-1050 {
@@ -68,12 +82,28 @@ body {
   width: 100% !important;
 }
 
+.width-90pct{
+  width: 90% !important;
+}
+
 .width-250px{
   width: 250px !important;
 }
 
+.width-20pct{
+  width: 20% !important;
+}
+
+.width-25pct{
+  width: 25% !important;
+}
+
 .width-45pct{
   width: 45% !important;
+}
+
+.width-50pct{
+  width: 50% !important;
 }
 
 .height-30px{
@@ -82,6 +112,10 @@ body {
 
 .height-24px{
   height: 24px !important;
+}
+
+.height-250px{
+  height: 250px !important;
 }
 
 .width-24px {
@@ -99,6 +133,11 @@ body {
 .bottom-0px{
   bottom: 0px;
 }
+
+.padding-0px{
+  padding: 0px !important;
+}
+
 
 .padding-10px{
   padding: 10px !important;
@@ -135,6 +174,10 @@ body {
 
 .margin-bottom-10px{
   margin-bottom: 10px !important;
+}
+
+.margin-left-5px{
+  margin-left: 5px !important;
 }
 
 .margin-left-10px{
@@ -363,6 +406,9 @@ background-color-black{
    right: -13px !important;
  }
 
+.tipos-prisioneros-menu-background {
+  background: #f5f5f5;
+}
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

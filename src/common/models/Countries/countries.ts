@@ -1,9 +1,9 @@
-export class country {
-	name: String;
-	code: String;
+export class Country {
+	name: string;
+	code: string;
 }
 
-export const COUNTRIES: country[] = [
+export const COUNTRIES: Country[] = [
 	{ name: 'Afghanistan', code: 'AF' },
 	{ name: 'Åland Islands', code: 'AX' },
 	{ name: 'Albania', code: 'AL' },

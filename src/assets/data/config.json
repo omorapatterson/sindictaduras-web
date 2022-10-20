@@ -23,6 +23,12 @@
     "presidentes": {
       "apiEndpoint": "presidentes/"
     },
+    "pensamientos": {
+      "apiEndpoint": "pensamientos/"
+    },
+    "prisionerosPoliticos": {
+      "apiEndpoint": "prisionerosPoliticos/"
+    },
     "votacion": {
       "apiEndpoint": "votacion/"
     },

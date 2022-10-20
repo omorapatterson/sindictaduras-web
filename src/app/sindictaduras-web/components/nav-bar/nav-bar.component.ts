@@ -13,7 +13,7 @@ export class NavBarComponent implements OnInit, OnDestroy {
   isLogguedIn = false;
 
   constructor(
-      private authService: AuthService,
+      public authService: AuthService,
       private dialogService: DialogService
   ) {}
 
@@ -38,4 +38,9 @@ export class NavBarComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
   }
+
+  signOut(): void {
+    this.authService.logout();
+  }
+
 }

@@ -2,69 +2,180 @@
 
 <div class="padding-top-120px">
     <div class="wrapper presidentes flex-direction-column">
-    <div class="d-flex justify-content-center">
-        <h3>Dictadores (1959 - Actualidad)</h3>
+    <div class="d-flex justify-content-center flex-direction-column padding-right-10px padding-left-10px">
+        <div>
+            <h1 class="margin-bottom-5px color-red">Donde no hay equidad ni respeto a todas las opiniones, no hay patria si no una dictadura.</h1>
+            <div class="d-flex width-100pct justify-content-end">
+                <span class="color-red"> José Marti </span>
+            </div>
+        </div>
+
+        <h3 class="color-black">Dictadores (1959 - Actualidad)</h3>
+
     </div>
      <div class="page-header header-filter d-flex flex-wrap-wrap justify-content-space-around">
-        <div *ngFor="let presidente of presidentes; index as indexOfelement" class="d-flex align-items-center padding-bottom-10px padding-left-15px">
+        <div *ngFor="let presidente of presidentes; index as indexOfelement"
+             class="d-flex align-items-center padding-bottom-10px"
+             [ngClass]="{'padding-left-15px': indexOfelement !== 0}"
+             [ngClass.lt-md]="{'padding-0px': true}"
+        >
           <app-presidentes-card [presidente]="presidente" [posicion]="obtenerPosicion(indexOfelement + 1)"></app-presidentes-card>
         </div>
         <div class="width-100pct height-100pct z-index--1000 position-fixed hidden">
           <div class="content-center brand">
             <h1 class="h1-seo text-h1">CUBA ES UNA DICTADURA</h1>
-            <h3 class="text-h3">
-              Por un mundo mejor.
-            </h3>
           </div>
         </div>
       </div>
     </div>
 </div>
 
-<div class="d-flex justify-content-center height-25pct align-items-center">
+<div class="d-flex justify-content-center min-height-25pct align-items-center padding-left-10px padding-right-10px">
     <ngb-carousel  [showNavigationArrows]="false" [showNavigationIndicators]="false" [interval]="10000">
-        <ng-template ngbSlide>
+        <ng-template ngbSlide  *ngFor="let pensamiento of pensamientos; index as i;">
             <div class="picsum-img-wrapper">
-                <h2 class="color-black">La ignorancia mata a los pueblos, y es preciso matar a la ignorancia.</h2>
-            </div>
-        </ng-template>
-        <ng-template ngbSlide>
-            <div class="picsum-img-wrapper">
-                <h2 class="color-black">La libertad es el derecho que tienen las personas de actuar libremente, pensar y hablar sin hipocresía.</h2>
-            </div>
-        </ng-template>
-        <ng-template ngbSlide>
-            <div class="picsum-img-wrapper">
-                <h2 class="color-black">Los derechos se toman, no se piden; se arrancan, no se mendigan.</h2>
-            </div>
-        </ng-template>
-        <ng-template ngbSlide>
-            <div class="picsum-img-wrapper">
-                <h2 class="color-black">El derecho del obrero no puede ser nunca el odio al capital; es la armonía, la conciliación, el acercamiento común de uno y del otro.</h2>
-            </div>
-        </ng-template>
-        <ng-template ngbSlide>
-            <div class="picsum-img-wrapper">
-                <h2 class="color-black">Sin aire, la tierra muere. Sin libertad, como sin aire propio y esencial, nada vive.</h2>
-            </div>
-        </ng-template>
-        <ng-template ngbSlide>
-            <div class="picsum-img-wrapper">
-                <h2 class="color-black">Cuando un pueblo emigra, sus gobernantes sobran.</h2>
-            </div>
-        </ng-template>
-        <ng-template ngbSlide>
-            <div class="picsum-img-wrapper">
-                <h2 class="color-black">Los pueblos del mundo, tienen los gobernantes que se merecen.</h2>
-            </div>
-        </ng-template>
-        <ng-template ngbSlide>
-            <div class="picsum-img-wrapper">
-                <h2 class="color-black">Ser culto es el único modo de ser libre.</h2>
+                <h2 class="color-black">{{ pensamiento.pensamiento }}</h2>
+                <div class="d-flex width-100pct justify-content-end">
+                    <span> {{ pensamiento.autor }} </span>
+                </div>
             </div>
         </ng-template>
     </ngb-carousel>
 </div>
+
+<div class="d-flex justify-content-center">
+    <div class="d-flex align-items-center justify-content-center padding-bottom-10px padding-left-10px padding-right-10px">
+        <h2 class="color-red margin-0px"> {{ (prisionerosPoliticos.length > 0 ?  prisionerosPoliticos.length : "" ) + " "}} PRISIONEROS POLÍTICOS EN CUBA </h2>
+        <div fxHide fxShow.lt-md>
+            <button class="color-red" mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item *ngFor="let tipoDePrisioneroPolitico of tiposDePrisionerosPoliticos" (click)="filtrar(tipoDePrisioneroPolitico)">
+                    <span>{{ tipoDePrisioneroPolitico }}</span>
+                </button>
+            </mat-menu>
+        </div>
+    </div>
+</div>
+
+<div class="d-flex padding-left-10px padding-right-10px justify-content-center padding-bottom-10px flex-direction-column">
+    <div class="d-flex justify-content-center">
+        <h1 class="color-red margin-bottom-5px"> VALE MÁS UN MINUTO DE PIE QUE UNA VIDA DE RODILLAS. </h1>
+    </div>
+</div>
+
+<div class="d-flex" fxLayout="row" >
+    <mat-selection-list
+            fxHide.lt-md
+            [multiple]="false"
+            class="width-25pct tipos-prisioneros-menu-background"
+            (selectionChange)="filtrarPrisionerosPoliticos($event)"
+    >
+        <mat-list-option
+            *ngFor="let tipoDePrisioneroPolitico of tiposDePrisionerosPoliticos"
+             [value]="tipoDePrisioneroPolitico"
+             class="resposive-text-3 padding-bottom-10px padding-0px"
+        >
+            {{ tipoDePrisioneroPolitico }}
+        </mat-list-option>
+    </mat-selection-list>
+
+    <mat-selection-list
+            [multiple]="false"
+            fxFlex.lt-md="45%"
+            class="width-25pct margin-left-5px max-height-85vh overflow-auto"
+            (selectionChange)="seleccionarPricioneroPolitico($event)"
+    >
+        <mat-list-option
+                *ngFor="let pricioneroPolitico of prisionerosPoliticosFiltrados"
+                [value]="pricioneroPolitico"
+                class="font-size-12px"
+        >
+            <span class="d-flex align-items-center">
+                <img class="card-img-top height-24px width-24px" src="./assets/img/no-image-available.png">
+                <span class="margin-left-5px">
+                    {{ pricioneroPolitico.apellidos + " (" + pricioneroPolitico.nombre + ")" }}
+                </span>
+            </span>
+        </mat-list-option>
+    </mat-selection-list>
+
+    <div class="d-flex flex-direction-column width-50pct" fxFlex.lt-md="55%">
+        <div class="card width-90pct">
+            <img class="width-250px" src="./assets/img/no-image-available.png">
+            <div class="card-body">
+                <span fxLayout="row" fxLayoutAlign="start center" class="d-flex">
+						Nombre: <br />
+						<strong class="padding-left-5px">{{ prisioneroPolitico?.nombre }}</strong>
+					</span>
+                <span fxLayout="row" fxLayoutAlign="start center" class="d-flex">
+						Apellidos: <br />
+						<strong class="padding-left-5px">
+							{{ prisioneroPolitico?.apellidos ? prisioneroPolitico?.apellidos : '-' }}
+						</strong>
+				</span>
+                <span fxLayout="row" fxLayoutAlign="start center" class="d-flex">
+						Fecha nacimiento: <br />
+						<strong class="padding-left-5px">
+							{{ prisioneroPolitico?.fechaNacimiento ? (prisioneroPolitico?.fechaNacimiento | date: 'd/M/yyyy') : '-'  }}
+						</strong>
+				</span>
+                <span fxLayout="row" fxLayoutAlign="start center" class="d-flex">
+						Edad: <br />
+						<strong class="padding-left-5px">
+							{{ prisioneroPolitico?.edad ? prisioneroPolitico?.edad : '-' }}
+						</strong>
+				</span>
+                <span fxLayout="row" fxLayoutAlign="start center" class="d-flex">
+						Proteccion: <br />
+						<strong class="padding-left-5px">
+                            {{ prisioneroPolitico?.proteccion ? prisioneroPolitico?.proteccion : '-' }}
+                        </strong>
+				</span>
+                <span fxLayout="row" fxLayoutAlign="start center" class="d-flex">
+						Fecha de detención: <br />
+						<strong class="padding-left-5px">
+							{{ prisioneroPolitico?.ultimaFechaDeDetencion ? ( prisioneroPolitico?.ultimaFechaDeDetencion | date: 'd/M/yyyy' ) : '-'  }}
+						</strong>
+				</span>
+                <span fxLayout="row" fxLayoutAlign="start center" class="d-flex">
+						Delito fabricado: <br />
+						<strong class="padding-left-5px">
+                            {{ prisioneroPolitico?.delitoFabricado ? prisioneroPolitico?.delitoFabricado : '-' }}
+                        </strong>
+				</span>
+                <span fxLayout="row" fxLayoutAlign="start center" class="d-flex">
+						Condena: <br />
+						<strong class="padding-left-5px">
+							{{ prisioneroPolitico?.condena ? prisioneroPolitico?.condena : '-' }}
+						</strong>
+				</span>
+                <span fxLayout="row" fxLayoutAlign="start center" class="d-flex">
+						Prisión: <br />
+						<strong class="padding-left-5px">
+                            {{ prisioneroPolitico?.prision ? prisioneroPolitico?.prision : '-' }}
+                        </strong>
+				</span>
+                <span fxLayout="row" fxLayoutAlign="start center" class="d-flex">
+						Organización: <br />
+						<strong class="padding-left-5px">
+                             {{ prisioneroPolitico?.organizacion ? prisioneroPolitico?.organizacion : '-' }}
+                        </strong>
+				</span>
+                <span fxLayout="row" fxLayoutAlign="start center" class="d-flex">
+						Tipología detención: <br />
+						<strong class="padding-left-5px">
+							 {{ prisioneroPolitico?.tipologiaDetencion ? prisioneroPolitico?.tipologiaDetencion : '-' }}
+						</strong>
+				</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
 
 
 

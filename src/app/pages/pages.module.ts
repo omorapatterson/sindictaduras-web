@@ -27,6 +27,10 @@ import { SinDictadurasWebModule } from '../sindictaduras-web/sindictaduras-web.m
 import { ContactPageComponent } from './examples/contact-page/contact-page.component';
 import { MatTooltipModule} from '@angular/material/tooltip';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MatListModule } from '@angular/material/list';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
     imports: [
@@ -51,7 +55,11 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
         MatIconModule,
         PresidentesModule,
         MatTooltipModule,
-        NgbModule
+        MatListModule,
+        NgbModule,
+        FlexLayoutModule,
+        MatMenuModule,
+        MatButtonModule
     ],
   declarations: [
     IndexComponent,

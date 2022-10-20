@@ -42,7 +42,7 @@ export class AppComponent implements OnInit, OnDestroy {
   }
   @HostListener('window:scroll', ['$event'])
   onWindowScroll(e) {
-    if (window.pageYOffset > 100) {
+    if (window.pageYOffset > 50) {
       const element = document.getElementById('navbar-top');
       if (element) {
         element.classList.remove('navbar-transparent');

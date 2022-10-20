@@ -111,6 +111,7 @@ export class LoginDialogComponent implements OnInit {
 
     signOut(): void {
         this.socialAuthService.signOut();
+        this.authService.logout();
     }
 
     close(): void {

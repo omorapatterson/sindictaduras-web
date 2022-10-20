@@ -6,7 +6,6 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 import { MostrarPresidenteDialogModule } from './modules/mostrar-presidente-dialog/mostrar-presidente-dialog.module';
 import { UiModule } from '../../ui/ui.module';
-import { AuthenticationModule } from '../../common/authentication/authentication.module';
 import { PresidentesModule } from './modules/presidentes/presidentes.module';
 import { VotacionModule } from './modules/votacion/votacion.module';
 import { UsuariosModule } from './modules/usuarios/usuarios.module';
@@ -16,6 +15,8 @@ import { SinDictadurasWebRoutingModule } from './modules/sindictaduras-web-routi
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatIconModule } from '@angular/material/icon';
+import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
     imports: [
@@ -32,7 +33,9 @@ import { MatTooltipModule } from '@angular/material/tooltip';
         SinDictadurasWebRoutingModule,
         TooltipModule,
         CollapseModule,
-        MatTooltipModule
+        MatTooltipModule,
+        MatIconModule,
+        MatButtonModule
     ],
   declarations: [
     NavBarComponent
